@@ -40,22 +40,32 @@
         .tick-outline { color: #023A78; -webkit-text-stroke: 1.5px white; paint-order: stroke fill; font-size: 24px; }
 
         /* HEADER FIJO */
-        #sticky-nav { transition: background-color 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease; }
-        .nav-scrolled { background-color: #1c1f2e; padding-top: 10px !important; padding-bottom: 15px !important; box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
+        #sticky-nav { transition: background-color 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease; z-index: 50; }
+        .nav-scrolled { background-color: #1c1f2e; padding-top: 5px !important; padding-bottom: 5px !important; box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
 
         /* HERO GRID */
-        .hero-grid { display: grid; grid-template-columns: 1fr auto 1fr; grid-template-rows: auto auto; width: 100%; max-width: 1300px; margin: 0 auto; position: relative; z-index: 50; gap: 10px; }
+        .hero-grid { display: grid; grid-template-columns: 1fr auto 1fr; grid-template-rows: auto auto; width: 100%; max-width: 1300px; margin: 0 auto; position: relative; z-index: 50; gap: 10px; transition: gap 0.4s; }
+        .nav-scrolled .hero-grid { gap: 2px; }
+
         .deco-line { width: 100%; height: 1px; background-color: rgba(255,255,255,0.6); }
         .line-wrapper { display: flex; align-items: center; width: 100%; }
+        
         .logo-wrapper { display: flex; align-items: center; justify-content: center; gap: 15px; padding: 0 20px; }
-        .logo-box { height: 70px; width: 120px; border: 2px solid white; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
-        .nav-scrolled .logo-box { height: 50px; width: 90px; }
-        .logo-box-text { color: white; font-weight: bold; letter-spacing: 1px; font-size: 12px; text-align: center; line-height: 1.2; }
-        .logo-text { display: flex; flex-direction: column; text-align: left; line-height: 1.1; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+        .logo-box { height: 60px; width: 110px; border: 2px solid white; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
+        .nav-scrolled .logo-box { height: 35px; width: 65px; border-width: 1px; }
+        
+        .logo-box-text { color: white; font-weight: bold; letter-spacing: 1px; font-size: 11px; text-align: center; line-height: 1.2; transition: all 0.3s; }
+        .nav-scrolled .logo-box-text { font-size: 8px; }
+        
+        /* LOGO TEXTO RESTAURADO */
+        .logo-text { display: flex; flex-direction: column; text-align: left; line-height: 1.1; color: white; text-shadow: 0 2px 6px rgba(0,0,0,0.7); transition: transform 0.3s; transform-origin: left center; }
+        .nav-scrolled .logo-text { transform: scale(0.85); }
+        
         .menu-row { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(12, 1fr); padding-top: 0; }
-        .menu-item { color: white; font-size: 15px; font-weight: 400; cursor: pointer; transition: all 0.3s ease; margin-top: 5px; padding: 8px 16px; border: 1px solid transparent; display: inline-block; } 
+        .menu-item { color: white; font-size: 17px; font-weight: 500; cursor: pointer; transition: all 0.3s ease; margin-top: 5px; padding: 8px 16px; border: 1px solid transparent; display: inline-block; } 
         .menu-item:hover { background-color: white; color: black; transform: scale(1.1); box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-        .nav-scrolled .menu-item { font-size: 16px; font-weight: 500; }
+        .nav-scrolled .menu-item { font-size: 14px; font-weight: 500; padding: 2px 12px; margin-top: 0; }
+        
         .pos-legal { grid-column: 1 / 3; text-align: left; padding-left: 20px; }
         .pos-servicios { grid-column: 3 / 5; text-align: left; }
         .pos-contacto { grid-column: 9 / 11; text-align: right; }
@@ -68,54 +78,63 @@
         .svc-panel:hover .panel-bg { transform: scale(1.1); filter: brightness(0.65); }
         
         @media (min-width: 1024px) {
-            .svc-container { min-height: 90vh; flex-direction: row; }
+            .svc-container { min-height: 75vh; flex-direction: row; }
             .svc-panel { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
             .svc-panel:nth-child(1) { clip-path: polygon(0 0, 115% 0, 85% 100%, 0 100%); margin-right: -5%; z-index: 10; }
             .svc-panel:nth-child(2) { clip-path: polygon(15% 0, 115% 0, 85% 100%, -15% 100%); z-index: 20; }
             .svc-panel:nth-child(3) { clip-path: polygon(15% 0, 100% 0, 100% 100%, -15% 100%); margin-left: -5%; z-index: 10; }
-            .panel-content { padding-bottom: 80px; }
-            /* Hover description logic only on desktop */
+            .panel-content { padding-bottom: 60px; }
             .panel-desc { opacity: 0; transform: translateY(10px); transition: all 0.4s 0.1s; }
             .svc-panel:hover .panel-desc { opacity: 1; transform: translateY(0); }
         }
 
+        /* FIX CELULAR */
         @media (max-width: 1023px) {
-            .svc-container { flex-direction: column; }
-            .svc-panel { height: 450px; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.1); }
+            .svc-container { display: block; }
+            .svc-panel { display: block; height: 400px; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.1); }
             .panel-content { padding-bottom: 40px; }
             .hero-grid { display: flex; flex-direction: column; align-items: center; padding-top: 10px; }
             .line-wrapper { display: none; }
             .menu-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; margin-top: 10px; }
-            .menu-item { background: rgba(0,0,0,0.4); border-radius: 4px; padding: 4px 8px; font-size: 11px; }
-            .panel-desc { opacity: 1; transform: none; } /* Always visible on mobile */
+            .menu-item { background: rgba(0,0,0,0.4); border-radius: 4px; padding: 4px 8px; font-size: 12px; }
+            .panel-desc { opacity: 1; transform: none; }
         }
 
         .panel-content { position: absolute; inset: 0; z-index: 30; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; text-align: center; color: white; transition: padding-bottom 0.4s; }
-        .svc-panel:hover .panel-content { padding-bottom: 100px; }
+        .svc-panel:hover .panel-content { padding-bottom: 80px; }
         
         .hover-line { width: 0; height: 2px; background: #8B1E1E; margin-bottom: 15px; transition: width 0.4s; }
         .svc-panel:hover .hover-line { width: 40px; }
 
         .hover-btn { margin-top: 20px; padding: 10px 24px; background-color: #8B1E1E !important; color: white; border: none; text-transform: uppercase; font-size: 11px; font-weight: bold; text-decoration: none; display: inline-block; transition: background-color 0.3s ease; }
 
-        /* BOTONES FLOTANTES */
-        .fixed-btn-container { position: fixed; bottom: 20px; left: 20px; z-index: 9999; display: flex; flex-direction: column; gap: 12px; }
+        /* BOTONES FLOTANTES (Derecha) */
+        .fixed-btn-container { position: fixed; bottom: 20px; right: 20px; z-index: 9999; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; transition: all 0.4s ease; transform-origin: bottom right; }
         .float-btn { display: flex; align-items: center; gap: 10px; padding: 12px 20px; border-radius: 50px; color: white; font-weight: bold; font-size: 14px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: transform 0.3s, box-shadow 0.3s; text-decoration: none; }
+        .float-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.4); }
+        .hide-fixed-btns { opacity: 0; visibility: hidden; pointer-events: none; transform: scale(0.8) translateY(20px); }
+        
+        @media (max-width: 600px) {
+            .fixed-btn-container { right: 10px; bottom: 10px; }
+        }
     </style>
 </head>
 <body class="bg-brand-darker font-sans text-gray-700">
 
-    <div class="fixed-btn-container">
+    <div class="fixed-btn-container" id="floating-buttons">
         <a href="tel:+582129590401" class="float-btn bg-brand-blue"><i class="fa fa-phone text-lg"></i> <span class="hidden md:inline">Contáctanos</span><span class="md:hidden">Llamar</span></a>
         <a href="https://wa.me/584140000000" class="float-btn bg-[#25D366]"><i class="fa fa-whatsapp text-lg"></i> <span class="hidden md:inline">Escríbenos</span><span class="md:hidden">Chat</span></a>
     </div>
 
-    <nav id="sticky-nav" class="fixed top-0 w-full z-50 pt-8 pb-2">
+    <nav id="sticky-nav" class="fixed top-0 w-full z-50 pt-4 pb-2">
         <div class="hero-grid">
             <div class="line-wrapper"><div class="deco-line"></div></div>
             <div class="logo-wrapper">
                 <div class="logo-box"><span class="logo-box-text">LOGO<br>NUEVO</span></div>
-                <div class="logo-text"><span class="font-bold text-xl uppercase tracking-wider text-white">Aerocentro</span><span class="font-light text-xl tracking-wider text-white">Vuelos</span></div>
+                <div class="logo-text">
+                    <span class="font-bold text-xl uppercase tracking-wider text-white">Aerocentro</span>
+                    <span class="font-light text-xl tracking-wider text-white">Vuelos</span>
+                </div>
             </div>
             <div class="line-wrapper"><div class="deco-line"></div></div>
             <div class="menu-row">
@@ -127,21 +146,22 @@
         </div>
     </nav>
 
-    <section class="relative w-full h-screen min-h-[800px] bg-black overflow-hidden block-reveal">
+    <section class="relative w-full h-screen min-h-[700px] bg-black overflow-hidden">
         <img src="https://www.aeroambulanciasilva.com/web/image/51242-f242b5bc/Gemini_Generated_Image_opxoj0opxoj0opxo.png" class="absolute inset-0 w-full h-full object-cover opacity-60" style="transform: scale(1.15); transform-origin: top;">
+        
         <div class="absolute inset-0 flex flex-col justify-between items-center text-center text-white z-10 py-10 pointer-events-none h-full">
-            <h1 class="text-2xl md:text-5xl mb-6 leading-tight w-full max-w-7xl mt-60 px-4 font-bold tracking-[0.2em] lg:tracking-[0.3em] uppercase">
+            <h1 class="text-3xl md:text-5xl leading-tight w-full max-w-7xl mt-32 px-4 font-bold tracking-[0.2em] lg:tracking-[0.3em] uppercase">
                 <span class="font-light">Vuelos Charter</span> <span class="font-bold">Nacionales</span><br><span class="font-light">e</span> <span class="font-bold">Internacionales</span>
             </h1>
-            <p class="text-sm md:text-3xl opacity-95 max-w-4xl mx-auto leading-relaxed mb-20 lg:mb-12 pb-10 px-4">
+            <p class="text-sm md:text-2xl opacity-95 max-w-4xl mx-auto leading-relaxed mb-10 mt-auto px-4">
                 <span class="font-bold italic">Servicios con aeronaves</span> <span class="font-light italic">de Ala Fija,</span><br><span class="italic font-light text-white">Ala Rotatoria y Traslados Aeromédicos</span>
             </p>
         </div>
     </section>
 
-    <section class="relative py-24 bg-brand-darker overflow-hidden block-reveal">
+    <section class="relative py-12 bg-brand-darker overflow-hidden block-reveal">
         <div class="stripe-left"></div><div class="stripe-right"></div>
-        <div class="container mx-auto px-4 relative z-10 text-center"><h2 class="text-4xl md:text-7xl font-black text-white tracking-tight">Nuestros Servicios</h2></div>
+        <div class="container mx-auto px-4 relative z-10 text-center"><h2 class="text-3xl md:text-5xl font-black text-white tracking-tight uppercase">Nuestros Servicios</h2></div>
     </section>
 
     <section class="bg-brand-dark p-0 block-reveal">
@@ -179,31 +199,31 @@
         </div>
     </section>
 
-    <section class="py-24 bg-brand-dark text-white block-reveal" id="stats-section">
+    <section class="py-16 lg:py-20 bg-brand-dark text-white block-reveal" id="stats-section">
         <div class="container mx-auto px-6">
             <div class="flex flex-wrap">
-                <div class="w-full lg:w-1/2 pr-0 lg:pr-16 mb-16 lg:mb-0">
-                    <h3 class="text-3xl lg:text-5xl font-light mb-8">¿POR QUÉ <strong class="font-bold">AEROCENTRO VUELOS</strong>?</h3>
-                    <div class="w-20 h-1 bg-white/30 mb-10"></div>
-                    <ul class="space-y-6 text-gray-200 text-lg lg:text-xl">
+                <div class="w-full lg:w-1/2 pr-0 lg:pr-16 mb-12 lg:mb-0">
+                    <h3 class="text-2xl lg:text-4xl font-light mb-6">¿POR QUÉ <strong class="font-bold">AEROCENTRO VUELOS</strong>?</h3>
+                    <div class="w-16 h-1 bg-white/30 mb-6"></div>
+                    <ul class="space-y-4 text-base lg:text-lg text-gray-200">
                         <li class="flex items-start"><i class="fa fa-check tick-outline mt-1 mr-4"></i> <span>Flota adecuada al servicio ofrecido.</span></li>
                         <li class="flex items-start"><i class="fa fa-check tick-outline mt-1 mr-4"></i> <span>Tripulaciones altamente calificadas.</span></li>
                         <li class="flex items-start"><i class="fa fa-check tick-outline mt-1 mr-4"></i> <span>Soporte logístico 24/7.</span></li>
                     </ul>
-                    <p class="mt-10 text-lg lg:text-xl text-gray-300 leading-relaxed font-light">Contamos con un equipo humano altamente especializado, comprometido con la excelencia.</p>
+                    <p class="mt-8 text-base lg:text-lg text-gray-300 leading-relaxed font-light">Contamos con un equipo humano altamente especializado, comprometido con la excelencia.</p>
                 </div>
                 <div class="w-full lg:w-1/2">
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16 text-center pt-8">
-                        <div><h4 class="text-4xl md:text-5xl font-black mb-4 counter text-white" data-target="117000">+0</h4><p class="text-xs font-bold uppercase tracking-widest">Horas de vuelo en helicópteros</p></div>
-                        <div><h4 class="text-4xl md:text-5xl font-black mb-4 counter text-white" data-target="43000">+0</h4><p class="text-xs font-bold uppercase tracking-widest">Horas de vuelo en aviones</p></div>
-                        <div><h4 class="text-4xl md:text-5xl font-black mb-4 counter text-white" data-target="171500">+0</h4><p class="text-xs font-bold uppercase tracking-widest">Pasajeros transportados</p></div>
-                        <div><h4 class="text-2xl font-bold mb-4 text-white">Cobertura Mundial</h4><p class="text-xs font-bold uppercase tracking-widest">Nacional e internacional</p></div>
-                        <div><h4 class="text-4xl md:text-5xl font-black mb-4 counter text-white" data-target="35">+0</h4><p class="text-xs font-bold uppercase tracking-widest">Años de experiencia</p></div>
-                        <div><h4 class="text-2xl font-bold mb-4 text-white uppercase">Operaciones certificadas</h4><p class="text-xs font-bold uppercase tracking-widest">para pasajeros, carga y traslados médicos</p></div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10 text-center pt-4">
+                        <div><h4 class="text-3xl md:text-4xl font-black mb-2 counter text-white" data-target="117000">+0</h4><p class="text-[11px] font-bold uppercase tracking-widest text-white">Horas de vuelo en helicópteros</p></div>
+                        <div><h4 class="text-3xl md:text-4xl font-black mb-2 counter text-white" data-target="43000">+0</h4><p class="text-[11px] font-bold uppercase tracking-widest text-white">Horas de vuelo en aviones</p></div>
+                        <div><h4 class="text-3xl md:text-4xl font-black mb-2 counter text-white" data-target="171500">+0</h4><p class="text-[11px] font-bold uppercase tracking-widest text-white">Pasajeros transportados</p></div>
+                        <div><h4 class="text-xl font-bold mb-2 text-white">Cobertura Mundial</h4><p class="text-[11px] font-bold uppercase tracking-widest text-white">Nacional e internacional</p></div>
+                        <div><h4 class="text-3xl md:text-4xl font-black mb-2 counter text-white" data-target="35">+0</h4><p class="text-[11px] font-bold uppercase tracking-widest text-white">Años de experiencia</p></div>
+                        <div><h4 class="text-xl font-bold mb-2 text-white uppercase">Operaciones certificadas</h4><p class="text-[11px] font-bold uppercase tracking-widest text-white">para pasajeros, carga<br>y traslados médicos</p></div>
                         
-                        <div class="col-span-1 md:col-span-2 lg:col-span-3 pt-10 flex flex-col md:flex-row gap-6 justify-center items-center">
-                            <a href="#" class="bg-brand-blue text-white font-bold py-5 px-10 rounded shadow-lg transition text-base tracking-widest uppercase w-full md:w-auto text-center">CONOCE NUESTRA FLOTA</a>
-                            <a href="#" class="bg-[#25D366] text-white font-bold py-5 px-10 rounded shadow-lg transition text-base tracking-widest uppercase flex items-center justify-center gap-3 w-full md:w-auto text-center"><i class="fa fa-whatsapp text-2xl"></i> Contactanos</a>
+                        <div id="inline-action-buttons" class="col-span-1 md:col-span-2 lg:col-span-3 pt-6 flex flex-col md:flex-row gap-4 justify-center items-center">
+                            <a href="#" class="bg-brand-blue text-white font-bold py-3 px-8 rounded shadow-lg transition text-sm tracking-widest uppercase w-full md:w-auto text-center">CONOCE NUESTRA FLOTA</a>
+                            <a href="#" class="bg-[#25D366] text-white font-bold py-3 px-8 rounded shadow-lg transition text-sm tracking-widest uppercase flex items-center justify-center gap-2 w-full md:w-auto text-center"><i class="fa fa-whatsapp text-xl"></i> Contactanos</a>
                         </div>
                     </div>
                 </div>
@@ -211,7 +231,7 @@
         </div>
     </section>
 
-    <section class="py-20 bg-brand-darker text-white block-reveal">
+    <section class="py-16 bg-brand-darker text-white block-reveal">
         <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
             <div>
                 <h2 class="text-2xl font-bold uppercase mb-2">PARA MÁS INFORMACIÓN</h2>
@@ -246,9 +266,9 @@
         </div>
     </section>
 
-    <footer class="bg-[#12141E] border-t border-white/10 py-10 text-white text-sm block-reveal">
+    <footer class="bg-[#12141E] border-t border-white/10 py-8 text-white text-sm block-reveal">
         <div class="container mx-auto flex flex-col md:flex-row justify-center items-center gap-4">
-            <p class="opacity-50">© 2024 Aerocentro Corp.</p>
+            <p class="opacity-50">© 2026 Aerocentro Vuelos.</p>
             <div class="logo-box" style="height: 40px; width: 80px; border-width: 1px;"><span class="logo-box-text" style="font-size: 10px;">LOGO<br>NUEVO</span></div>
         </div>
     </footer>
@@ -263,18 +283,20 @@
 
             const revealObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
-            }, { threshold: 0.05 });
+            }, { threshold: 0.01 });
             document.querySelectorAll('.block-reveal').forEach(el => revealObserver.observe(el));
 
-            const counters = document.querySelectorAll('.counter');
             const animateCounters = () => {
+                const counters = document.querySelectorAll('.counter');
                 counters.forEach(counter => {
                     const target = +counter.getAttribute('data-target');
+                    const duration = 2500;
                     const startTime = performance.now();
                     const updateCount = (currentTime) => {
                         const elapsedTime = currentTime - startTime;
-                        const progress = Math.min(elapsedTime / 2500, 1);
-                        const currentCount = Math.floor((progress * (2 - progress)) * target);
+                        const progress = Math.min(elapsedTime / duration, 1);
+                        const easeOutQuad = (t) => t * (2 - t);
+                        const currentCount = Math.floor(easeOutQuad(progress) * target);
                         counter.innerText = "+" + currentCount.toLocaleString('es-ES');
                         if (progress < 1) requestAnimationFrame(updateCount);
                         else counter.innerText = "+" + target.toLocaleString('es-ES');
@@ -284,10 +306,32 @@
             };
 
             const statsObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => { if (entry.isIntersecting) { animateCounters(); statsObserver.disconnect(); } });
-            }, { threshold: 0.1 });
+                entries.forEach(entry => { 
+                    if (entry.isIntersecting) { 
+                        animateCounters(); 
+                        statsObserver.disconnect(); 
+                    } 
+                });
+            }, { threshold: 0.01 });
             const statsSection = document.getElementById('stats-section');
             if (statsSection) statsObserver.observe(statsSection);
+
+            const fixedBtns = document.getElementById('floating-buttons');
+            const inlineBtnsSection = document.getElementById('inline-action-buttons');
+            
+            if (fixedBtns && inlineBtnsSection) {
+                const btnObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            fixedBtns.classList.add('hide-fixed-btns');
+                        } else {
+                            fixedBtns.classList.remove('hide-fixed-btns');
+                        }
+                    });
+                }, { threshold: 0 });
+                
+                btnObserver.observe(inlineBtnsSection);
+            }
         });
     </script>
 </body>
