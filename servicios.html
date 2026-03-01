@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios - Aerocentro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Montserrat', 'sans-serif'] },
+                    colors: { brand: { blue: '#023A78', dark: '#383d51', darker: '#1c1f2e', red: '#8B1E1E' } }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-brand-darker font-sans text-white">
+
+    <nav class="p-6 border-b border-white/10 flex justify-between items-center bg-brand-darker sticky top-0 z-50">
+        <div class="flex items-center gap-2">
+            <div class="h-8 w-12 border border-white flex items-center justify-center">
+                <span class="text-[8px] font-bold">LOGO</span>
+            </div>
+            <span class="font-bold uppercase tracking-widest text-sm">Aerocentro</span>
+        </div>
+        <a href="index.html" class="text-xs uppercase tracking-widest opacity-70 hover:opacity-100 transition">← Inicio</a>
+    </nav>
+
+    <header class="py-16 bg-gradient-to-b from-brand-dark to-brand-darker px-6 text-center">
+        <h1 class="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-4">Nuestros Servicios</h1>
+        <p class="text-gray-400 max-w-2xl mx-auto">Excelencia operativa en cada despegue. Soluciones integrales para transporte aéreo especializado.</p>
+    </header>
+
+    <main class="container mx-auto px-6 py-12 space-y-24">
+        
+        <section class="flex flex-col md:flex-row items-center gap-12">
+            <div class="w-full md:w-1/2">
+                <img src="https://www.aeroambulanciasilva.com/web/image/51213-193cf1c1/Archivo_003.PNG" alt="Ambulancia Aérea" class="rounded-lg shadow-2xl border border-white/10">
+            </div>
+            <div class="w-full md:w-1/2">
+                <div class="flex items-center gap-4 mb-4 text-brand-red">
+                    <i class="fa fa-heartbeat text-3xl"></i>
+                    <h2 class="text-3xl font-bold uppercase">Traslados Aeromédicos</h2>
+                </div>
+                <p class="text-gray-300 mb-6 leading-relaxed">
+                    Unidades de cuidados intensivos aladas. Contamos con equipos médicos de última generación y personal especializado para el traslado de pacientes críticos a nivel nacional e internacional.
+                </p>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><i class="fa fa-check text-brand-red mr-2"></i> Equipamiento ICU completo.</li>
+                    <li><i class="fa fa-check text-brand-red mr-2"></i> Coordinación cama a cama.</li>
+                    <li><i class="fa fa-check text-brand-red mr-2"></i> Disponibilidad 24/7/365.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="flex flex-col md:flex-row-reverse items-center gap-12">
+            <div class="w-full md:w-1/2">
+                <img src="https://www.aeroambulanciasilva.com/web/image/51234-b4cce626/3.TURBINA.JPG" alt="Vuelos Charter" class="rounded-lg shadow-2xl border border-white/10">
+            </div>
+            <div class="w-full md:w-1/2 text-right md:text-left">
+                <div class="flex items-center md:justify-start justify-end gap-4 mb-4 text-brand-blue">
+                    <i class="fa fa-plane text-3xl"></i>
+                    <h2 class="text-3xl font-bold uppercase">Vuelos Charter</h2>
+                </div>
+                <p class="text-gray-300 mb-6 leading-relaxed">
+                    Viajes ejecutivos y de placer con total privacidad y flexibilidad de horarios. Acceda a destinos donde las aerolíneas comerciales no llegan, con un servicio de catering y atención personalizada.
+                </p>
+                <ul class="space-y-2 text-sm text-gray-400 inline-block text-left">
+                    <li><i class="fa fa-check text-brand-blue mr-2"></i> Itinerarios personalizados.</li>
+                    <li><i class="fa fa-check text-brand-blue mr-2"></i> Terminales privadas (FBO).</li>
+                    <li><i class="fa fa-check text-brand-blue mr-2"></i> Flota de aviones y helicópteros.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="flex flex-col md:flex-row items-center gap-12">
+            <div class="w-full md:w-1/2">
+                <img src="https://www.helitec-main.com/images/fotos/2CargaMetro23.PNG" alt="Carga" class="rounded-lg shadow-2xl border border-white/10">
+            </div>
+            <div class="w-full md:w-1/2">
+                <div class="flex items-center gap-4 mb-4 text-gray-300">
+                    <i class="fa fa-cube text-3xl"></i>
+                    <h2 class="text-3xl font-bold uppercase">Transporte de Carga</h2>
+                </div>
+                <p class="text-gray-300 mb-6 leading-relaxed">
+                    Soluciones logísticas para carga crítica, repuestos industriales, valores o insumos médicos. Garantizamos una entrega rápida y segura en cualquier aeropuerto.
+                </p>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><i class="fa fa-check text-white mr-2"></i> Manejo de carga peligrosa.</li>
+                    <li><i class="fa fa-check text-white mr-2"></i> Rastreo de envío constante.</li>
+                    <li><i class="fa fa-check text-white mr-2"></i> Despacho inmediato.</li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="py-16 text-center border-t border-white/10 bg-brand-darker">
+        <h3 class="text-xl font-bold mb-4">¿NECESITA UNA COTIZACIÓN?</h3>
+        <a href="https://wa.me/584140000000" class="inline-block bg-[#25D366] text-white font-bold py-4 px-8 rounded-full shadow-lg hover:scale-105 transition uppercase text-sm tracking-widest">
+            Contactar ahora
+        </a>
+    </footer>
+
+</body>
+</html>
