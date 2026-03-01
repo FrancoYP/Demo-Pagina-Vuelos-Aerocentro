@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información Legal - Aerocentro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Montserrat', 'sans-serif'] },
+                    colors: { brand: { blue: '#023A78', dark: '#383d51', darker: '#1c1f2e', red: '#8B1E1E' } }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-brand-darker font-sans text-white">
+
+    <nav class="p-6 border-b border-white/10 flex justify-between items-center">
+        <div class="flex items-center gap-2">
+            <div class="h-8 w-12 border border-white flex items-center justify-center">
+                <span class="text-[8px] font-bold">LOGO</span>
+            </div>
+            <span class="font-bold uppercase tracking-tighter">Aerocentro</span>
+        </div>
+        <a href="index.html" class="text-xs uppercase tracking-widest opacity-70 hover:opacity-100">← Volver al Inicio</a>
+    </nav>
+
+    <header class="py-12 bg-brand-dark">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-3xl md:text-5xl font-black uppercase tracking-tight">Marco Legal</h1>
+            <p class="text-brand-red font-bold mt-2 uppercase tracking-widest text-sm">Términos, Condiciones y Certificaciones</p>
+        </div>
+    </header>
+
+    <main class="py-16 px-6 max-w-4xl mx-auto">
+        
+        <div class="space-y-12">
+            <section>
+                <h2 class="text-xl font-bold border-l-4 border-brand-blue pl-4 mb-4 uppercase">1. Certificaciones Operacionales</h2>
+                <p class="text-gray-400 leading-relaxed">
+                    Aerocentro opera bajo las estrictas normativas de la autoridad aeronáutica civil. Contamos con los permisos vigentes para el transporte de pasajeros, carga y servicios de ambulancia aérea. (Aquí puedes añadir los números de certificado RAV/INAC).
+                </p>
+            </section>
+
+            <section>
+                <h2 class="text-xl font-bold border-l-4 border-brand-blue pl-4 mb-4 uppercase">2. Política de Privacidad</h2>
+                <p class="text-gray-400 leading-relaxed">
+                    Toda la información suministrada por nuestros clientes es tratada de forma confidencial, utilizada exclusivamente para la gestión de itinerarios, permisos de vuelo y protocolos médicos de traslado.
+                </p>
+            </section>
+
+            <section>
+                <h2 class="text-xl font-bold border-l-4 border-brand-blue pl-4 mb-4 uppercase">3. Condiciones del Servicio</h2>
+                <p class="text-gray-400 leading-relaxed">
+                    Los vuelos están sujetos a condiciones meteorológicas y aprobaciones de planes de vuelo por las autoridades competentes. La empresa se reserva el derecho de modificar itinerarios en pro de la seguridad operacional.
+                </p>
+            </section>
+        </div>
+
+        <div class="mt-20 p-8 bg-brand-dark/50 border border-white/5 rounded text-center">
+            <p class="text-sm text-gray-500">
+                Para consultas legales específicas o solicitudes de documentación, puede contactar a nuestro departamento jurídico a través de <br>
+                <span class="text-white font-semibold">legal@aerocentro.com</span>
+            </p>
+        </div>
+    </main>
+
+    <footer class="py-10 text-center opacity-30 text-xs">
+        © 2026 Aerocentro Vuelos - Todos los derechos reservados.
+    </footer>
+
+</body>
+</html>
