@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aerocentro Vuelos - Demo</title>
+    <title>Aerocentro Vuelos- Demo</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -191,36 +191,45 @@
                 height: auto !important;
                 background-color: #1c1f2e !important; 
                 padding-top: 60px !important; /* Respeta el espacio del header */
+                transition: min-height 0.4s ease-out !important; /* Transición para cuando se scrollea */
             }
             
+            /* ACHICAR EL ESPACIO AL HACER SCROLL */
+            body.is-scrolled #hero-section {
+                min-height: 75vh !important;
+            }
+
             #hero-image { 
-                /* Se anula el absolute inset-0 para que ocupe su propio bloque */
                 position: relative !important;
                 top: auto !important; bottom: auto !important; left: auto !important; right: auto !important;
                 height: 40vh !important; 
                 width: 100% !important;
                 object-fit: cover !important; 
                 object-position: center 30% !important; 
-                transform: scale(1.1) !important; /* Oculta la firma de la esquina */
+                transform: scale(1.1) !important; 
                 transform-origin: center center !important;
                 opacity: 0.8;
                 margin: 0 !important; 
-                margin-bottom: 35px !important; /* Espacio para que el zoom no muerda el texto de abajo */
+                margin-bottom: 35px !important; 
             }
             
             #hero-text-container { 
-                /* Se anula el absolute inset-0 para que caiga debajo de la imagen naturalmente */
                 position: relative !important;
                 top: auto !important; bottom: auto !important; left: auto !important; right: auto !important;
                 height: auto !important;
                 flex: 1; 
                 display: flex !important;
                 flex-direction: column !important;
-                justify-content: flex-start !important; /* Pega los textos arriba, justo tras la foto */
+                justify-content: flex-start !important; 
                 align-items: center !important;
-                padding-top: 10px !important; /* Distancia sutil extra desde la imagen */
+                padding-top: 10px !important; 
+                transition: padding 0.4s ease-out !important;
             }
             
+            body.is-scrolled #hero-text-container {
+                padding-top: 0 !important;
+            }
+
             #hero-title { 
                 margin-top: 0 !important;
                 font-size: 1.3rem !important; 
@@ -237,7 +246,14 @@
                 top: auto !important; bottom: auto !important; left: auto !important; right: auto !important;
                 margin-top: 15px !important;
                 padding-bottom: 20px !important;
+                transition: margin-top 0.4s ease-out, padding-bottom 0.4s ease-out !important;
             }
+            
+            body.is-scrolled .hero-subtitle-mobile-container {
+                margin-top: 5px !important;
+                padding-bottom: 5px !important;
+            }
+
             .hero-subtitle-mobile {
                 font-size: 0.85rem !important;
             }
