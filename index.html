@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aerocentro - Correcciones Finales Exactas</title>
+    <title>Aerocentro Vuelos - Demo</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -61,15 +61,26 @@
         .logo-text { display: flex; flex-direction: column; text-align: left; line-height: 1.1; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.5); transition: transform 0.3s; transform-origin: left center; }
         .nav-scrolled .logo-text { transform: scale(0.85); }
         
-        .menu-row { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(12, 1fr); padding-top: 0; }
-        .menu-item { color: white; font-size: 17px; font-weight: 500; cursor: pointer; transition: all 0.3s ease; margin-top: 5px; padding: 8px 16px; border: 1px solid transparent; display: inline-block; } 
+        .menu-row { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(12, 1fr); padding-top: 0; align-items: center; }
+        .menu-item { color: white; font-size: 17px; font-weight: 500; cursor: pointer; transition: all 0.3s ease; margin-top: 5px; padding: 8px 16px; border: 1px solid transparent; border-radius: 50px; display: inline-block; } 
         .menu-item:hover { background-color: white; color: black; transform: scale(1.1); box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
         .nav-scrolled .menu-item { font-size: 14px; font-weight: 500; padding: 2px 12px; margin-top: 0; }
         
+        /* BOTÓN PRESUPUESTO EN HEADER */
+        .btn-presupuesto {
+            border: 2px solid #8B1E1E !important;
+            box-shadow: 0 4px 10px rgba(139, 30, 30, 0.3);
+        }
+        .btn-presupuesto:hover {
+            background-color: #8B1E1E !important;
+            color: white !important;
+        }
+
+        /* REORGANIZACIÓN HEADER GRIDS */
         .pos-legal { grid-column: 1 / 3; text-align: left; padding-left: 20px; }
-        .pos-servicios { grid-column: 3 / 5; text-align: left; }
-        .pos-contacto { grid-column: 9 / 11; text-align: right; }
-        .pos-nosotros { grid-column: 11 / 13; text-align: right; padding-right: 20px; }
+        .pos-servicios { grid-column: 3 / 6; text-align: left; }
+        .pos-nosotros { grid-column: 8 / 10; text-align: right; }
+        .pos-presupuesto { grid-column: 10 / 13; text-align: right; padding-right: 20px; }
 
         /* SERVICIOS PANELS */
         .svc-container { display: flex; width: 100%; overflow: hidden; }
@@ -96,8 +107,14 @@
             .hero-grid { display: flex; flex-direction: column; align-items: center; padding-top: 10px; }
             .line-wrapper { display: none; }
             .menu-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; margin-top: 10px; }
-            .menu-item { background: rgba(0,0,0,0.4); border-radius: 4px; padding: 4px 8px; font-size: 12px; }
+            .menu-item { background: rgba(0,0,0,0.4); border-radius: 50px; padding: 4px 12px; font-size: 12px; }
             .panel-desc { opacity: 1; transform: none; }
+        }
+
+        /* AJUSTES ADICIONALES CELULAR PARA IMAGEN Y TEXTO */
+        @media (max-width: 768px) {
+            .hero-img-mobile { transform: scale(1) !important; object-position: center !important; }
+            .hero-title-mobile { margin-top: 12rem !important; }
         }
 
         .panel-content { position: absolute; inset: 0; z-index: 30; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; text-align: center; color: white; transition: padding-bottom 0.4s; }
@@ -106,7 +123,9 @@
         .hover-line { width: 0; height: 2px; background: #8B1E1E; margin-bottom: 15px; transition: width 0.4s; }
         .svc-panel:hover .hover-line { width: 40px; }
 
-        .hover-btn { margin-top: 20px; padding: 10px 24px; background-color: #8B1E1E !important; color: white; border: none; text-transform: uppercase; font-size: 11px; font-weight: bold; text-decoration: none; display: inline-block; transition: background-color 0.3s ease; }
+        /* AGRANDAR BOTÓN EN HOVER */
+        .hover-btn { margin-top: 20px; padding: 10px 24px; background-color: #8B1E1E !important; color: white; border: none; text-transform: uppercase; font-size: 11px; font-weight: bold; text-decoration: none; display: inline-block; transition: all 0.3s ease; }
+        .svc-panel:hover .hover-btn { transform: scale(1.15); box-shadow: 0 4px 15px rgba(0,0,0,0.4); }
 
         /* BOTONES FLOTANTES */
         .fixed-btn-container { position: fixed; bottom: 20px; right: 20px; z-index: 9999; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; transition: all 0.4s ease; transform-origin: bottom right; }
@@ -119,18 +138,28 @@
         .float-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.4); }
         .hide-fixed-btns { opacity: 0; visibility: hidden; pointer-events: none; transform: scale(0.8) translateY(20px); }
         
+        /* BOTÓN IDIOMA */
+        .lang-btn { position: fixed; bottom: 20px; left: 20px; z-index: 9999; display: flex; align-items: center; justify-content: center; gap: 8px; width: auto; min-width: 48px; height: 48px; padding: 0 16px; background-color: #383d51; border: none; border-radius: 50px; color: white; font-size: 14px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: transform 0.3s, box-shadow 0.3s; }
+        .lang-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.4); }
+
         @media (max-width: 600px) {
             .fixed-btn-container { right: 10px; bottom: 10px; }
             .float-btn { width: 120px; font-size: 13px; padding: 10px 0; }
+            .lang-btn { left: 10px; bottom: 10px; min-width: 42px; height: 42px; font-size: 12px; padding: 0 12px; gap: 6px; }
         }
     </style>
 </head>
 <body class="bg-brand-darker font-sans text-gray-700">
 
     <div class="fixed-btn-container" id="floating-buttons">
-        <a href="tel:+582129590401" class="float-btn bg-brand-blue"><i class="fa fa-phone text-lg"></i> <span class="hidden md:inline">Contáctanos</span><span class="md:hidden">Llamar</span></a>
-        <a href="https://wa.me/584140000000" class="float-btn bg-[#25D366]"><i class="fa fa-whatsapp text-lg"></i> <span class="hidden md:inline">Escríbenos</span><span class="md:hidden">Chat</span></a>
+        <a href="tel:+582129590401" class="float-btn bg-brand-blue"><i class="fa fa-phone text-lg"></i> <span class="hidden md:inline tr" data-es="Contáctanos" data-en="Contact us">Contáctanos</span><span class="md:hidden tr" data-es="Llamar" data-en="Call">Llamar</span></a>
+        <a href="https://wa.me/584140000000" class="float-btn bg-[#25D366]"><i class="fa fa-whatsapp text-lg"></i> <span class="hidden md:inline tr" data-es="Escríbenos" data-en="Message us">Escríbenos</span><span class="md:hidden tr" data-es="Chat" data-en="Chat">Chat</span></a>
     </div>
+
+    <button class="lang-btn" onclick="toggleLanguage()" title="Cambiar Idioma">
+        <i class="fa fa-globe text-lg"></i>
+        <span id="lang-text">EN</span>
+    </button>
 
     <nav id="sticky-nav" class="fixed top-0 w-full z-50 pt-4 pb-2">
         <div class="hero-grid">
@@ -144,33 +173,33 @@
             </div>
             <div class="line-wrapper"><div class="deco-line"></div></div>
             <div class="menu-row">
-                <div class="pos-legal"><a href="legal.html" class="menu-item">Legal</a></div>
-                <div class="pos-servicios"><a href="servicios.html" class="menu-item">Servicios</a></div>
-                <div class="pos-contacto"><a href="contacto.html" class="menu-item">Contacto</a></div>
-                <div class="pos-nosotros"><a href="nosotros.html" class="menu-item">Nosotros</a></div>
+                <div class="pos-legal"><a href="legal.html" class="menu-item tr" data-es="Legal" data-en="Legal">Legal</a></div>
+                <div class="pos-servicios"><a href="servicios.html" class="menu-item tr" data-es="Servicios" data-en="Services">Servicios</a></div>
+                <div class="pos-nosotros"><a href="nosotros.html" class="menu-item tr" data-es="Nosotros" data-en="About Us">Nosotros</a></div>
+                <div class="pos-presupuesto"><a href="contacto.html" class="menu-item btn-presupuesto tr" data-es="Solicitar Presupuesto" data-en="Request Quote">Solicitar Presupuesto</a></div>
             </div>
         </div>
     </nav>
 
     <section class="relative w-full h-screen min-h-[700px] bg-black overflow-hidden">
-        <img src="https://www.aeroambulanciasilva.com/web/image/51242-f242b5bc/Gemini_Generated_Image_opxoj0opxoj0opxo.png" class="absolute inset-0 w-full h-full object-cover opacity-60" style="transform: scale(1.15); transform-origin: top;">
+        <img src="https://www.aeroambulanciasilva.com/web/image/51242-f242b5bc/Gemini_Generated_Image_opxoj0opxoj0opxo.png" class="absolute inset-0 w-full h-full object-cover opacity-60 hero-img-mobile" style="transform: scale(1.15); transform-origin: top;">
         
         <div class="absolute inset-0 flex flex-col justify-start items-center text-center text-white z-10 py-10 pointer-events-none h-full">
-            <h1 class="text-3xl md:text-5xl leading-tight w-full max-w-7xl mt-32 md:mt-40 px-4 font-bold tracking-[0.2em] lg:tracking-[0.3em] uppercase">
-                <span class="font-light">Vuelos Charter</span> <span class="font-bold">Nacionales</span><br><span class="font-light">e</span> <span class="font-bold">Internacionales</span>
+            <h1 class="text-3xl md:text-5xl leading-tight w-full max-w-7xl mt-32 md:mt-40 px-4 font-bold tracking-[0.2em] lg:tracking-[0.3em] uppercase hero-title-mobile">
+                <span class="font-light tr" data-es="Vuelos Charter" data-en="Charter Flights">Vuelos Charter</span> <span class="font-bold tr" data-es="Nacionales" data-en="National">Nacionales</span><br><span class="font-light tr" data-es="e" data-en="and">e</span> <span class="font-bold tr" data-es="Internacionales" data-en="International">Internacionales</span>
             </h1>
         </div>
 
         <div class="absolute bottom-8 lg:bottom-12 left-0 right-0 w-full z-10 text-center pointer-events-none block-reveal">
             <p class="text-base md:text-2xl opacity-95 max-w-4xl mx-auto leading-relaxed text-white drop-shadow-md px-4">
-                <span class="font-bold italic">Servicios con aeronaves</span> <span class="font-light italic">de Ala Fija,</span><br><span class="italic font-light text-white">Ala Rotatoria y Traslados Aeromédicos</span>
+                <span class="font-bold italic tr" data-es="Servicios con aeronaves" data-en="Aircraft services">Servicios con aeronaves</span> <span class="font-light italic text-white tr" data-es="de Ala Fija," data-en="Fixed wing,">de Ala Fija,</span><br><span class="italic font-light text-white tr" data-es="Ala Rotatoria y Traslados Aeromédicos" data-en="rotary wing and aeromedical transfers">Ala Rotatoria y Traslados Aeromédicos</span>
             </p>
         </div>
     </section>
 
     <section class="relative py-12 bg-brand-darker overflow-hidden block-reveal">
         <div class="stripe-left"></div><div class="stripe-right"></div>
-        <div class="container mx-auto px-4 relative z-10 text-center"><h2 class="text-3xl md:text-5xl font-black text-white tracking-tight uppercase">Nuestros Servicios</h2></div>
+        <div class="container mx-auto px-4 relative z-10 text-center"><h2 class="text-3xl md:text-5xl font-black text-white tracking-tight uppercase tr" data-es="Nuestros Servicios" data-en="Our Services">Nuestros Servicios</h2></div>
     </section>
 
     <section class="bg-brand-dark p-0 block-reveal">
@@ -180,9 +209,9 @@
                 <div class="panel-content">
                     <div class="hover-line"></div>
                     <i class="fa fa-heartbeat text-4xl mb-4"></i>
-                    <h3 class="text-xl md:text-2xl font-bold font-serif mb-2 uppercase px-2 leading-tight">Traslados<br>Aeromédicos</h3>
-                    <p class="text-sm px-8 opacity-80 max-w-xs panel-desc">Evacuaciones médicas de alta complejidad con equipo especializado.</p>
-                    <a href="#" class="hover-btn">Ver servicio</a>
+                    <h3 class="text-xl md:text-2xl font-bold font-serif mb-2 uppercase px-2 leading-tight tr" data-es="Traslados<br>Aeromédicos" data-en="Aeromedical<br>Transfers">Traslados<br>Aeromédicos</h3>
+                    <p class="text-sm px-8 opacity-80 max-w-xs panel-desc tr" data-es="Evacuaciones médicas de alta complejidad con equipo especializado." data-en="Highly complex medical evacuations with specialized equipment.">Evacuaciones médicas de alta complejidad con equipo especializado.</p>
+                    <a href="#" class="hover-btn tr" data-es="Ver servicio" data-en="View service">Ver servicio</a>
                 </div>
             </div>
             <div class="svc-panel">
@@ -190,9 +219,9 @@
                 <div class="panel-content">
                     <div class="hover-line"></div>
                     <i class="fa fa-plane text-4xl mb-4"></i>
-                    <h3 class="text-xl md:text-2xl font-bold font-serif mb-2 uppercase px-2 leading-tight">Vuelos<br>Charter</h3>
-                    <p class="text-sm px-8 opacity-80 max-w-xs panel-desc">Vuelos ejecutivos y corporativos a medida, con total flexibilidad.</p>
-                    <a href="#" class="hover-btn">Ver servicio</a>
+                    <h3 class="text-xl md:text-2xl font-bold font-serif mb-2 uppercase px-2 leading-tight tr" data-es="Vuelos<br>Charter" data-en="Charter<br>Flights">Vuelos<br>Charter</h3>
+                    <p class="text-sm px-8 opacity-80 max-w-xs panel-desc tr" data-es="Vuelos ejecutivos y corporativos a medida, con total flexibilidad." data-en="Tailor-made executive and corporate flights, with total flexibility.">Vuelos ejecutivos y corporativos a medida, con total flexibilidad.</p>
+                    <a href="#" class="hover-btn tr" data-es="Ver servicio" data-en="View service">Ver servicio</a>
                 </div>
             </div>
             <div class="svc-panel">
@@ -200,9 +229,9 @@
                 <div class="panel-content">
                     <div class="hover-line"></div>
                     <i class="fa fa-cube text-4xl mb-4"></i>
-                    <h3 class="text-xl md:text-2xl font-bold font-serif mb-2 uppercase px-2 leading-tight">Transporte<br>de Carga</h3>
-                    <p class="text-sm px-8 opacity-80 max-w-xs panel-desc">Logística aérea de carga con precisión y seguridad.</p>
-                    <a href="#" class="hover-btn">Ver servicio</a>
+                    <h3 class="text-xl md:text-2xl font-bold font-serif mb-2 uppercase px-2 leading-tight tr" data-es="Transporte<br>de Carga" data-en="Cargo<br>Transport">Transporte<br>de Carga</h3>
+                    <p class="text-sm px-8 opacity-80 max-w-xs panel-desc tr" data-es="Logística aérea de carga con precisión y seguridad." data-en="Air cargo logistics with precision and safety.">Logística aérea de carga con precisión y seguridad.</p>
+                    <a href="#" class="hover-btn tr" data-es="Ver servicio" data-en="View service">Ver servicio</a>
                 </div>
             </div>
         </div>
@@ -212,27 +241,27 @@
         <div class="container mx-auto px-6">
             <div class="flex flex-wrap">
                 <div class="w-full lg:w-1/2 pr-0 lg:pr-16 mb-12 lg:mb-0">
-                    <h3 class="text-2xl lg:text-4xl font-light mb-6">¿POR QUÉ <strong class="font-bold">AEROCENTRO VUELOS</strong>?</h3>
+                    <h3 class="text-2xl lg:text-4xl font-light mb-6"><span class="tr" data-es="¿POR QUÉ" data-en="WHY">¿POR QUÉ</span> <strong class="font-bold">AEROCENTRO VUELOS</strong>?</h3>
                     <div class="w-16 h-1 bg-white/30 mb-6"></div>
                     <ul class="space-y-4 text-base lg:text-lg text-gray-200">
-                        <li class="flex items-start"><i class="fa fa-check tick-outline mt-1 mr-4"></i> <span>Flota adecuada al servicio ofrecido.</span></li>
-                        <li class="flex items-start"><i class="fa fa-check tick-outline mt-1 mr-4"></i> <span>Tripulaciones altamente calificadas.</span></li>
-                        <li class="flex items-start"><i class="fa fa-check tick-outline mt-1 mr-4"></i> <span>Soporte logístico 24/7.</span></li>
+                        <li class="flex items-start"><i class="fa fa-check tick-outline mt-1 mr-4"></i> <span class="tr" data-es="Flota adecuada al servicio ofrecido." data-en="Fleet suited to the service offered.">Flota adecuada al servicio ofrecido.</span></li>
+                        <li class="flex items-start"><i class="fa fa-check tick-outline mt-1 mr-4"></i> <span class="tr" data-es="Tripulaciones altamente calificadas." data-en="Highly qualified crews.">Tripulaciones altamente calificadas.</span></li>
+                        <li class="flex items-start"><i class="fa fa-check tick-outline mt-1 mr-4"></i> <span class="tr" data-es="Soporte logístico 24/7." data-en="24/7 logistical support.">Soporte logístico 24/7.</span></li>
                     </ul>
-                    <p class="mt-8 text-base lg:text-lg text-gray-300 leading-relaxed font-light">Contamos con un equipo humano altamente especializado, comprometido con la excelencia.</p>
+                    <p class="mt-8 text-base lg:text-lg text-gray-300 leading-relaxed font-light tr" data-es="Contamos con un equipo humano altamente especializado, comprometido con la excelencia." data-en="We have a highly specialized team, committed to excellence.">Contamos con un equipo humano altamente especializado, comprometido con la excelencia.</p>
                 </div>
                 <div class="w-full lg:w-1/2">
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10 text-center pt-4">
-                        <div><h4 class="text-3xl md:text-4xl font-black mb-2 counter text-white" data-target="117000">+0</h4><p class="text-[11px] font-bold uppercase tracking-widest text-white">Horas de vuelo en helicópteros</p></div>
-                        <div><h4 class="text-3xl md:text-4xl font-black mb-2 counter text-white" data-target="43000">+0</h4><p class="text-[11px] font-bold uppercase tracking-widest text-white">Horas de vuelo en aviones</p></div>
-                        <div><h4 class="text-3xl md:text-4xl font-black mb-2 counter text-white" data-target="171500">+0</h4><p class="text-[11px] font-bold uppercase tracking-widest text-white">Pasajeros transportados</p></div>
-                        <div><h4 class="text-xl font-bold mb-2 text-white">Cobertura Mundial</h4><p class="text-[11px] font-bold uppercase tracking-widest text-white">Nacional e internacional</p></div>
-                        <div><h4 class="text-3xl md:text-4xl font-black mb-2 counter text-white" data-target="35">+0</h4><p class="text-[11px] font-bold uppercase tracking-widest text-white">Años de experiencia</p></div>
-                        <div><h4 class="text-xl font-bold mb-2 text-white uppercase">Operaciones certificadas</h4><p class="text-[11px] font-bold uppercase tracking-widest text-white">para pasajeros, carga<br>y traslados médicos</p></div>
+                        <div><h4 class="text-3xl md:text-4xl font-black mb-2 counter text-white" data-target="117000">+0</h4><p class="text-[11px] font-bold uppercase tracking-widest text-white tr" data-es="Horas de vuelo en helicópteros" data-en="Helicopter flight hours">Horas de vuelo en helicópteros</p></div>
+                        <div><h4 class="text-3xl md:text-4xl font-black mb-2 counter text-white" data-target="43000">+0</h4><p class="text-[11px] font-bold uppercase tracking-widest text-white tr" data-es="Horas de vuelo en aviones" data-en="Airplane flight hours">Horas de vuelo en aviones</p></div>
+                        <div><h4 class="text-3xl md:text-4xl font-black mb-2 counter text-white" data-target="171500">+0</h4><p class="text-[11px] font-bold uppercase tracking-widest text-white tr" data-es="Pasajeros transportados" data-en="Passengers transported">Pasajeros transportados</p></div>
+                        <div><h4 class="text-xl font-bold mb-2 text-white tr" data-es="Cobertura Mundial" data-en="Worldwide Coverage">Cobertura Mundial</h4><p class="text-[11px] font-bold uppercase tracking-widest text-white tr" data-es="Nacional e internacional" data-en="National and international">Nacional e internacional</p></div>
+                        <div><h4 class="text-3xl md:text-4xl font-black mb-2 counter text-white" data-target="35">+0</h4><p class="text-[11px] font-bold uppercase tracking-widest text-white tr" data-es="Años de experiencia" data-en="Years of experience">Años de experiencia</p></div>
+                        <div><h4 class="text-xl font-bold mb-2 text-white uppercase tr" data-es="Operaciones certificadas" data-en="Certified operations">Operaciones certificadas</h4><p class="text-[11px] font-bold uppercase tracking-widest text-white tr" data-es="para pasajeros, carga<br>y traslados médicos" data-en="for passengers, cargo<br>and medical transfers">para pasajeros, carga<br>y traslados médicos</p></div>
                         
                         <div id="inline-action-buttons" class="col-span-1 md:col-span-2 lg:col-span-3 pt-6 flex flex-col md:flex-row gap-4 justify-center items-center">
-                            <a href="#" class="bg-brand-blue text-white font-bold py-4 px-4 rounded shadow-lg transition text-sm tracking-widest uppercase w-full md:w-72 flex justify-center items-center text-center">CONOCE NUESTRA FLOTA</a>
-                            <a href="#" class="bg-[#25D366] text-white font-bold py-4 px-4 rounded shadow-lg transition text-sm tracking-widest uppercase w-full md:w-72 flex justify-center items-center gap-2 text-center"><i class="fa fa-whatsapp text-xl"></i> Contactanos</a>
+                            <a href="#" class="bg-brand-blue text-white font-bold py-4 px-4 rounded shadow-lg transition text-sm tracking-widest uppercase w-full md:w-72 flex justify-center items-center text-center tr" data-es="CONOCE NUESTRA FLOTA" data-en="MEET OUR FLEET">CONOCE NUESTRA FLOTA</a>
+                            <a href="#" class="bg-[#25D366] text-white font-bold py-4 px-4 rounded shadow-lg transition text-sm tracking-widest uppercase w-full md:w-72 flex justify-center items-center gap-2 text-center"><i class="fa fa-whatsapp text-xl"></i> <span class="tr" data-es="Contactanos" data-en="Contact us">Contactanos</span></a>
                         </div>
                     </div>
                 </div>
@@ -243,33 +272,33 @@
     <section class="py-16 bg-brand-darker text-white block-reveal">
         <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
             <div>
-                <h2 class="text-2xl font-bold uppercase mb-2">PARA MÁS INFORMACIÓN</h2>
+                <h2 class="text-2xl font-bold uppercase mb-2 tr" data-es="PARA MÁS INFORMACIÓN" data-en="FOR MORE INFORMATION">PARA MÁS INFORMACIÓN</h2>
                 <div class="w-full h-px bg-white/10 mb-8"></div>
                 <form class="space-y-4">
-                    <input type="text" placeholder="Nombre Completo" class="w-full bg-[#252839] border border-[#3a3e56] p-3 rounded text-white placeholder-gray-500">
+                    <input type="text" placeholder="Nombre Completo" class="tr w-full bg-[#252839] border border-[#3a3e56] p-3 rounded text-white placeholder-gray-500" data-es-placeholder="Nombre Completo" data-en-placeholder="Full Name">
                     <input type="email" placeholder="Email" class="w-full bg-[#252839] border border-[#3a3e56] p-3 rounded text-white placeholder-gray-500">
-                    <button class="w-full bg-brand-blue hover:bg-blue-700 text-white font-bold py-3 rounded">Enviar</button>
+                    <button class="w-full bg-brand-blue hover:bg-blue-700 text-white font-bold py-3 rounded tr" data-es="Enviar" data-en="Send">Enviar</button>
                 </form>
             </div>
             <div>
-                <h2 class="text-2xl font-bold uppercase mb-2">OFICINAS</h2>
+                <h2 class="text-2xl font-bold uppercase mb-2 tr" data-es="OFICINAS" data-en="OFFICES">OFICINAS</h2>
                 <div class="w-full h-px bg-white/10 mb-8"></div>
                 <div class="space-y-4 text-sm text-gray-400">
                     <div>
                         <h5 class="text-brand-red text-xs font-bold uppercase tracking-widest mb-1">Aerocentro Venezuela</h5>
-                        <p class="leading-relaxed">Centro Comercial Ciudad Tamanaco (CCCT)<br>Chuao, Caracas, Venezuela.</p>
+                        <p class="leading-relaxed tr" data-es="Centro Comercial Ciudad Tamanaco (CCCT)<br>Chuao, Caracas, Venezuela." data-en="Ciudad Tamanaco Shopping Center (CCCT)<br>Chuao, Caracas, Venezuela.">Centro Comercial Ciudad Tamanaco (CCCT)<br>Chuao, Caracas, Venezuela.</p>
                     </div>
                 </div>
             </div>
             <div>
-                <h2 class="text-2xl font-bold uppercase mb-2">REDES SOCIALES</h2>
+                <h2 class="text-2xl font-bold uppercase mb-2 tr" data-es="REDES SOCIALES" data-en="SOCIAL MEDIA">REDES SOCIALES</h2>
                 <div class="w-full h-px bg-white/10 mb-8"></div>
                 <ul class="space-y-4 text-gray-300">
                     <li><a href="#" class="flex items-center gap-3 hover:text-white transition"><i class="fa fa-facebook w-6 text-center text-white"></i> Facebook</a></li>
                     <li><a href="#" class="flex items-center gap-3 hover:text-white transition"><i class="fa fa-instagram w-6 text-center text-white"></i> Instagram</a></li>
                     <li><a href="#" class="flex items-center gap-3 hover:text-white transition"><i class="fa fa-whatsapp w-6 text-center text-white"></i> WhatsApp</a></li>
                     <li><a href="#" class="flex items-center gap-3 hover:text-white transition"><i class="fa fa-envelope w-6 text-center text-white"></i> Mail</a></li>
-                    <li><a href="#" class="flex items-center gap-3 hover:text-white transition"><i class="fa fa-phone w-6 text-center text-white"></i> Teléfono</a></li>
+                    <li><a href="#" class="flex items-center gap-3 hover:text-white transition"><i class="fa fa-phone w-6 text-center text-white"></i> <span class="tr" data-es="Teléfono" data-en="Phone">Teléfono</span></a></li>
                 </ul>
             </div>
         </div>
@@ -283,6 +312,28 @@
     </footer>
 
     <script>
+        // FUNCIÓN TRADUCTORA
+        let currentLang = 'es';
+        function toggleLanguage() {
+            currentLang = currentLang === 'es' ? 'en' : 'es';
+            
+            // Cambiar el texto del botón
+            document.getElementById('lang-text').innerText = currentLang === 'es' ? 'EN' : 'ESP';
+
+            // Traducir los elementos
+            document.querySelectorAll('.tr').forEach(el => {
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    if (el.hasAttribute('data-' + currentLang + '-placeholder')) {
+                        el.placeholder = el.getAttribute('data-' + currentLang + '-placeholder');
+                    }
+                } else {
+                    if (el.hasAttribute('data-' + currentLang)) {
+                        el.innerHTML = el.getAttribute('data-' + currentLang);
+                    }
+                }
+            });
+        }
+
         document.addEventListener("DOMContentLoaded", () => {
             const nav = document.getElementById('sticky-nav');
             window.addEventListener('scroll', () => {
@@ -345,5 +396,3 @@
     </script>
 </body>
 </html>
-
-
