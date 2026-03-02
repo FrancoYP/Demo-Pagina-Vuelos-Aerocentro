@@ -34,14 +34,14 @@
         /* FRANJAS LATERALES */
         .stripe-left { position: absolute; left: 0; top: 0; bottom: 0; width: 80px; background-color: #8B1E1E; z-index: 20; }
         .stripe-right { position: absolute; right: 0; top: 0; bottom: 0; width: 80px; background-color: #023A78; z-index: 20; }
-        @media (max-width: 768px) { .stripe-left, .stripe-right { width: 20px; } }
+        @media (max-width: 768px) { .stripe-left, .stripe-right { width: 15px; } }
 
         /* TICKS AZULES CON BORDE BLANCO */
         .tick-outline { color: #023A78; -webkit-text-stroke: 1.5px white; paint-order: stroke fill; font-size: 24px; }
 
         /* HEADER FIJO */
         #sticky-nav { transition: background-color 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease; z-index: 50; }
-        .nav-scrolled { background-color: #1c1f2e; padding-top: 5px !important; padding-bottom: 5px !important; box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
+        .nav-scrolled { background-color: #1c1f2e; padding-top: 5px !important; padding-bottom: 10px !important; box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
 
         /* HERO GRID */
         .hero-grid { display: grid; grid-template-columns: 1fr auto 1fr; grid-template-rows: auto auto; width: 100%; max-width: 1300px; margin: 0 auto; position: relative; z-index: 50; gap: 10px; transition: gap 0.4s; }
@@ -50,14 +50,13 @@
         .deco-line { width: 100%; height: 1px; background-color: rgba(255,255,255,0.6); }
         .line-wrapper { display: flex; align-items: center; width: 100%; }
         
-        .logo-wrapper { display: flex; align-items: center; justify-content: center; gap: 15px; padding: 0 20px; }
+        .logo-wrapper { display: flex; align-items: center; justify-content: center; gap: 15px; padding: 0 20px; transition: all 0.3s; }
         .logo-box { height: 60px; width: 110px; border: 2px solid white; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
         .nav-scrolled .logo-box { height: 35px; width: 65px; border-width: 1px; }
         
         .logo-box-text { color: white; font-weight: bold; letter-spacing: 1px; font-size: 11px; text-align: center; line-height: 1.2; transition: all 0.3s; }
         .nav-scrolled .logo-box-text { font-size: 8px; }
         
-        /* LOGO TEXTO RESTAURADO */
         .logo-text { display: flex; flex-direction: column; text-align: left; line-height: 1.1; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.5); transition: transform 0.3s; transform-origin: left center; }
         .nav-scrolled .logo-text { transform: scale(0.85); }
         
@@ -67,16 +66,10 @@
         .nav-scrolled .menu-item { font-size: 14px; font-weight: 500; padding: 2px 12px; margin-top: 0; }
         
         /* BOTÓN PRESUPUESTO EN HEADER */
-        .btn-presupuesto {
-            border: 2px solid #8B1E1E !important;
-            box-shadow: 0 4px 10px rgba(139, 30, 30, 0.3);
-        }
-        .btn-presupuesto:hover {
-            background-color: #8B1E1E !important;
-            color: white !important;
-        }
+        .btn-presupuesto { border: 2px solid #8B1E1E !important; box-shadow: 0 4px 10px rgba(139, 30, 30, 0.3); }
+        .btn-presupuesto:hover { background-color: #8B1E1E !important; color: white !important; }
 
-        /* REORGANIZACIÓN HEADER GRIDS */
+        /* REORGANIZACIÓN HEADER GRIDS (Escritorio) */
         .pos-legal { grid-column: 1 / 3; text-align: left; padding-left: 20px; }
         .pos-servicios { grid-column: 3 / 6; text-align: left; }
         .pos-nosotros { grid-column: 8 / 10; text-align: right; }
@@ -97,24 +90,152 @@
             .panel-content { padding-bottom: 60px; }
             .panel-desc { opacity: 0; transform: translateY(10px); transition: all 0.4s 0.1s; }
             .svc-panel:hover .panel-desc { opacity: 1; transform: translateY(0); }
+            /* Ocultar elementos móviles en PC */
+            #mobile-menu-btn, #close-menu-btn { display: none !important; }
         }
 
-        /* FIX CELULAR */
+        /* CONFIGURACIONES ESPECÍFICAS Y EXCLUSIVAS PARA CELULAR */
         @media (max-width: 1023px) {
             .svc-container { display: block; }
-            .svc-panel { display: block; height: 400px; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.1); }
-            .panel-content { padding-bottom: 40px; }
-            .hero-grid { display: flex; flex-direction: column; align-items: center; padding-top: 10px; }
+            
+            /* HEADER FIJO PERMANENTE EN CELULAR Y SIN SALTOS */
+            #sticky-nav {
+                background-color: #1c1f2e !important;
+                padding-top: 10px !important;
+                padding-bottom: 10px !important;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.5) !important;
+            }
+
+            .hero-grid { 
+                display: grid !important; 
+                grid-template-columns: 50px 1fr 50px !important; 
+                align-items: center !important; 
+                padding: 5px 15px !important; 
+                width: 100%; gap: 0 !important;
+            }
             .line-wrapper { display: none; }
-            .menu-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; margin-top: 10px; }
-            .menu-item { background: rgba(0,0,0,0.4); border-radius: 50px; padding: 4px 12px; font-size: 12px; }
-            .panel-desc { opacity: 1; transform: none; }
+            
+            /* HAMBURGUESA MÁS GRANDE */
+            #mobile-menu-btn { 
+                position: static !important; 
+                display: flex; align-items: center; justify-content: flex-start;
+                font-size: 32px !important; 
+                color: white; cursor: pointer; z-index: 60; background: none; border: none; 
+            }
+            #close-menu-btn { display: block; position: absolute; top: 20px; right: 20px; font-size: 32px; color: white; background: none; border: none; cursor: pointer; }
+            
+            /* LOGO Y TEXTO MISMO TAMAÑO VERTICAL */
+            .logo-wrapper { grid-column: 2; display: flex; justify-content: center; align-items: center; padding: 0; gap: 10px; width: 100%; height: 40px; }
+            .logo-box { height: 38px !important; width: 65px !important; border-width: 1px; margin: 0; transition: none !important; }
+            .logo-box-text { font-size: 8px !important; transition: none !important; }
+            
+            .logo-text { 
+                height: 38px !important; 
+                display: flex !important; 
+                flex-direction: column !important; 
+                justify-content: center !important; 
+                gap: 2px !important; 
+                transform: none !important; 
+                transition: none !important;
+            }
+            .logo-text span { line-height: 1 !important; }
+            .logo-text span:first-child { font-size: 1.05rem !important; }
+            .logo-text span:last-child { font-size: 0.95rem !important; }
+
+            /* PANEL MENÚ DESPLEGABLE */
+            .menu-row { 
+                position: fixed; top: 0; left: -100%; width: 260px; height: 100vh; 
+                background: #1c1f2e; display: flex !important; flex-direction: column !important; 
+                justify-content: flex-start !important; align-items: flex-start !important; 
+                padding: 80px 20px 20px 20px !important; gap: 10px !important; 
+                transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 5px 0 20px rgba(0,0,0,0.7); z-index: 999; margin: 0;
+            }
+            .menu-row.menu-open { left: 0; }
+            
+            /* Estilo de botones en menú lateral */
+            .menu-row > div { width: 100%; text-align: left; padding: 0 !important; }
+            .menu-item { 
+                background: transparent !important; border-radius: 0 !important; padding: 15px 10px !important; 
+                font-size: 16px !important; text-align: left; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.05) !important; 
+                display: block; box-shadow: none !important; border-top: none !important; border-left: none !important; border-right: none !important;
+            }
+            .btn-presupuesto { border-bottom: 1px solid #8B1E1E !important; color: #ff6b6b !important; font-weight: bold; }
+
+            /* DESACTIVAR HOVER DE SERVICIOS EN MÓVIL */
+            .svc-panel:hover .panel-bg { transform: none !important; filter: brightness(0.45) !important; }
+            .svc-panel:hover .panel-content { padding-bottom: 40px !important; }
+            .svc-panel:hover .hover-line { width: 0 !important; }
+            .svc-panel:hover .hover-btn { transform: none !important; box-shadow: none !important; }
         }
 
-        /* AJUSTES ADICIONALES CELULAR PARA IMAGEN Y TEXTO */
         @media (max-width: 768px) {
-            .hero-img-mobile { transform: scale(1) !important; object-position: center !important; }
-            .hero-title-mobile { margin-top: 12rem !important; }
+            /* REDUCCIÓN DE TAMAÑOS GENERALES */
+            h2 { font-size: 1.7rem !important; }
+            .py-16, .py-12 { padding-top: 2rem !important; padding-bottom: 2rem !important; }
+            .gap-12 { gap: 1.5rem !important; }
+            .mb-12 { margin-bottom: 1.5rem !important; }
+            p.text-base { font-size: 0.9rem !important; }
+            
+            /* Reducir paneles de servicios */
+            .svc-panel { height: 260px; }
+            .panel-content { padding-bottom: 25px; }
+            .panel-desc { opacity: 1; transform: none; font-size: 0.8rem; }
+
+            /* IMAGEN Y TÍTULO EN CELULAR */
+            #hero-section { 
+                display: flex !important; 
+                flex-direction: column !important; 
+                min-height: 100vh !important; 
+                background-color: #1c1f2e !important; 
+            }
+            #hero-image { 
+                position: relative !important;
+                height: 45vh !important; 
+                width: 100% !important;
+                object-fit: cover !important; 
+                object-position: center 30% !important; 
+                transform: scale(1.1) !important; 
+                opacity: 0.8;
+                margin-top: 55px !important; 
+            }
+            #hero-text-container { 
+                position: relative !important;
+                height: auto !important;
+                flex: 1; 
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: center !important; 
+                align-items: center !important;
+                padding-top: 1vh !important;
+            }
+            #hero-title { 
+                margin-top: 0 !important;
+                font-size: 1.3rem !important; 
+                line-height: 1.4 !important;
+                letter-spacing: 0.1em !important; 
+                text-align: center !important; 
+                padding: 0 15px !important;
+            }
+            
+            /* RESTAURAR Y POSICIONAR EL SUBTÍTULO EN MÓVILES */
+            .hero-subtitle-mobile-container { 
+                display: block !important;
+                position: relative !important;
+                bottom: auto !important;
+                margin-top: 15px !important;
+                padding-bottom: 20px !important;
+            }
+            .hero-subtitle-mobile {
+                font-size: 0.85rem !important;
+            }
+        }
+
+        /* AJUSTE EXTRA PARA PANTALLAS AÚN MÁS PEQUEÑAS (Ej. iPhone SE) */
+        @media (max-width: 400px) {
+            #hero-title { font-size: 1.15rem !important; }
+            .logo-box { height: 34px !important; width: 55px !important; }
+            .logo-text span.text-xl { font-size: 0.95rem !important; }
+            .logo-text span.text-xl:last-child { font-size: 0.85rem !important; }
         }
 
         .panel-content { position: absolute; inset: 0; z-index: 30; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; text-align: center; color: white; transition: padding-bottom 0.4s; }
@@ -127,7 +248,9 @@
         .hover-btn { margin-top: 20px; padding: 10px 24px; background-color: #8B1E1E !important; color: white; border: none; text-transform: uppercase; font-size: 11px; font-weight: bold; text-decoration: none; display: inline-block; transition: all 0.3s ease; }
         .svc-panel:hover .hover-btn { transform: scale(1.15); box-shadow: 0 4px 15px rgba(0,0,0,0.4); }
 
-        /* BOTONES FLOTANTES */
+        /* ========================================= */
+        /* BOTONES FLOTANTES: DINÁMICOS EN CELULAR   */
+        /* ========================================= */
         .fixed-btn-container { position: fixed; bottom: 20px; right: 20px; z-index: 9999; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; transition: all 0.4s ease; transform-origin: bottom right; }
         .float-btn { 
             display: flex; align-items: center; justify-content: center; gap: 10px; 
@@ -138,15 +261,29 @@
         .float-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.4); }
         .hide-fixed-btns { opacity: 0; visibility: hidden; pointer-events: none; transform: scale(0.8) translateY(20px); }
         
-        /* BOTÓN IDIOMA */
         .lang-btn { position: fixed; bottom: 20px; left: 20px; z-index: 9999; display: flex; align-items: center; justify-content: center; gap: 8px; width: auto; min-width: 48px; height: 48px; padding: 0 16px; background-color: #383d51; border: none; border-radius: 50px; color: white; font-size: 14px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: transform 0.3s, box-shadow 0.3s; }
         .lang-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.4); }
 
         @media (max-width: 600px) {
-            .fixed-btn-container { right: 10px; bottom: 10px; }
-            .float-btn { width: 120px; font-size: 13px; padding: 10px 0; }
-            .lang-btn { left: 10px; bottom: 10px; min-width: 42px; height: 42px; font-size: 12px; padding: 0 12px; gap: 6px; }
+            /* ESTADO INICIAL (Al cargar la página): Grandes, pegados entre sí y bajitos para no tapar texto */
+            .fixed-btn-container { right: 15px; bottom: 12px; gap: 6px; transition: all 0.3s ease; }
+            .float-btn { width: 160px !important; font-size: 14px !important; padding: 12px 0 !important; gap: 8px !important; transition: all 0.3s ease; }
+            .lang-btn { left: 15px; bottom: 12px; min-width: 75px !important; height: 44px !important; font-size: 14px !important; padding: 0 14px !important; gap: 6px !important; transition: all 0.3s ease; }
+            .lang-btn i { font-size: 18px !important; transition: all 0.3s ease; }
+
+            /* ESTADO SCROLLEADO: Vuelven a achicarse como pediste */
+            body.is-scrolled .fixed-btn-container { bottom: 15px; gap: 8px; }
+            body.is-scrolled .float-btn { width: 100px !important; font-size: 11px !important; padding: 8px 0 !important; gap: 6px !important; }
+            body.is-scrolled .lang-btn { bottom: 15px; min-width: 38px !important; height: 38px !important; font-size: 10px !important; padding: 0 10px !important; gap: 4px !important; }
+            body.is-scrolled .lang-btn i { font-size: 14px !important; }
         }
+
+        /* CLASE ESPECIAL: OCULTA BOTONES FLOTANTES AL ABRIR EL MENÚ MÓVIL */
+        body.menu-is-open #floating-buttons, 
+        body.menu-is-open .lang-btn {
+            display: none !important;
+        }
+
     </style>
 </head>
 <body class="bg-brand-darker font-sans text-gray-700">
@@ -161,8 +298,13 @@
         <span id="lang-text">EN</span>
     </button>
 
-    <nav id="sticky-nav" class="fixed top-0 w-full z-50 pt-4 pb-2">
-        <div class="hero-grid">
+    <nav id="sticky-nav" class="fixed top-0 w-full z-50 pt-2 pb-2 md:pt-4 md:pb-4">
+        <div class="hero-grid relative">
+            
+            <button id="mobile-menu-btn" title="Menú">
+                <i class="fa fa-bars"></i>
+            </button>
+
             <div class="line-wrapper"><div class="deco-line"></div></div>
             <div class="logo-wrapper">
                 <div class="logo-box"><span class="logo-box-text">LOGO<br>NUEVO</span></div>
@@ -171,8 +313,14 @@
                     <span class="font-light text-xl tracking-wider text-white">Vuelos</span>
                 </div>
             </div>
+            <div class="md:hidden w-[50px]"></div>
+            
             <div class="line-wrapper"><div class="deco-line"></div></div>
-            <div class="menu-row">
+            
+            <div class="menu-row" id="mobile-menu-panel">
+                <button id="close-menu-btn" title="Cerrar Menú">
+                    <i class="fa fa-times"></i>
+                </button>
                 <div class="pos-legal"><a href="legal.html" class="menu-item tr" data-es="Legal" data-en="Legal">Legal</a></div>
                 <div class="pos-servicios"><a href="servicios.html" class="menu-item tr" data-es="Servicios" data-en="Services">Servicios</a></div>
                 <div class="pos-nosotros"><a href="nosotros.html" class="menu-item tr" data-es="Nosotros" data-en="About Us">Nosotros</a></div>
@@ -181,25 +329,25 @@
         </div>
     </nav>
 
-    <section class="relative w-full h-screen min-h-[700px] bg-black overflow-hidden">
-        <img src="https://www.aeroambulanciasilva.com/web/image/51242-f242b5bc/Gemini_Generated_Image_opxoj0opxoj0opxo.png" class="absolute inset-0 w-full h-full object-cover opacity-60 hero-img-mobile" style="transform: scale(1.15); transform-origin: top;">
+    <section id="hero-section" class="relative w-full h-screen min-h-[700px] bg-brand-darker overflow-hidden">
+        <img id="hero-image" src="https://www.aeroambulanciasilva.com/web/image/51242-f242b5bc/Gemini_Generated_Image_opxoj0opxoj0opxo.png" class="absolute inset-0 w-full h-full object-cover opacity-60 hero-img-mobile" style="transform: scale(1.15); transform-origin: top;">
         
-        <div class="absolute inset-0 flex flex-col justify-start items-center text-center text-white z-10 py-10 pointer-events-none h-full">
-            <h1 class="text-3xl md:text-5xl leading-tight w-full max-w-7xl mt-32 md:mt-40 px-4 font-bold tracking-[0.2em] lg:tracking-[0.3em] uppercase hero-title-mobile">
+        <div id="hero-text-container" class="absolute inset-0 flex flex-col justify-start items-center text-center text-white z-10 py-10 pointer-events-none h-full">
+            <h1 id="hero-title" class="text-3xl md:text-5xl leading-tight w-full max-w-7xl mt-32 md:mt-40 px-4 font-bold tracking-[0.2em] lg:tracking-[0.3em] uppercase hero-title-mobile">
                 <span class="font-light tr" data-es="Vuelos Charter" data-en="Charter Flights">Vuelos Charter</span> <span class="font-bold tr" data-es="Nacionales" data-en="National">Nacionales</span><br><span class="font-light tr" data-es="e" data-en="and">e</span> <span class="font-bold tr" data-es="Internacionales" data-en="International">Internacionales</span>
             </h1>
-        </div>
 
-        <div class="absolute bottom-8 lg:bottom-12 left-0 right-0 w-full z-10 text-center pointer-events-none block-reveal">
-            <p class="text-base md:text-2xl opacity-95 max-w-4xl mx-auto leading-relaxed text-white drop-shadow-md px-4">
-                <span class="font-bold italic tr" data-es="Servicios con aeronaves" data-en="Aircraft services">Servicios con aeronaves</span> <span class="font-light italic text-white tr" data-es="de Ala Fija," data-en="Fixed wing,">de Ala Fija,</span><br><span class="italic font-light text-white tr" data-es="Ala Rotatoria y Traslados Aeromédicos" data-en="rotary wing and aeromedical transfers">Ala Rotatoria y Traslados Aeromédicos</span>
-            </p>
+            <div class="absolute bottom-8 lg:bottom-12 left-0 right-0 w-full z-10 text-center pointer-events-none block-reveal hero-subtitle-mobile-container">
+                <p class="text-base md:text-2xl opacity-95 max-w-4xl mx-auto leading-relaxed text-white drop-shadow-md px-4 hero-subtitle-mobile">
+                    <span class="font-bold italic tr" data-es="Servicios con aeronaves" data-en="Aircraft services">Servicios con aeronaves</span> <span class="font-light italic text-white tr" data-es="de Ala Fija," data-en="Fixed wing,">de Ala Fija,</span><br><span class="italic font-light text-white tr" data-es="Ala Rotatoria y Traslados Aeromédicos" data-en="rotary wing and aeromedical transfers">Ala Rotatoria y Traslados Aeromédicos</span>
+                </p>
+            </div>
         </div>
     </section>
 
-    <section class="relative py-12 bg-brand-darker overflow-hidden block-reveal">
+    <section class="relative py-8 md:py-12 bg-brand-darker overflow-hidden block-reveal">
         <div class="stripe-left"></div><div class="stripe-right"></div>
-        <div class="container mx-auto px-4 relative z-10 text-center"><h2 class="text-3xl md:text-5xl font-black text-white tracking-tight uppercase tr" data-es="Nuestros Servicios" data-en="Our Services">Nuestros Servicios</h2></div>
+        <div class="container mx-auto px-4 relative z-10 text-center"><h2 class="text-2xl md:text-5xl font-black text-white tracking-tight uppercase tr" data-es="Nuestros Servicios" data-en="Our Services">Nuestros Servicios</h2></div>
     </section>
 
     <section class="bg-brand-dark p-0 block-reveal">
@@ -248,7 +396,7 @@
                         <li class="flex items-start"><i class="fa fa-check tick-outline mt-1 mr-4"></i> <span class="tr" data-es="Tripulaciones altamente calificadas." data-en="Highly qualified crews.">Tripulaciones altamente calificadas.</span></li>
                         <li class="flex items-start"><i class="fa fa-check tick-outline mt-1 mr-4"></i> <span class="tr" data-es="Soporte logístico 24/7." data-en="24/7 logistical support.">Soporte logístico 24/7.</span></li>
                     </ul>
-                    <p class="mt-8 text-base lg:text-lg text-gray-300 leading-relaxed font-light tr" data-es="Contamos con un equipo humano altamente especializado, comprometido con la excelencia." data-en="We have a highly specialized team, committed to excellence.">Contamos con un equipo humano altamente especializado, comprometido con la excelencia.</p>
+                    <p class="mt-8 text-base lg:text-lg text-gray-300 leading-relaxed font-light tr" data-es="Contamos con un equipo humano altamente especializado, motivado y comprometido con la excelencia, la calidad y la actitud cordial en la prestación del servicio." data-en="We have a highly specialized, motivated team, committed to excellence, quality, and a cordial attitude in service delivery.">Contamos con un equipo humano altamente especializado, motivado y comprometido con la excelencia, la calidad y la actitud cordial en la prestación del servicio.</p>
                 </div>
                 <div class="w-full lg:w-1/2">
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10 text-center pt-4">
@@ -312,6 +460,22 @@
     </footer>
 
     <script>
+        // LÓGICA DEL MENÚ LATERAL MÓVIL Y OCULTAR BOTONES
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const menuPanel = document.getElementById('mobile-menu-panel');
+
+        if (mobileMenuBtn && closeMenuBtn && menuPanel) {
+            mobileMenuBtn.addEventListener('click', () => {
+                menuPanel.classList.add('menu-open');
+                document.body.classList.add('menu-is-open'); // Clase que oculta los botones fijos
+            });
+            closeMenuBtn.addEventListener('click', () => {
+                menuPanel.classList.remove('menu-open');
+                document.body.classList.remove('menu-is-open'); // Muestra los botones fijos de nuevo
+            });
+        }
+
         // FUNCIÓN TRADUCTORA
         let currentLang = 'es';
         function toggleLanguage() {
@@ -337,8 +501,13 @@
         document.addEventListener("DOMContentLoaded", () => {
             const nav = document.getElementById('sticky-nav');
             window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) nav.classList.add('nav-scrolled');
-                else nav.classList.remove('nav-scrolled');
+                if (window.scrollY > 50) {
+                    nav.classList.add('nav-scrolled');
+                    document.body.classList.add('is-scrolled'); // Añade clase para achicar botones fijos en celular
+                } else {
+                    nav.classList.remove('nav-scrolled');
+                    document.body.classList.remove('is-scrolled'); // Quita clase para agrandar botones en inicio
+                }
             });
 
             const revealObserver = new IntersectionObserver((entries) => {
