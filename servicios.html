@@ -83,8 +83,27 @@
 
         /* TABS DE SERVICIOS */
         .tab-btn { transition: all 0.3s ease; border: 1px solid transparent; }
-        .tab-btn.active { background-color: #8B1E1E; color: white; border-color: #8B1E1E; font-weight: bold; }
+        /* Cambiado el color activo a un azul brillante */
+        .tab-btn.active { background-color: #2563eb; color: white; border-color: #2563eb; font-weight: bold; }
         .tab-btn:not(.active):hover { background-color: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); }
+
+        /* ESTILOS DE TARJETAS DE ESPECIFICACIONES */
+        .spec-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .spec-card { background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); padding: 24px; border-radius: 8px; transition: border 0.3s; }
+        .spec-card:hover { border-color: rgba(59, 130, 246, 0.5); } /* Hover border blue */
+
+        /* IMÁGENES CONTENIDAS (Para que no se corten nunca) */
+        .img-contain { 
+            width: 100%; 
+            height: auto; 
+            max-height: 400px; 
+            object-fit: contain; 
+            background-color: rgba(0,0,0,0.4); 
+            border-radius: 12px; 
+            margin-bottom: 24px; 
+            padding: 5px; 
+            border: 1px solid rgba(255,255,255,0.05); 
+        }
 
         @media (min-width: 1024px) {
             #mobile-menu-btn, #close-menu-btn { display: none !important; }
@@ -116,6 +135,8 @@
             .dropdown-header { display: block; padding: 15px 10px 5px 20px; color: #9ca3af; font-size: 12px; font-weight: 700; text-transform: uppercase; text-align: left; }
             .dropdown-divider { height: 1px; background-color: rgba(255,255,255,0.2); margin: 4px 0; }
             .dropdown-item { text-align: left; padding: 10px 10px 10px 35px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 14px; }
+            
+            .img-contain { max-height: 250px; } /* Ajuste responsivo de imágenes */
         }
 
         /* BOTONES FLOTANTES */
@@ -141,7 +162,7 @@
         /* SCROLLBAR TABS EN MÓVIL */
         .tabs-container::-webkit-scrollbar { height: 4px; }
         .tabs-container::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); }
-        .tabs-container::-webkit-scrollbar-thumb { background: #8B1E1E; border-radius: 4px; }
+        .tabs-container::-webkit-scrollbar-thumb { background: #2563eb; border-radius: 4px; }
     </style>
 </head>
 <body class="bg-brand-darker font-sans text-gray-700">
@@ -206,7 +227,7 @@
         <img src="https://www.aeroambulanciasilva.com/web/image/51242-f242b5bc/Gemini_Generated_Image_opxoj0opxoj0opxo.png" class="absolute inset-0 w-full h-full object-cover opacity-30">
         <div class="relative z-10 text-center px-4">
             <h1 class="text-3xl md:text-5xl font-black uppercase tracking-[0.2em] text-white tr" data-es="Catálogo de Servicios" data-en="Service Catalog">Catálogo de Servicios</h1>
-            <div class="w-24 h-1 bg-brand-red mx-auto mt-4"></div>
+            <div class="w-24 h-1 bg-blue-500 mx-auto mt-4"></div>
         </div>
     </section>
 
@@ -235,72 +256,70 @@
                 
                 <div id="tab-charter" class="servicio-tab-content animate-fade-in">
                     <h2 class="text-3xl font-black text-white uppercase mb-2 tr" data-es="Vuelos Charter Ejecutivos" data-en="Executive Charter Flights">Vuelos Charter Ejecutivos</h2>
-                    <p class="text-brand-red font-bold uppercase tracking-widest text-xs mb-8 tr" data-es="Nacionales e Internacionales" data-en="National and International">Nacionales e Internacionales</p>
+                    <p class="text-blue-400 font-bold uppercase tracking-widest text-xs mb-8 tr" data-es="Nacionales e Internacionales" data-en="National and International">Nacionales e Internacionales</p>
                     
-                    <img src="https://www.aeroambulanciasilva.com/web/image/51234-b4cce626/3.TURBINA.JPG" class="w-full h-64 md:h-96 object-cover rounded-xl mb-8 shadow-lg border border-white/10">
+                    <img src="https://www.helitec-main.com/images/fotos/1_Aviones_1.jpg" class="img-contain" onerror="this.src='https://www.aeroambulanciasilva.com/web/image/51234-b4cce626/3.TURBINA.JPG'">
                     
                     <p class="text-gray-300 mb-6 leading-relaxed text-lg tr" data-es="Brindamos soluciones a medida para traslados de pasajeros y grupos con vuelos charter privados, diseñados para garantizar eficiencia, confort y seguridad en cada viaje. Brindamos el servicio de traslado de pasajeros además de la posibilidad de coordinar vuelos charters o vuelos especiales nacionales e internacionales para viajeros individuales o en grupos, corporativos, de negocios o particulares, en las rutas y destinos para los cuales estamos autorizados a cubrir." data-en="We provide tailor-made solutions for passenger and group transfers with private charter flights, designed to ensure efficiency, comfort, and safety on every trip. We provide passenger transfer services as well as the possibility of coordinating domestic and international charter flights or special flights for individual travelers or groups, corporate, business, or private, on the routes and destinations we are authorized to cover.">Brindamos soluciones a medida para traslados de pasajeros y grupos con vuelos charter privados, diseñados para garantizar eficiencia, confort y seguridad en cada viaje. Brindamos el servicio de traslado de pasajeros además de la posibilidad de coordinar vuelos charters o vuelos especiales nacionales e internacionales para viajeros individuales o en grupos, corporativos, de negocios o particulares, en las rutas y destinos para los cuales estamos autorizados a cubrir.</p>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-                        <div class="bg-[#1c1f2e] p-6 rounded-xl border border-white/5">
-                            <h4 class="font-bold text-white mb-2 text-lg"><i class="fa fa-briefcase text-brand-red mr-2"></i> <span class="tr" data-es="Ejecutivos y corporaciones:" data-en="Executives and corporations:">Ejecutivos y corporaciones:</span></h4>
-                            <p class="text-sm text-gray-400 tr" data-es="Optimice el tiempo de su equipo con horarios flexibles, evitando escalas y demoras de vuelos comerciales." data-en="Optimize your team's time with flexible schedules, avoiding commercial flight layovers and delays.">Optimice el tiempo de su equipo con horarios flexibles, evitando escalas y demoras de vuelos comerciales.</p>
-                        </div>
-                        <div class="bg-[#1c1f2e] p-6 rounded-xl border border-white/5">
-                            <h4 class="font-bold text-white mb-2 text-lg"><i class="fa fa-clock-o text-brand-red mr-2"></i> <span class="tr" data-es="Viajes urgentes:" data-en="Urgent trips:">Viajes urgentes:</span></h4>
-                            <p class="text-sm text-gray-400 tr" data-es="Despegue en menos de 24 horas hacia destinos nacionales o internacionales con operaciones autorizadas." data-en="Take off in less than 24 hours to domestic or international destinations with authorized operations.">Despegue en menos de 24 horas hacia destinos nacionales o internacionales con operaciones autorizadas.</p>
-                        </div>
-                        <div class="bg-[#1c1f2e] p-6 rounded-xl border border-white/5">
-                            <h4 class="font-bold text-white mb-2 text-lg"><i class="fa fa-users text-brand-red mr-2"></i> <span class="tr" data-es="Grupos privados:" data-en="Private groups:">Grupos privados:</span></h4>
-                            <p class="text-sm text-gray-400 tr" data-es="Viaje exclusivo con su familia o equipo, evitando aglomeraciones y con protocolos personalizados." data-en="Travel exclusively with your family or team, avoiding crowds and with customized protocols.">Viaje exclusivo con su familia o equipo, evitando aglomeraciones y con protocolos personalizados.</p>
-                        </div>
-                        <div class="bg-[#1c1f2e] p-6 rounded-xl border border-white/5">
-                            <h4 class="font-bold text-white mb-2 text-lg"><i class="fa fa-map-marker text-brand-red mr-2"></i> <span class="tr" data-es="Logística simplificada:" data-en="Simplified logistics:">Logística simplificada:</span></h4>
-                            <p class="text-sm text-gray-400 tr" data-es="Coordinamos desde el itinerario hasta permisos especiales en rutas cubiertas por nuestra licencia." data-en="We coordinate everything from the itinerary to special permits on routes covered by our license.">Coordinamos desde el itinerario hasta permisos especiales en rutas cubiertas por nuestra licencia.</p>
-                        </div>
-                    </div>
-
-                    <h3 class="text-2xl font-bold text-white mb-6 border-b border-white/10 pb-2 tr" data-es="Beneficios clave" data-en="Key benefits">Beneficios clave</h3>
-                    <ul class="space-y-4 text-gray-300 mb-10">
-                        <li class="flex items-center bg-white/5 p-4 rounded-lg"><i class="fa fa-check-circle text-2xl text-brand-red mr-4"></i> <div><strong class="text-white tr" data-es="Ahorro de tiempo:" data-en="Time saving:">Ahorro de tiempo:</strong> <span class="tr" data-es="Acceso directo a aeropuertos menores y horarios adaptados a sus necesidades." data-en="Direct access to minor airports and schedules adapted to your needs.">Acceso directo a aeropuertos menores y horarios adaptados a sus necesidades.</span></div></li>
-                        <li class="flex items-center bg-white/5 p-4 rounded-lg"><i class="fa fa-shield text-2xl text-brand-red mr-4"></i> <div><strong class="text-white tr" data-es="Seguridad garantizada:" data-en="Guaranteed safety:">Seguridad garantizada:</strong> <span class="tr" data-es="Cumplimos con los más altos estándares de aviación comercial." data-en="We comply with the highest standards of commercial aviation.">Cumplimos con los más altos estándares de aviación comercial.</span></div></li>
-                        <li class="flex items-center bg-white/5 p-4 rounded-lg"><i class="fa fa-user-secret text-2xl text-brand-red mr-4"></i> <div><strong class="text-white tr" data-es="Confidencialidad:" data-en="Confidentiality:">Confidencialidad:</strong> <span class="tr" data-es="Espacios privados para reuniones o traslados discretos." data-en="Private spaces for meetings or discreet transfers.">Espacios privados para reuniones o traslados discretos.</span></div></li>
+                    <h3 class="text-xl font-bold text-white mb-4 mt-8 border-b border-white/10 pb-2 tr" data-es="Nuestros servicios son ideales para:" data-en="Our services are ideal for:">Nuestros servicios son ideales para:</h3>
+                    <ul class="space-y-4 text-gray-300 mb-8">
+                        <li class="bg-white/5 p-4 rounded border border-white/5">
+                            <strong class="text-blue-400 block mb-1 tr" data-es="Ejecutivos y corporaciones:" data-en="Executives and corporations:">Ejecutivos y corporaciones:</strong> 
+                            <span class="tr" data-es="Optimice el tiempo de su equipo con horarios flexibles, evitando escalas y demoras de vuelos comerciales." data-en="Optimize your team's time with flexible schedules, avoiding commercial flight layovers and delays.">Optimice el tiempo de su equipo con horarios flexibles, evitando escalas y demoras de vuelos comerciales.</span>
+                        </li>
+                        <li class="bg-white/5 p-4 rounded border border-white/5">
+                            <strong class="text-blue-400 block mb-1 tr" data-es="Viajes urgentes:" data-en="Urgent trips:">Viajes urgentes:</strong> 
+                            <span class="tr" data-es="Despegue en menos de 24 horas hacia destinos nacionales o internacionales con operaciones autorizadas." data-en="Take off in less than 24 hours to domestic or international destinations with authorized operations.">Despegue en menos de 24 horas hacia destinos nacionales o internacionales con operaciones autorizadas.</span>
+                        </li>
+                        <li class="bg-white/5 p-4 rounded border border-white/5">
+                            <strong class="text-blue-400 block mb-1 tr" data-es="Grupos privados:" data-en="Private groups:">Grupos privados:</strong> 
+                            <span class="tr" data-es="Viaje exclusivo con su familia o equipo, evitando aglomeraciones y con protocolos personalizados." data-en="Travel exclusively with your family or team, avoiding crowds and with customized protocols.">Viaje exclusivo con su familia o equipo, evitando aglomeraciones y con protocolos personalizados.</span>
+                        </li>
+                        <li class="bg-white/5 p-4 rounded border border-white/5">
+                            <strong class="text-blue-400 block mb-1 tr" data-es="Logística simplificada:" data-en="Simplified logistics:">Logística simplificada:</strong> 
+                            <span class="tr" data-es="Coordinamos desde el itinerario hasta permisos especiales en rutas cubiertas por nuestra licencia." data-en="We coordinate everything from the itinerary to special permits on routes covered by our license.">Coordinamos desde el itinerario hasta permisos especiales en rutas cubiertas por nuestra licencia.</span>
+                        </li>
                     </ul>
 
-                    <blockquote class="bg-brand-red/10 border-l-4 border-brand-red p-6 text-white italic text-xl rounded-r-xl font-serif tr" data-es="Vuele a su ritmo, con la experiencia de 34 años en transporte aéreo ejecutivo." data-en="Fly at your own pace, with 34 years of experience in executive air transport.">"Vuele a su ritmo, con la experiencia de 34 años en transporte aéreo ejecutivo."</blockquote>
+                    <h3 class="text-xl font-bold text-white mb-4 border-b border-white/10 pb-2 tr" data-es="Beneficios clave:" data-en="Key benefits:">Beneficios clave:</h3>
+                    <ul class="space-y-3 text-gray-300 mb-8">
+                        <li class="flex"><i class="fa fa-check text-blue-400 mt-1 mr-3"></i> <div><strong class="text-white tr" data-es="Ahorro de tiempo:" data-en="Time saving:">Ahorro de tiempo:</strong> <span class="tr" data-es="Acceso directo a aeropuertos menores y horarios adaptados a sus necesidades." data-en="Direct access to minor airports and schedules adapted to your needs.">Acceso directo a aeropuertos menores y horarios adaptados a sus necesidades.</span></div></li>
+                        <li class="flex"><i class="fa fa-check text-blue-400 mt-1 mr-3"></i> <div><strong class="text-white tr" data-es="Seguridad garantizada:" data-en="Guaranteed safety:">Seguridad garantizada:</strong> <span class="tr" data-es="Cumplimos con los más altos estándares de aviación comercial." data-en="We comply with the highest standards of commercial aviation.">Cumplimos con los más altos estándares de aviación comercial.</span></div></li>
+                        <li class="flex"><i class="fa fa-check text-blue-400 mt-1 mr-3"></i> <div><strong class="text-white tr" data-es="Confidencialidad:" data-en="Confidentiality:">Confidencialidad:</strong> <span class="tr" data-es="Espacios privados para reuniones o traslados discretos." data-en="Private spaces for meetings or discreet transfers.">Espacios privados para reuniones o traslados discretos.</span></div></li>
+                    </ul>
+
+                    <blockquote class="bg-[#1c1f2e] border-l-4 border-blue-500 p-6 text-gray-300 italic text-lg rounded-r-lg tr" data-es="Vuele a su ritmo, con la experiencia de 34 años en transporte aéreo ejecutivo." data-en="Fly at your own pace, with 34 years of experience in executive air transport.">"Vuele a su ritmo, con la experiencia de 34 años en transporte aéreo ejecutivo."</blockquote>
                 </div>
 
                 <div id="tab-carga" class="servicio-tab-content hidden">
                     <h2 class="text-3xl font-black text-white uppercase mb-2 tr" data-es="Transporte de Carga y Trabajos Aéreos" data-en="Cargo Transport and Aerial Works">Transporte de Carga y Trabajos Aéreos</h2>
-                    <p class="text-brand-red font-bold uppercase tracking-widest text-xs mb-8 tr" data-es="Logística y Precisión" data-en="Logistics and Precision">Logística y Precisión</p>
+                    <p class="text-blue-400 font-bold uppercase tracking-widest text-xs mb-8 tr" data-es="Logística y Precisión" data-en="Logistics and Precision">Logística y Precisión</p>
                     
                     <p class="text-gray-300 mb-8 leading-relaxed text-lg tr" data-es="En general, cuando un trabajo exige precisión y los métodos tradicionales no son aplicables, nuestras aeronaves pueden realizar el trabajo de forma rápida y segura." data-en="In general, when a job demands precision and traditional methods are not applicable, our aircraft can do the job quickly and safely.">En general, cuando un trabajo exige precisión y los métodos tradicionales no son aplicables, nuestras aeronaves pueden realizar el trabajo de forma rápida y segura.</p>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
-                        <img src="https://www.helitec-main.com/images/fotos/2CargaMetro23.PNG" class="w-full h-64 object-cover rounded-xl shadow-lg border border-white/10" onerror="this.src='https://www.aeroambulanciasilva.com/web/image/51234-b4cce626/3.TURBINA.JPG'">
-                        <div class="w-full h-64 bg-[#1c1f2e] rounded-xl shadow-lg border border-white/10 flex items-center justify-center relative overflow-hidden">
-                             <img src="images/galeria/Carga_1.jpg" class="absolute inset-0 w-full h-full object-cover" onerror="this.style.display='none'">
-                             <i class="fa fa-cubes text-6xl text-white/10 absolute"></i>
-                        </div>
+                        <img src="https://www.helitec-main.com/images/fotos/2CargaMetro23.PNG" class="w-full h-64 object-contain bg-black/40 rounded-xl shadow-lg border border-white/10" onerror="this.src='https://www.aeroambulanciasilva.com/web/image/51234-b4cce626/3.TURBINA.JPG'">
+                        <img src="https://www.helitec-main.com/images/fotos/Carga_1.jpg" class="w-full h-64 object-contain bg-black/40 rounded-xl shadow-lg border border-white/10" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Cargo_loading.jpg/800px-Cargo_loading.jpg'">
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-                        <div class="bg-[#1c1f2e] border border-brand-blue/30 rounded-xl p-8 shadow-xl">
-                            <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-3 border-b border-white/10 pb-3"><i class="fa fa-plane text-brand-blue text-2xl"></i> <span class="tr" data-es="Carga en Aviones" data-en="Airplane Cargo">Carga en Aviones</span></h3>
+                        <div class="bg-[#1c1f2e] border border-blue-500/30 rounded-xl p-8 shadow-xl">
+                            <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-3 border-b border-white/10 pb-3"><i class="fa fa-plane text-blue-400 text-2xl"></i> <span class="tr" data-es="Carga en Aviones" data-en="Airplane Cargo">Carga en Aviones</span></h3>
                             <ul class="space-y-4 text-gray-300">
-                                <li class="flex gap-3"><i class="fa fa-chevron-right text-brand-blue mt-1"></i> <span><strong class="text-white">Metro 23:</strong> <span class="tr" data-es="Puede transportar hasta 1.500 Kg en una ruta de vuelo de dos horas." data-en="Can transport up to 1,500 Kg on a two-hour flight route.">Puede transportar hasta 1.500 Kg en una ruta de vuelo de dos horas.</span></span></li>
-                                <li class="flex gap-3"><i class="fa fa-chevron-right text-brand-blue mt-1"></i> <span><strong class="text-white">Metro III:</strong> <span class="tr" data-es="Puede transportar entre 1.100 a 1.200 Kg. en la misma ruta." data-en="The Metro III can transport between 1,100 to 1,200 Kg on the same route.">Puede transportar entre 1.100 a 1.200 Kg. en la misma ruta.</span></span></li>
-                                <li class="flex gap-3"><i class="fa fa-chevron-right text-brand-blue mt-1"></i> <span class="tr" data-es="Compartimiento de carga trasero con acceso en vuelo de hasta 350Kgs." data-en="Rear cargo compartment with in-flight access up to 350Kgs.">Compartimiento de carga trasero con acceso en vuelo de hasta 350Kgs.</span></li>
-                                <li class="flex gap-3"><i class="fa fa-chevron-right text-brand-blue mt-1"></i> <span class="tr" data-es="Compartimiento de carga delantero de hasta 100Kgs." data-en="Front cargo compartment up to 100Kgs.">Compartimiento de carga delantero de hasta 100Kgs.</span></li>
+                                <li class="flex gap-3"><i class="fa fa-chevron-right text-blue-400 mt-1"></i> <span><strong class="text-white">Metro 23:</strong> <span class="tr" data-es="Puede transportar hasta 1.500 Kg en una ruta de vuelo de dos horas." data-en="Can transport up to 1,500 Kg on a two-hour flight route.">Puede transportar hasta 1.500 Kg en una ruta de vuelo de dos horas.</span></span></li>
+                                <li class="flex gap-3"><i class="fa fa-chevron-right text-blue-400 mt-1"></i> <span><strong class="text-white">Metro III:</strong> <span class="tr" data-es="Puede transportar entre 1.100 a 1.200 Kg. en la misma ruta." data-en="The Metro III can transport between 1,100 to 1,200 Kg on the same route.">Puede transportar entre 1.100 a 1.200 Kg. en la misma ruta.</span></span></li>
+                                <li class="flex gap-3"><i class="fa fa-chevron-right text-blue-400 mt-1"></i> <span class="tr" data-es="Compartimiento de carga trasero con acceso en vuelo de hasta 350Kgs." data-en="Rear cargo compartment with in-flight access up to 350Kgs.">Compartimiento de carga trasero con acceso en vuelo de hasta 350Kgs.</span></li>
+                                <li class="flex gap-3"><i class="fa fa-chevron-right text-blue-400 mt-1"></i> <span class="tr" data-es="Compartimiento de carga delantero de hasta 100Kgs." data-en="Front cargo compartment up to 100Kgs.">Compartimiento de carga delantero de hasta 100Kgs.</span></li>
                             </ul>
                         </div>
                         
-                        <div class="bg-[#1c1f2e] border border-brand-red/30 rounded-xl p-8 shadow-xl">
-                            <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-3 border-b border-white/10 pb-3"><i class="fa fa-paper-plane-o text-brand-red text-2xl"></i> <span class="tr" data-es="Carga en Helicópteros" data-en="Helicopter Cargo">Carga en Helicópteros</span></h3>
+                        <div class="bg-[#1c1f2e] border border-blue-500/30 rounded-xl p-8 shadow-xl">
+                            <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-3 border-b border-white/10 pb-3"><i class="fa fa-paper-plane-o text-blue-400 text-2xl"></i> <span class="tr" data-es="Carga en Helicópteros" data-en="Helicopter Cargo">Carga en Helicópteros</span></h3>
                             <ul class="space-y-4 text-gray-300">
-                                <li class="flex gap-3"><i class="fa fa-chevron-right text-brand-red mt-1"></i> <span><strong class="text-white tr" data-es="Carga Interna:" data-en="Internal Cargo:">Carga Interna:</strong> <span class="tr" data-es="Capacidad de hasta 500 kgs en cabina." data-en="Capacity of up to 500 kgs in cabin.">Capacidad de hasta 500 kgs en cabina.</span></span></li>
-                                <li class="flex gap-3"><i class="fa fa-chevron-right text-brand-red mt-1"></i> <span><strong class="text-white tr" data-es="Carga Externa:" data-en="External Cargo:">Carga Externa:</strong> <span class="tr" data-es="Capacidad entre 450 Kg y 650 Kg dependiendo de la configuración." data-en="Capacity between 450 Kg and 650 Kg depending on configuration.">Capacidad entre 450 Kg y 650 Kg dependiendo de la configuración.</span></span></li>
-                                <li class="flex gap-3"><i class="fa fa-chevron-right text-brand-red mt-1"></i> <span class="tr" data-es="Helitec dispone de helicópteros habilitados para carga externa con Eslinga de 15 y 30 Mts." data-en="Helitec has helicopters authorized for external cargo with 15 and 30 Mts sling.">Helitec dispone de helicópteros habilitados para carga externa con Eslinga de 15 y 30 Mts.</span></li>
+                                <li class="flex gap-3"><i class="fa fa-chevron-right text-blue-400 mt-1"></i> <span><strong class="text-white tr" data-es="Carga Interna:" data-en="Internal Cargo:">Carga Interna:</strong> <span class="tr" data-es="Capacidad de hasta 500 kgs en cabina." data-en="Capacity of up to 500 kgs in cabin.">Capacidad de hasta 500 kgs en cabina.</span></span></li>
+                                <li class="flex gap-3"><i class="fa fa-chevron-right text-blue-400 mt-1"></i> <span><strong class="text-white tr" data-es="Carga Externa:" data-en="External Cargo:">Carga Externa:</strong> <span class="tr" data-es="Capacidad entre 450 Kg y 650 Kg dependiendo de la configuración." data-en="Capacity between 450 Kg and 650 Kg depending on configuration.">Capacidad entre 450 Kg y 650 Kg dependiendo de la configuración.</span></span></li>
+                                <li class="flex gap-3"><i class="fa fa-chevron-right text-blue-400 mt-1"></i> <span class="tr" data-es="Helitec dispone de helicópteros habilitados para carga externa con Eslinga de 15 y 30 Mts." data-en="Helitec has helicopters authorized for external cargo with 15 and 30 Mts sling.">Helitec dispone de helicópteros habilitados para carga externa con Eslinga de 15 y 30 Mts.</span></li>
                             </ul>
                         </div>
                     </div>
@@ -309,42 +328,42 @@
                     <p class="text-gray-300 mb-10 leading-relaxed text-lg tr" data-es="Los helicópteros permiten realizar filmaciones y tomas fotográficas en lugares de difícil acceso. Ejemplo: filmación de documentales, regatas, carreras, eventos deportivos, etc. Adicionalmente también pueden ser usados en el área agrícola para inspeccionar campos. Así como también rutas y líneas de alta tensión." data-en="Helicopters allow filming and taking photographs in difficult-to-access places. Example: filming documentaries, regattas, races, sporting events, etc. Additionally, they can also be used in the agricultural area to inspect fields. As well as high voltage routes and lines.">Los helicópteros permiten realizar filmaciones y tomas fotográficas en lugares de difícil acceso. Ejemplo: filmación de documentales, regatas, carreras, eventos deportivos, etc. Adicionalmente también pueden ser usados en el área agrícola para inspeccionar campos. Así como también rutas y líneas de alta tensión.</p>
 
                     <div class="bg-black/30 p-8 rounded-xl border border-white/5">
-                        <h3 class="text-2xl font-bold text-brand-red mb-4 tr" data-es="Levantamiento Topográfico con tecnología Laser (LIDAR)" data-en="Topographical Survey with Laser technology (LIDAR)">Levantamiento Topográfico con tecnología Laser (LIDAR)</h3>
+                        <h3 class="text-2xl font-bold text-blue-400 mb-4 tr" data-es="Levantamiento Topográfico con tecnología Laser (LIDAR)" data-en="Topographical Survey with Laser technology (LIDAR)">Levantamiento Topográfico con tecnología Laser (LIDAR)</h3>
                         <p class="text-gray-300 mb-4 leading-relaxed tr" data-es="LIDAR es un sistema que combina un escaneo Light Detection And Ranging (LiDAR) aerotransportado sobre el terreno con un Sistema de Posicionamiento Global (GPS) y la Unidad de Medida Inercial (IMU) de una aeronave, mapeando la superficie del terreno." data-en="LIDAR is a system that combines an airborne Light Detection And Ranging (LiDAR) scan over the terrain with a Global Positioning System (GPS) and the Inertial Measurement Unit (IMU) of an aircraft, mapping the terrain surface.">LIDAR es un sistema que combina un escaneo Light Detection And Ranging (LiDAR) aerotransportado sobre el terreno con un Sistema de Posicionamiento Global (GPS) y la Unidad de Medida Inercial (IMU) de una aeronave, mapeando la superficie del terreno.</p>
                         <p class="text-gray-300 mb-8 leading-relaxed tr" data-es="El sensor láser (LIDAR) constituye una tecnología eficiente para la adquisición de Modelos Digitales del Terreno y Modelos Digitales de Superficie (MDT y MDS) de grandes áreas. Los MDT pueden ser generados a alta resolución con un detalle considerable, haciendo que la tecnología sea más eficiente en términos de coste cuando se compara con los métodos fotogramétricos." data-en="The laser sensor (LIDAR) constitutes an efficient technology for the acquisition of Digital Terrain Models and Digital Surface Models (DTM and DSM) of large areas. DTMs can be generated at high resolution with considerable detail, making the technology more cost-efficient when compared to photogrammetric methods.">El sensor láser (LIDAR) constituye una tecnología eficiente para la adquisición de Modelos Digitales del Terreno y Modelos Digitales de Superficie (MDT y MDS) de grandes áreas. Los MDT pueden ser generados a alta resolución con un detalle considerable, haciendo que la tecnología sea más eficiente en términos de coste cuando se compara con los métodos fotogramétricos.</p>
                         
                         <h4 class="font-bold text-white text-lg mb-4 border-b border-white/10 pb-2 tr" data-es="Nuestros offering de servicios cubren las siguientes áreas:" data-en="Our service offerings cover the following areas:">Nuestros offering de servicios cubren las siguientes áreas:</h4>
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-4 gap-x-6 text-gray-300">
-                            <div class="flex items-center gap-2"><i class="fa fa-map text-brand-red"></i> <span class="tr" data-es="Trazado de tuberías de Gas y Petróleo." data-en="Oil and Gas pipeline routing.">Trazado de tuberías de Gas y Petróleo.</span></div>
-                            <div class="flex items-center gap-2"><i class="fa fa-road text-brand-red"></i> <span class="tr" data-es="Trazado de Carreteras y Obras Viales." data-en="Road routing and Road Works.">Trazado de Carreteras y Obras Viales.</span></div>
-                            <div class="flex items-center gap-2"><i class="fa fa-building text-brand-red"></i> <span class="tr" data-es="Catastro urbano, rural y minero." data-en="Urban, rural and mining cadastre.">Catastro urbano, rural y minero.</span></div>
-                            <div class="flex items-center gap-2"><i class="fa fa-tint text-brand-red"></i> <span class="tr" data-es="Embalses, Presas y análisis de zonas inundables." data-en="Reservoirs, Dams and analysis of flood zones.">Embalses, Presas y análisis de zonas inundables.</span></div>
-                            <div class="flex items-center gap-2"><i class="fa fa-industry text-brand-red"></i> <span class="tr" data-es="Proyectos Mineros." data-en="Mining Projects.">Proyectos Mineros.</span></div>
-                            <div class="flex items-center gap-2"><i class="fa fa-train text-brand-red"></i> <span class="tr" data-es="Proyectos Ferroviarios." data-en="Railway Projects.">Proyectos Ferroviarios.</span></div>
-                            <div class="flex items-center gap-2"><i class="fa fa-cogs text-brand-red"></i> <span class="tr" data-es="Diseño de Ingeniería." data-en="Engineering Design.">Diseño de Ingeniería.</span></div>
-                            <div class="flex items-center gap-2"><i class="fa fa-bolt text-brand-red"></i> <span class="tr" data-es="Líneas de Transmisión Eléctrica." data-en="Electrical Transmission lines.">Líneas de Transmisión Eléctrica.</span></div>
+                            <div class="flex items-center gap-2"><i class="fa fa-map text-blue-400"></i> <span class="tr" data-es="Trazado de tuberías de Gas y Petróleo." data-en="Oil and Gas pipeline routing.">Trazado de tuberías de Gas y Petróleo.</span></div>
+                            <div class="flex items-center gap-2"><i class="fa fa-road text-blue-400"></i> <span class="tr" data-es="Trazado de Carreteras y Obras Viales." data-en="Road routing and Road Works.">Trazado de Carreteras y Obras Viales.</span></div>
+                            <div class="flex items-center gap-2"><i class="fa fa-building text-blue-400"></i> <span class="tr" data-es="Catastro urbano, rural y minero." data-en="Urban, rural and mining cadastre.">Catastro urbano, rural y minero.</span></div>
+                            <div class="flex items-center gap-2"><i class="fa fa-tint text-blue-400"></i> <span class="tr" data-es="Embalses, Presas y análisis de zonas inundables." data-en="Reservoirs, Dams and analysis of flood zones.">Embalses, Presas y análisis de zonas inundables.</span></div>
+                            <div class="flex items-center gap-2"><i class="fa fa-industry text-blue-400"></i> <span class="tr" data-es="Proyectos Mineros." data-en="Mining Projects.">Proyectos Mineros.</span></div>
+                            <div class="flex items-center gap-2"><i class="fa fa-train text-blue-400"></i> <span class="tr" data-es="Proyectos Ferroviarios." data-en="Railway Projects.">Proyectos Ferroviarios.</span></div>
+                            <div class="flex items-center gap-2"><i class="fa fa-cogs text-blue-400"></i> <span class="tr" data-es="Diseño de Ingeniería." data-en="Engineering Design.">Diseño de Ingeniería.</span></div>
+                            <div class="flex items-center gap-2"><i class="fa fa-bolt text-blue-400"></i> <span class="tr" data-es="Líneas de Transmisión Eléctrica." data-en="Electrical Transmission lines.">Líneas de Transmisión Eléctrica.</span></div>
                         </div>
                     </div>
                 </div>
 
                 <div id="tab-aeromedico" class="servicio-tab-content hidden">
                     <h2 class="text-3xl font-black text-white uppercase mb-2 tr" data-es="Traslados Aeromédicos" data-en="Aeromedical Transfers">Traslados Aeromédicos</h2>
-                    <p class="text-brand-red font-bold uppercase tracking-widest text-xs mb-8 tr" data-es="Socio estratégico: AEROAMBULANCIAS SILVA" data-en="Strategic partner: AEROAMBULANCIAS SILVA">Socio estratégico: AEROAMBULANCIAS SILVA</p>
+                    <p class="text-blue-400 font-bold uppercase tracking-widest text-xs mb-8 tr" data-es="Socio estratégico: AEROAMBULANCIAS SILVA" data-en="Strategic partner: AEROAMBULANCIAS SILVA">Socio estratégico: AEROAMBULANCIAS SILVA</p>
                     
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-8">
-                        <img src="https://www.helitec-main.com/images/galeria/Aeromedico_1.jpg" class="w-full h-48 md:h-64 object-cover rounded-xl shadow-lg border border-white/10">
-                        <img src="https://www.helitec-main.com/images/galeria/Avion%20y%20Ambulancia1.jpg" class="w-full h-48 md:h-64 object-cover rounded-xl shadow-lg border border-white/10">
-                        <img src="https://www.helitec-main.com/images/galeria/Avion%20y%20Ambulancia%202.jpg" class="w-full h-48 md:h-64 object-cover rounded-xl shadow-lg border border-white/10 hidden lg:block">
+                        <img src="https://www.helitec-main.com/images/galeria/Aeromedico_1.jpg" class="w-full h-48 md:h-64 object-contain bg-black/40 rounded-xl shadow-lg border border-white/10">
+                        <img src="https://www.helitec-main.com/images/galeria/Avion%20y%20Ambulancia1.jpg" class="w-full h-48 md:h-64 object-contain bg-black/40 rounded-xl shadow-lg border border-white/10">
+                        <img src="https://www.helitec-main.com/images/galeria/Avion%20y%20Ambulancia%202.jpg" class="w-full h-48 md:h-64 object-contain bg-black/40 rounded-xl shadow-lg border border-white/10 hidden lg:block">
                     </div>
                     
                     <p class="text-gray-300 mb-4 leading-relaxed text-lg tr" data-es="Brindamos servicios de traslado aeromédico (nacional e internacional), servicios de ambulancia, repatriación de restos, repatriación sanitaria (nacional e internacional), servicio médico escolta, dotación Medevac." data-en="We provide aeromedical transfer services (domestic and international), ambulance services, repatriation of remains, medical repatriation (domestic and international), medical escort service, Medevac provision.">Brindamos servicios de traslado aeromédico (nacional e internacional), servicios de ambulancia, repatriación de restos, repatriación sanitaria (nacional e internacional), servicio médico escolta, dotación Medevac.</p>
                     
                     <p class="text-gray-300 mb-8 leading-relaxed tr" data-es="Ofrecemos servicios de traslado aeromédico en Venezuela, Colombia, Ecuador, Costa Rica, Panamá, México, Aruba, Curaçao, Bonaire, Trinidad, Tobago, Guyana." data-en="We offer aeromedical transfer services in Venezuela, Colombia, Ecuador, Costa Rica, Panama, Mexico, Aruba, Curaçao, Bonaire, Trinidad, Tobago, Guyana.">Ofrecemos servicios de traslado aeromédico en Venezuela, Colombia, Ecuador, Costa Rica, Panamá, México, Aruba, Curaçao, Bonaire, Trinidad, Tobago, Guyana.</p>
 
-                    <div class="bg-[#1c1f2e] border-l-4 border-brand-red p-8 rounded-r-xl mb-10 shadow-2xl">
-                        <h4 class="text-2xl font-bold text-white mb-4 flex items-center gap-3"><i class="fa fa-heartbeat text-brand-red"></i> <span class="tr" data-es="Transporte Aeromédico en Aviones Metro III y Metro 23" data-en="Aeromedical Transport in Metro III and Metro 23 Airplanes">Transporte Aeromédico en Aviones Metro III y Metro 23</span></h4>
+                    <div class="bg-[#1c1f2e] border-l-4 border-blue-500 p-8 rounded-r-xl mb-10 shadow-2xl">
+                        <h4 class="text-2xl font-bold text-white mb-4 flex items-center gap-3"><i class="fa fa-heartbeat text-blue-400"></i> <span class="tr" data-es="Transporte Aeromédico en Aviones Metro III y Metro 23" data-en="Aeromedical Transport in Metro III and Metro 23 Airplanes">Transporte Aeromédico en Aviones Metro III y Metro 23</span></h4>
                         <p class="text-gray-300 text-base mb-6 tr" data-es="Este servicio consiste en el transporte desde uno (1) hasta tres (3) pacientes a través de aviones acondicionados con materiales, equipos y tripulación especializada para prestar atención en caso de traslados sanitarios cuyos pacientes requieran traslado rápido, oportuno y asistencia inmediata." data-en="This service consists of transporting from one (1) to three (3) patients via aircraft equipped with materials, equipment, and specialized crew to provide care in case of sanitary transfers whose patients require rapid, timely transfer, and immediate assistance.">Este servicio consiste en el transporte desde uno (1) hasta tres (3) pacientes a través de aviones acondicionados con materiales, equipos y tripulación especializada para prestar atención en caso de traslados sanitarios cuyos pacientes requieran traslado rápido, oportuno y asistencia inmediata.</p>
-                        <div class="bg-brand-red/10 border border-brand-red text-brand-red font-bold uppercase text-sm p-4 rounded-lg text-center tracking-widest tr" data-es="Capacidad Aeromédica: Piloto, hasta dos (2) pacientes y un (1) Paramédico." data-en="Aeromedical Capacity: Pilot, up to two (2) patients and one (1) Paramedic.">
+                        <div class="bg-blue-500/10 border border-blue-500 text-blue-400 font-bold uppercase text-sm p-4 rounded-lg text-center tracking-widest tr" data-es="Capacidad Aeromédica: Piloto, hasta dos (2) pacientes y un (1) Paramédico." data-en="Aeromedical Capacity: Pilot, up to two (2) patients and one (1) Paramedic.">
                             Capacidad Aeromédica: Piloto, hasta dos (2) pacientes y un (1) Paramédico.
                         </div>
                     </div>
@@ -352,31 +371,31 @@
                     <h3 class="text-2xl font-bold text-white mb-6 border-b border-white/10 pb-2 tr" data-es="Características del Servicio:" data-en="Service Characteristics:">Características del Servicio:</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-300">
                         <div class="bg-white/5 p-5 rounded-xl border border-white/5">
-                            <i class="fa fa-bed text-3xl text-brand-red mb-3"></i>
+                            <i class="fa fa-bed text-3xl text-blue-400 mb-3"></i>
                             <p class="text-sm tr" data-es="Camilla fabricada por Spectrum Aeromed, certificada por la autoridad aeronáutica venezolana (INAC) para ser intaladas en cualquiera de las tres aeronaves Metro III y Metro 23." data-en="Stretcher manufactured by Spectrum Aeromed, certified by the Venezuelan aeronautical authority (INAC) to be installed in any of the three Metro III and Metro 23 aircraft.">Camilla fabricada por Spectrum Aeromed, certificada por la autoridad aeronáutica venezolana (INAC) para ser intaladas en cualquiera de las tres aeronaves Metro III y Metro 23.</p>
                         </div>
                         <div class="bg-white/5 p-5 rounded-xl border border-white/5">
-                            <i class="fa fa-users text-3xl text-brand-red mb-3"></i>
+                            <i class="fa fa-users text-3xl text-blue-400 mb-3"></i>
                             <p class="text-sm tr" data-es="Capacidad de poder transportar hasta dos pacientes con sus equipos médicos y tres acompañantes en el mismo vuelo." data-en="Capacity to transport up to two patients with their medical equipment and three companions on the same flight.">Capacidad de poder transportar hasta dos pacientes con sus equipos médicos y tres acompañantes en el mismo vuelo.</p>
                         </div>
                         <div class="bg-white/5 p-5 rounded-xl border border-white/5">
-                            <i class="fa fa-user-md text-3xl text-brand-red mb-3"></i>
+                            <i class="fa fa-user-md text-3xl text-blue-400 mb-3"></i>
                             <p class="text-sm tr" data-es="Cada vuelo lleva su personal médico, paramédico y equipos médicos segun los requisitos médicos del paciente." data-en="Each flight carries its medical personnel, paramedic, and medical equipment according to the patient's medical requirements.">Cada vuelo lleva su personal médico, paramédico y equipos médicos segun los requisitos médicos del paciente.</p>
                         </div>
                         <div class="bg-white/5 p-5 rounded-xl border border-white/5">
-                            <i class="fa fa-globe text-3xl text-brand-red mb-3"></i>
+                            <i class="fa fa-globe text-3xl text-blue-400 mb-3"></i>
                             <p class="text-sm tr" data-es="Capacidad de volar directo a destinos de hasta cinco horas y media de vuelo, equivalente aproximadamente 1,400 millas náuticas (2,600 Kms)." data-en="Capacity to fly direct to destinations of up to five and a half hours of flight, equivalent to approximately 1,400 nautical miles (2,600 Kms).">Capacidad de volar directo a destinos de hasta cinco horas y media de vuelo, equivalente aproximadamente 1,400 millas náuticas (2,600 Kms).</p>
                         </div>
                         <div class="bg-white/5 p-5 rounded-xl border border-white/5">
-                            <i class="fa fa-tachometer text-3xl text-brand-red mb-3"></i>
+                            <i class="fa fa-tachometer text-3xl text-blue-400 mb-3"></i>
                             <p class="text-sm tr" data-es="Cabina presurizada con un diferencial de 7 Psi equivalente mantener presion de nuivel del mar en la cabina volando a 16,000 pies de altitud." data-en="Pressurized cabin with a 7 Psi differential equivalent to maintaining sea level pressure in the cabin flying at 16,000 feet of altitude.">Cabina presurizada con un diferencial de 7 Psi equivalente mantener presion de nuivel del mar en la cabina volando a 16,000 pies de altitud.</p>
                         </div>
                         <div class="bg-white/5 p-5 rounded-xl border border-white/5">
-                            <i class="fa fa-shield text-3xl text-brand-red mb-3"></i>
+                            <i class="fa fa-shield text-3xl text-blue-400 mb-3"></i>
                             <p class="text-sm tr" data-es="La ventilación de la cabina permite una circulación de aire fresco desde la parte delantera del avion hacia el cono de cola, lo cual evita la contaminación de la cabina cuando se transportan pacientes contaminados." data-en="Cabin ventilation allows fresh air circulation from the front of the plane towards the tail cone, which avoids cabin contamination when transporting contaminated patients.">La ventilación de la cabina permite una circulación de aire fresco desde la parte delantera del avion hacia el cono de cola, lo cual evita la contaminación de la cabina cuando se transportan pacientes contaminados.</p>
                         </div>
                         <div class="bg-white/5 p-5 rounded-xl border border-white/5 md:col-span-2">
-                            <i class="fa fa-wheelchair text-3xl text-brand-red mb-3"></i>
+                            <i class="fa fa-wheelchair text-3xl text-blue-400 mb-3"></i>
                             <p class="text-sm tr" data-es="El o los pacientes están ubicados en la parte trasera de la cabina de pasajeros lo cual facilita la movilización de ellos a través de la compuerta de carga de la aeronave ubicada hacia el cono de cola de la aeronave." data-en="The patient(s) are located in the rear of the passenger cabin which facilitates their mobilization through the aircraft's cargo door located towards the aircraft's tail cone.">El o los pacientes están ubicados en la parte trasera de la cabina de pasajeros lo cual facilita la movilización de ellos a través de la compuerta de carga de la aeronave ubicada hacia el cono de cola de la aeronave.</p>
                         </div>
                     </div>
@@ -384,130 +403,154 @@
 
                 <div id="tab-fija" class="servicio-tab-content hidden">
                     <h2 class="text-3xl font-black text-white uppercase mb-2 tr" data-es="Aeronaves de Ala Fija (Aviones)" data-en="Fixed Wing Aircraft (Airplanes)">Aeronaves de Ala Fija (Aviones)</h2>
-                    <p class="text-brand-red font-bold uppercase tracking-widest text-xs mb-8 tr" data-es="Especificaciones por Modelo" data-en="Specifications by Model">Especificaciones por Modelo</p>
+                    <p class="text-blue-400 font-bold uppercase tracking-widest text-xs mb-8 tr" data-es="Especificaciones por Modelo" data-en="Specifications by Model">Especificaciones por Modelo</p>
                     
-                    <p class="text-gray-300 mb-8 text-lg leading-relaxed tr" data-es="Nuestra flota de aviones Fairchild Swearingen Metro garantiza velocidad, confort y gran capacidad para transporte de pasajeros y carga, con 5 configuraciones diferentes." data-en="Our fleet of Fairchild Swearingen Metro aircraft guarantees speed, comfort, and large capacity for passenger and cargo transport, with 5 different configurations.">Nuestra flota de aviones Fairchild Swearingen Metro garantiza velocidad, confort y gran capacidad para transporte de pasajeros y carga, con 5 configuraciones diferentes.</p>
+                    <p class="text-gray-300 mb-8 text-lg leading-relaxed tr" data-es="Nuestra flota de aviones Fairchild Swearingen Metro y Merlin garantiza velocidad, confort y gran capacidad para transporte de pasajeros y carga, con 5 configuraciones diferentes." data-en="Our fleet of Fairchild Swearingen Metro and Merlin aircraft guarantees speed, comfort, and large capacity for passenger and cargo transport, with 5 different configurations.">Nuestra flota de aviones Fairchild Swearingen Metro y Merlin garantiza velocidad, confort y gran capacidad para transporte de pasajeros y carga, con 5 configuraciones diferentes.</p>
 
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="space-y-12">
                         
-                        <div class="bg-[#1c1f2e] border border-white/10 rounded-xl overflow-hidden shadow-2xl flex flex-col">
-                            <img src="images/galeria/Metro_III.jpg" class="w-full h-48 object-cover" onerror="this.src='https://www.aeroambulanciasilva.com/web/image/51234-b4cce626/3.TURBINA.JPG'">
-                            <div class="p-6 flex-1">
-                                <h3 class="text-2xl font-bold text-white mb-4 border-b border-brand-red/30 pb-2">METRO III</h3>
-                                <h4 class="text-brand-red text-xs font-bold uppercase tracking-widest mb-2 tr" data-es="Configuración Interior:" data-en="Interior Configuration:">Configuración Interior:</h4>
-                                <ul class="list-disc list-inside space-y-1 text-sm text-gray-300 mb-4 pl-2">
-                                    <li class="tr" data-es="Capacidad: 13 pasajeros en configuracion Ejecutiva." data-en="Capacity: 13 passengers in Executive configuration.">Capacidad: 13 pasajeros en configuracion Ejecutiva.</li>
-                                    <li class="tr" data-es="Dos Club Seating de 4 puestos con mesa, 2 asientos frontales y un Sofa de 3 puestos." data-en="Two Club Seating of 4 seats with table, 2 front seats and a Sofa of 3 seats.">Dos Club Seating de 4 puestos con mesa, 2 asientos frontales y un Sofa de 3 puestos.</li>
-                                    <li class="tr" data-es="Compartimiento de Carga Trasero: 350 Kg. máximo." data-en="Rear Cargo Compartment: 350 Kg. maximum.">Compartimiento de Carga Trasero: 350 Kg. máximo.</li>
-                                    <li class="tr" data-es="Un compartimiento delantero de hasta 100Kgs." data-en="One front compartment up to 100Kgs.">Un compartimiento delantero de hasta 100Kgs.</li>
-                                    <li class="tr" data-es="Un baño." data-en="One restroom.">Un baño.</li>
-                                </ul>
-                                <h4 class="text-brand-red text-xs font-bold uppercase tracking-widest mb-2 tr" data-es="Características Técnicas:" data-en="Technical Characteristics:">Características Técnicas:</h4>
-                                <ul class="list-disc list-inside space-y-1 text-sm text-gray-300 pl-2">
-                                    <li class="tr" data-es="Cabina presurizada con acceso a la carga." data-en="Pressurized cabin with access to cargo.">Cabina presurizada con acceso a la carga.</li>
-                                    <li>Motores (2): TPE 331-11 (1.000 Hp).</li>
-                                    <li class="tr" data-es="Velocidad de crucero: 265 KTS." data-en="Cruising speed: 265 KTS.">Velocidad de crucero: 265 KTS.</li>
-                                    <li class="tr" data-es="Autonomía: 5 horas + 1:30 Hr. de reserva." data-en="Autonomy: 5 hours + 1:30 Hr. reserve.">Autonomía: 5 horas + 1:30 Hr. de reserva.</li>
-                                    <li class="tr" data-es="Peso Máx Despegue: 16.000 Lb." data-en="Max Takeoff Weight: 16,000 Lb.">Peso Máx Despegue: 16.000 Lb.</li>
-                                    <li class="tr" data-es="Techo Máximo: 25.000 Pies." data-en="Max Ceiling: 25,000 Feet.">Techo Máximo: 25.000 Pies.</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="bg-[#1c1f2e] border border-white/10 rounded-xl overflow-hidden shadow-2xl flex flex-col">
-                            <img src="images/galeria/Metro_23_Ejecutivo.jpg" class="w-full h-48 object-cover" onerror="this.src='https://www.aeroambulanciasilva.com/web/image/51234-b4cce626/3.TURBINA.JPG'">
-                            <div class="p-6 flex-1">
-                                <h3 class="text-2xl font-bold text-white mb-4 border-b border-brand-red/30 pb-2">METRO 23 Ejecutivo</h3>
-                                <h4 class="text-brand-red text-xs font-bold uppercase tracking-widest mb-2 tr" data-es="Configuración Interior:" data-en="Interior Configuration:">Configuración Interior:</h4>
-                                <ul class="list-disc list-inside space-y-1 text-sm text-gray-300 mb-4 pl-2">
-                                    <li class="tr" data-es="Capacidad: 12 pasajeros en configuración Ejecutiva." data-en="Capacity: 12 passengers in Executive configuration.">Capacidad: 12 pasajeros en configuración Ejecutiva.</li>
-                                    <li class="tr" data-es="Tres Club Seating de 4 puestos cada uno con mesas plegables." data-en="Three Club Seating of 4 seats each with folding tables.">Tres Club Seating de 4 puestos cada uno con mesas plegables.</li>
-                                    <li class="tr" data-es="Compartimiento de carga trasero con acceso en vuelo (hasta 350Kgs)." data-en="Rear cargo compartment with in-flight access (up to 350Kgs).">Compartimiento de carga trasero con acceso en vuelo (hasta 350Kgs).</li>
-                                    <li class="tr" data-es="Un compartimiento delantero de hasta 100Kgs." data-en="One front compartment up to 100Kgs.">Un compartimiento delantero de hasta 100Kgs.</li>
-                                    <li class="tr" data-es="Un baño." data-en="One restroom.">Un baño.</li>
-                                </ul>
-                                <h4 class="text-brand-red text-xs font-bold uppercase tracking-widest mb-2 tr" data-es="Características Técnicas:" data-en="Technical Characteristics:">Características Técnicas:</h4>
-                                <ul class="list-disc list-inside space-y-1 text-sm text-gray-300 pl-2">
-                                    <li class="tr" data-es="Cabina presurizada con acceso a la carga." data-en="Pressurized cabin with access to cargo.">Cabina presurizada con acceso a la carga.</li>
-                                    <li>Motores (2): TPE 331-12 (1.100 Hp).</li>
-                                    <li class="tr" data-es="Velocidad de crucero: 275 KTS." data-en="Cruising speed: 275 KTS.">Velocidad de crucero: 275 KTS.</li>
-                                    <li class="tr" data-es="Autonomía: 5 horas + 1:30 Hr. de reserva." data-en="Autonomy: 5 hours + 1:30 Hr. reserve.">Autonomía: 5 horas + 1:30 Hr. de reserva.</li>
-                                    <li class="tr" data-es="Peso Máx Despegue: 16.500 Lb." data-en="Max Takeoff Weight: 16,500 Lb.">Peso Máx Despegue: 16.500 Lb.</li>
-                                    <li class="tr" data-es="Techo Máximo: 25.000 Pies." data-en="Max Ceiling: 25,000 Feet.">Techo Máximo: 25.000 Pies.</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="bg-[#1c1f2e] border border-white/10 rounded-xl overflow-hidden shadow-2xl flex flex-col">
-                            <img src="images/galeria/Metro_23_Commuter.jpg" class="w-full h-48 object-cover" onerror="this.src='https://www.aeroambulanciasilva.com/web/image/51234-b4cce626/3.TURBINA.JPG'">
-                            <div class="p-6 flex-1">
-                                <h3 class="text-2xl font-bold text-white mb-4 border-b border-brand-red/30 pb-2">METRO 23 Commuter</h3>
-                                <h4 class="text-brand-red text-xs font-bold uppercase tracking-widest mb-2 tr" data-es="Configuración Interior:" data-en="Interior Configuration:">Configuración Interior:</h4>
-                                <ul class="list-disc list-inside space-y-1 text-sm text-gray-300 mb-4 pl-2">
-                                    <li class="tr" data-es="Capacidad: 18 pasajeros en configuracion Commuter." data-en="Capacity: 18 passengers in Commuter configuration.">Capacidad: 18 pasajeros en configuracion Commuter.</li>
-                                    <li class="tr" data-es="Tres Club Seating de 4 puestos cada uno con mesas plegables." data-en="Three Club Seating of 4 seats each with folding tables.">Tres Club Seating de 4 puestos cada uno con mesas plegables.</li>
-                                    <li class="tr" data-es="Compartimiento de carga trasero con acceso en vuelo (hasta 350Kgs)." data-en="Rear cargo compartment with in-flight access (up to 350Kgs).">Compartimiento de carga trasero con acceso en vuelo (hasta 350Kgs).</li>
-                                    <li class="tr" data-es="Un compartimiento delantero de hasta 100Kgs." data-en="One front compartment up to 100Kgs.">Un compartimiento delantero de hasta 100Kgs.</li>
-                                    <li class="tr" data-es="Un baño." data-en="One restroom.">Un baño.</li>
-                                </ul>
-                                <h4 class="text-brand-red text-xs font-bold uppercase tracking-widest mb-2 tr" data-es="Características Técnicas:" data-en="Technical Characteristics:">Características Técnicas:</h4>
-                                <ul class="list-disc list-inside space-y-1 text-sm text-gray-300 pl-2">
-                                    <li class="tr" data-es="Cabina presurizada con acceso a la carga." data-en="Pressurized cabin with access to cargo.">Cabina presurizada con acceso a la carga.</li>
-                                    <li>Motores (2): TPE 331-12 (1.100 Hp).</li>
-                                    <li class="tr" data-es="Velocidad de crucero: 275 KTS." data-en="Cruising speed: 275 KTS.">Velocidad de crucero: 275 KTS.</li>
-                                    <li class="tr" data-es="Autonomía: 5 horas + 1:30 Hr. de reserva." data-en="Autonomy: 5 hours + 1:30 Hr. reserve.">Autonomía: 5 horas + 1:30 Hr. de reserva.</li>
-                                    <li class="tr" data-es="Peso Máx Despegue: 16.500 Lb." data-en="Max Takeoff Weight: 16,500 Lb.">Peso Máx Despegue: 16.500 Lb.</li>
-                                    <li class="tr" data-es="Techo Máximo: 25.000 Pies." data-en="Max Ceiling: 25,000 Feet.">Techo Máximo: 25.000 Pies.</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="bg-[#1c1f2e] border border-white/10 rounded-xl overflow-hidden shadow-2xl flex flex-col">
-                            <img src="images/galeria/Merlin_IIIB.jpg" class="w-full h-48 object-cover" onerror="this.src='https://www.aeroambulanciasilva.com/web/image/51234-b4cce626/3.TURBINA.JPG'">
-                            <div class="p-6 flex-1">
-                                <h3 class="text-2xl font-bold text-white mb-4 border-b border-brand-red/30 pb-2">METRO 23 Merlin IIIB</h3>
-                                <h4 class="text-brand-red text-xs font-bold uppercase tracking-widest mb-2 tr" data-es="Configuración Interior:" data-en="Interior Configuration:">Configuración Interior:</h4>
-                                <ul class="list-disc list-inside space-y-1 text-sm text-gray-300 mb-4 pl-2">
-                                    <li class="tr" data-es="Capacidad: 6 pasajeros en configuracion ejecutiva." data-en="Capacity: 6 passengers in executive configuration.">Capacidad: 6 pasajeros en configuracion ejecutiva.</li>
-                                    <li class="tr" data-es="Tres Club Seating de 4 puestos cada uno con mesas plegables." data-en="Three Club Seating of 4 seats each with folding tables.">Tres Club Seating de 4 puestos cada uno con mesas plegables.</li>
-                                    <li class="tr" data-es="Compartimiento de carga trasero con acceso en vuelo (hasta 350Kgs)." data-en="Rear cargo compartment with in-flight access (up to 350Kgs).">Compartimiento de carga trasero con acceso en vuelo (hasta 350Kgs).</li>
-                                    <li class="tr" data-es="Un compartimiento delantero de hasta 100Kgs." data-en="One front compartment up to 100Kgs.">Un compartimiento delantero de hasta 100Kgs.</li>
-                                </ul>
-                                <h4 class="text-brand-red text-xs font-bold uppercase tracking-widest mb-2 tr" data-es="Características Técnicas:" data-en="Technical Characteristics:">Características Técnicas:</h4>
-                                <ul class="list-disc list-inside space-y-1 text-sm text-gray-300 pl-2">
-                                    <li class="tr" data-es="Cabina presurizada con acceso a la carga." data-en="Pressurized cabin with access to cargo.">Cabina presurizada con acceso a la carga.</li>
-                                    <li>Motores (2): TPE 331-10 (850 Hp).</li>
-                                    <li class="tr" data-es="Velocidad de crucero: 265 KTS." data-en="Cruising speed: 265 KTS.">Velocidad de crucero: 265 KTS.</li>
-                                    <li class="tr" data-es="Autonomía: 5 horas + 1:30 Hr. de reserva." data-en="Autonomy: 5 hours + 1:30 Hr. reserve.">Autonomía: 5 horas + 1:30 Hr. de reserva.</li>
-                                    <li class="tr" data-es="Peso Máx Despegue: 12.500 Lb." data-en="Max Takeoff Weight: 12,500 Lb.">Peso Máx Despegue: 12.500 Lb.</li>
-                                    <li class="tr" data-es="Techo Máximo: 25.000 Pies." data-en="Max Ceiling: 25,000 Feet.">Techo Máximo: 25.000 Pies.</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="bg-[#1c1f2e] border border-white/10 rounded-xl overflow-hidden shadow-2xl flex flex-col md:col-span-2 lg:col-span-1 lg:col-start-1 lg:col-end-3 xl:col-auto">
-                            <img src="images/galeria/Merlin_300.jpg" class="w-full h-48 object-cover" onerror="this.src='https://www.aeroambulanciasilva.com/web/image/51234-b4cce626/3.TURBINA.JPG'">
-                            <div class="p-6 flex-1">
-                                <h3 class="text-2xl font-bold text-white mb-4 border-b border-brand-red/30 pb-2">METRO 23 Merlin 300</h3>
-                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6">
+                        <div class="bg-[#1c1f2e] border border-white/10 rounded-xl overflow-hidden shadow-2xl">
+                            <img src="https://www.aeroambulanciasilva.com/web/image/51234-b4cce626/3.TURBINA.JPG" class="w-full h-64 object-contain bg-black/40" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Fairchild_SA227-DC_Metro_23_N3010FA.jpg/800px-Fairchild_SA227-DC_Metro_23_N3010FA.jpg'">
+                            <div class="p-6 md:p-8">
+                                <h3 class="text-2xl font-bold text-white mb-4 border-b border-blue-500/30 pb-2">Avión Modelo METRO III</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-gray-300">
                                     <div>
-                                        <h4 class="text-brand-red text-xs font-bold uppercase tracking-widest mb-2 tr" data-es="Configuración Interior:" data-en="Interior Configuration:">Configuración Interior:</h4>
-                                        <ul class="list-disc list-inside space-y-1 text-sm text-gray-300 mb-4 pl-2">
-                                            <li class="tr" data-es="Capacidad: 6 pasajeros en configuracion ejecutiva." data-en="Capacity: 6 passengers in executive configuration.">Capacidad: 6 pasajeros en configuracion ejecutiva.</li>
-                                            <li class="tr" data-es="Compartimiento de carga trasero con acceso en vuelo (hasta 100Kgs)." data-en="Rear cargo compartment with in-flight access (up to 100Kgs).">Compartimiento de carga trasero con acceso en vuelo (hasta 100Kgs).</li>
+                                        <h4 class="text-blue-400 font-bold uppercase mb-2 tr" data-es="Configuración Interior:" data-en="Interior Configuration:">Configuración Interior:</h4>
+                                        <ul class="list-disc list-inside space-y-1 pl-2">
+                                            <li class="tr" data-es="Capacidad: Trece (13) pasajeros en configuracion Ejecutiva." data-en="Capacity: Thirteen (13) passengers in Executive configuration.">Capacidad: Trece (13) pasajeros en configuracion Ejecutiva.</li>
+                                            <li class="tr" data-es="Dos Club Seating de 4 puestos con mesa plegable, 2 asientos frontales un Sofa de 3 puestos." data-en="Two Club Seating of 4 seats with folding table, 2 front seats a Sofa of 3 seats.">Dos Club Seating de 4 puestos con mesa plegable, 2 asientos frontales un Sofa de 3 puestos.</li>
+                                            <li class="tr" data-es="Compartimiento de Carga Trasero: 350 Kg. máximo." data-en="Rear Cargo Compartment: 350 Kg. maximum.">Compartimiento de Carga Trasero: 350 Kg. máximo.</li>
+                                            <li class="tr" data-es="Un compartimiento de carga delantero de hasta 100Kgs." data-en="One front cargo compartment up to 100Kgs.">Un compartimiento de carga delantero de hasta 100Kgs.</li>
+                                            <li class="tr" data-es="Un baño." data-en="One restroom.">Un baño.</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-blue-400 font-bold uppercase mb-2 tr" data-es="Características Técnicas:" data-en="Technical Characteristics:">Características Técnicas:</h4>
+                                        <ul class="list-disc list-inside space-y-1 pl-2">
+                                            <li class="tr" data-es="Cabina presurizada con acceso al compartimiento de carga." data-en="Pressurized cabin with access to cargo compartment.">Cabina presurizada con acceso al compartimiento de carga.</li>
+                                            <li>Motores (2): TPE 331-11 (1.000 Hp).</li>
+                                            <li class="tr" data-es="Velocidad de crucero: 265 KTS." data-en="Cruising speed: 265 KTS.">Velocidad de crucero: 265 KTS.</li>
+                                            <li class="tr" data-es="Autonomía Máxima: 5 horas más 1:30 Hr. de reserva." data-en="Maximum Autonomy: 5 hours plus 1:30 Hr. reserve.">Autonomía Máxima: 5 horas más 1:30 Hr. de reserva.</li>
+                                            <li class="tr" data-es="Peso Máximo de Despegue: 16.000 Lb." data-en="Maximum Takeoff Weight: 16,000 Lb.">Peso Máximo de Despegue: 16.000 Lb.</li>
+                                            <li class="tr" data-es="Techo Máximo de Servicio: 25.000 Pies." data-en="Maximum Service Ceiling: 25,000 Feet.">Techo Máximo de Servicio: 25.000 Pies.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-[#1c1f2e] border border-white/10 rounded-xl overflow-hidden shadow-2xl">
+                            <img src="https://www.helitec-main.com/images/galeria/Interior_1.jpg" class="w-full h-64 object-contain bg-black/40" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Fairchild_SA227-DC_Metro_23_interior.jpg/800px-Fairchild_SA227-DC_Metro_23_interior.jpg'">
+                            <div class="p-6 md:p-8">
+                                <h3 class="text-2xl font-bold text-white mb-4 border-b border-blue-500/30 pb-2">Avión Modelo METRO 23 Ejecutivo</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-gray-300">
+                                    <div>
+                                        <h4 class="text-blue-400 font-bold uppercase mb-2 tr" data-es="Configuración Interior:" data-en="Interior Configuration:">Configuración Interior:</h4>
+                                        <ul class="list-disc list-inside space-y-1 pl-2">
+                                            <li class="tr" data-es="Capacidad: Doce (12) pasajeros en configuración Ejecutiva." data-en="Capacity: Twelve (12) passengers in Executive configuration.">Capacidad: Doce (12) pasajeros en configuración Ejecutiva.</li>
+                                            <li class="tr" data-es="Tres Club Seating de 4 puestos cada uno con Mesa plegables." data-en="Three Club Seating of 4 seats each with folding Table.">Tres Club Seating de 4 puestos cada uno con Mesa plegables.</li>
+                                            <li class="tr" data-es="Compartimiento de carga trasero con acceso en vuelo de hasta 350Kgs." data-en="Rear cargo compartment with in-flight access up to 350Kgs.">Compartimiento de carga trasero con acceso en vuelo de hasta 350Kgs.</li>
                                             <li class="tr" data-es="Un compartimiento delantero de hasta 100Kgs." data-en="One front compartment up to 100Kgs.">Un compartimiento delantero de hasta 100Kgs.</li>
                                             <li class="tr" data-es="Un baño." data-en="One restroom.">Un baño.</li>
                                         </ul>
                                     </div>
                                     <div>
-                                        <h4 class="text-brand-red text-xs font-bold uppercase tracking-widest mb-2 tr" data-es="Características Técnicas:" data-en="Technical Characteristics:">Características Técnicas:</h4>
-                                        <ul class="list-disc list-inside space-y-1 text-sm text-gray-300 pl-2">
-                                            <li class="tr" data-es="Cabina presurizada con acceso a la carga." data-en="Pressurized cabin with access to cargo.">Cabina presurizada con acceso a la carga.</li>
-                                            <li>Motores (2): TPE 331-10 (850 Hp).</li>
+                                        <h4 class="text-blue-400 font-bold uppercase mb-2 tr" data-es="Características Técnicas:" data-en="Technical Characteristics:">Características Técnicas:</h4>
+                                        <ul class="list-disc list-inside space-y-1 pl-2">
+                                            <li class="tr" data-es="Cabina presurizada con acceso al compartimiento de carga." data-en="Pressurized cabin with access to cargo compartment.">Cabina presurizada con acceso al compartimiento de carga.</li>
+                                            <li>Motores (2): TPE 331-12 (1,100 Hp).</li>
+                                            <li class="tr" data-es="Velocidad de crucero: 275 KTS." data-en="Cruising speed: 275 KTS.">Velocidad de crucero: 275 KTS.</li>
+                                            <li class="tr" data-es="Autonomía Máxima: 5 horas más 1:30 Hr. de reserva." data-en="Maximum Autonomy: 5 hours plus 1:30 Hr. reserve.">Autonomía Máxima: 5 horas más 1:30 Hr. de reserva.</li>
+                                            <li class="tr" data-es="Peso Máximo de Despegue: 16.500 Lb." data-en="Maximum Takeoff Weight: 16,500 Lb.">Peso Máximo de Despegue: 16.500 Lb.</li>
+                                            <li class="tr" data-es="Techo Máximo de Servicio: 25.000 Pies." data-en="Maximum Service Ceiling: 25,000 Feet.">Techo Máximo de Servicio: 25.000 Pies.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-[#1c1f2e] border border-white/10 rounded-xl overflow-hidden shadow-2xl">
+                            <img src="https://www.helitec-main.com/images/galeria/Interior_2.jpg" class="w-full h-64 object-contain bg-black/40" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Metro_III_Cabin.jpg/800px-Metro_III_Cabin.jpg'">
+                            <div class="p-6 md:p-8">
+                                <h3 class="text-2xl font-bold text-white mb-4 border-b border-blue-500/30 pb-2">Avión Modelo METRO 23 Commuter</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-gray-300">
+                                    <div>
+                                        <h4 class="text-blue-400 font-bold uppercase mb-2 tr" data-es="Configuración Interior:" data-en="Interior Configuration:">Configuración Interior:</h4>
+                                        <ul class="list-disc list-inside space-y-1 pl-2">
+                                            <li class="tr" data-es="Capacidad: Dieciocho (18) pasajeros en configuracion Commuter." data-en="Capacity: Eighteen (18) passengers in Commuter configuration.">Capacidad: Dieciocho (18) pasajeros en configuracion Commuter.</li>
+                                            <li class="tr" data-es="Tres Club Seating de 4 puestos cada uno con Mesa plegables." data-en="Three Club Seating of 4 seats each with folding Table.">Tres Club Seating de 4 puestos cada uno con Mesa plegables.</li>
+                                            <li class="tr" data-es="Compartimiento de carga trasero con acceso en vuelo de hasta 350Kgs." data-en="Rear cargo compartment with in-flight access up to 350Kgs.">Compartimiento de carga trasero con acceso en vuelo de hasta 350Kgs.</li>
+                                            <li class="tr" data-es="Un compartimiento delantero de hasta 100Kgs." data-en="One front compartment up to 100Kgs.">Un compartimiento delantero de hasta 100Kgs.</li>
+                                            <li class="tr" data-es="Un baño." data-en="One restroom.">Un baño.</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-blue-400 font-bold uppercase mb-2 tr" data-es="Características Técnicas:" data-en="Technical Characteristics:">Características Técnicas:</h4>
+                                        <ul class="list-disc list-inside space-y-1 pl-2">
+                                            <li class="tr" data-es="Cabina presurizada con acceso al compartimiento de carga." data-en="Pressurized cabin with access to cargo compartment.">Cabina presurizada con acceso al compartimiento de carga.</li>
+                                            <li>Motores (2): TPE 331-12 (1,100 Hp).</li>
+                                            <li class="tr" data-es="Velocidad de crucero: 275 KTS." data-en="Cruising speed: 275 KTS.">Velocidad de crucero: 275 KTS.</li>
+                                            <li class="tr" data-es="Autonomía Máxima: 5 horas más 1:30 Hr. de reserva." data-en="Maximum Autonomy: 5 hours plus 1:30 Hr. reserve.">Autonomía Máxima: 5 horas más 1:30 Hr. de reserva.</li>
+                                            <li class="tr" data-es="Peso Máximo de Despegue: 16.500 Lb." data-en="Maximum Takeoff Weight: 16,500 Lb.">Peso Máximo de Despegue: 16.500 Lb.</li>
+                                            <li class="tr" data-es="Techo Máximo de Servicio: 25.000 Pies." data-en="Maximum Service Ceiling: 25,000 Feet.">Techo Máximo de Servicio: 25.000 Pies.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-[#1c1f2e] border border-white/10 rounded-xl overflow-hidden shadow-2xl">
+                            <img src="https://www.helitec-main.com/images/fotos/Merlin_1.jpg" class="w-full h-64 object-contain bg-black/40" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Swearingen_SA226-T_Merlin_IIIB_N333K.jpg/800px-Swearingen_SA226-T_Merlin_IIIB_N333K.jpg'">
+                            <div class="p-6 md:p-8">
+                                <h3 class="text-2xl font-bold text-white mb-4 border-b border-blue-500/30 pb-2">Avión Modelo METRO 23 Merlin IIIB</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-gray-300">
+                                    <div>
+                                        <h4 class="text-blue-400 font-bold uppercase mb-2 tr" data-es="Configuración Interior:" data-en="Interior Configuration:">Configuración Interior:</h4>
+                                        <ul class="list-disc list-inside space-y-1 pl-2">
+                                            <li class="tr" data-es="Capacidad: Seis (6) pasajeros en configuracion ejecutiva." data-en="Capacity: Six (6) passengers in executive configuration.">Capacidad: Seis (6) pasajeros en configuracion ejecutiva.</li>
+                                            <li class="tr" data-es="Tres Club Seating de 4 puestos cada uno con Mesa plegables." data-en="Three Club Seating of 4 seats each with folding Table.">Tres Club Seating de 4 puestos cada uno con Mesa plegables.</li>
+                                            <li class="tr" data-es="Compartimiento de carga trasero con acceso en vuelo de hasta 350Kgs." data-en="Rear cargo compartment with in-flight access up to 350Kgs.">Compartimiento de carga trasero con acceso en vuelo de hasta 350Kgs.</li>
+                                            <li class="tr" data-es="Un compartimiento delantero de hasta 100Kgs." data-en="One front compartment up to 100Kgs.">Un compartimiento delantero de hasta 100Kgs.</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-blue-400 font-bold uppercase mb-2 tr" data-es="Características Técnicas:" data-en="Technical Characteristics:">Características Técnicas:</h4>
+                                        <ul class="list-disc list-inside space-y-1 pl-2">
+                                            <li class="tr" data-es="Cabina presurizada con acceso al compartimiento de carga." data-en="Pressurized cabin with access to cargo compartment.">Cabina presurizada con acceso al compartimiento de carga.</li>
+                                            <li>Motores (2): TPE 331-10 ( 850 Hp).</li>
                                             <li class="tr" data-es="Velocidad de crucero: 265 KTS." data-en="Cruising speed: 265 KTS.">Velocidad de crucero: 265 KTS.</li>
-                                            <li class="tr" data-es="Autonomía: 5 horas + 1:30 Hr. de reserva." data-en="Autonomy: 5 hours + 1:30 Hr. reserve.">Autonomía: 5 horas + 1:30 Hr. de reserva.</li>
-                                            <li class="tr" data-es="Peso Máx Despegue: 13.500 Lb." data-en="Max Takeoff Weight: 13,500 Lb.">Peso Máx Despegue: 13.500 Lb.</li>
-                                            <li class="tr" data-es="Techo Máximo: 25.000 Pies." data-en="Max Ceiling: 25,000 Feet.">Techo Máximo: 25.000 Pies.</li>
+                                            <li class="tr" data-es="Autonomía Máxima: 5 horas más 1:30 Hr. de reserva." data-en="Maximum Autonomy: 5 hours plus 1:30 Hr. reserve.">Autonomía Máxima: 5 horas más 1:30 Hr. de reserva.</li>
+                                            <li class="tr" data-es="Peso Máximo de Despegue: 12.500 Lb." data-en="Maximum Takeoff Weight: 12,500 Lb.">Peso Máximo de Despegue: 12.500 Lb.</li>
+                                            <li class="tr" data-es="Techo Máximo de Servicio: 25.000 Pies." data-en="Maximum Service Ceiling: 25,000 Feet.">Techo Máximo de Servicio: 25.000 Pies.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-[#1c1f2e] border border-white/10 rounded-xl overflow-hidden shadow-2xl">
+                            <img src="https://www.helitec-main.com/images/fotos/Merlin_2.jpg" class="w-full h-64 object-contain bg-black/40" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Swearingen_SA226-T_Merlin_IIIB_N333K.jpg/800px-Swearingen_SA226-T_Merlin_IIIB_N333K.jpg'">
+                            <div class="p-6 md:p-8">
+                                <h3 class="text-2xl font-bold text-white mb-4 border-b border-blue-500/30 pb-2">Avión Modelo METRO 23 Merlin 300</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-gray-300">
+                                    <div>
+                                        <h4 class="text-blue-400 font-bold uppercase mb-2 tr" data-es="Configuración Interior:" data-en="Interior Configuration:">Configuración Interior:</h4>
+                                        <ul class="list-disc list-inside space-y-1 pl-2">
+                                            <li class="tr" data-es="Capacidad: Seis (6) pasajeros en configuracion ejecutiva." data-en="Capacity: Six (6) passengers in executive configuration.">Capacidad: Seis (6) pasajeros en configuracion ejecutiva.</li>
+                                            <li class="tr" data-es="Compartimiento de carga trasero con acceso en vuelo de hasta 100Kgs." data-en="Rear cargo compartment with in-flight access up to 100Kgs.">Compartimiento de carga trasero con acceso en vuelo de hasta 100Kgs.</li>
+                                            <li class="tr" data-es="Un compartimiento delantero de hasta 100Kgs." data-en="One front compartment up to 100Kgs.">Un compartimiento delantero de hasta 100Kgs.</li>
+                                            <li class="tr" data-es="Un baño." data-en="One restroom.">Un baño.</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-blue-400 font-bold uppercase mb-2 tr" data-es="Características Técnicas:" data-en="Technical Characteristics:">Características Técnicas:</h4>
+                                        <ul class="list-disc list-inside space-y-1 pl-2">
+                                            <li class="tr" data-es="Cabina presurizada con acceso al compartimiento de carga." data-en="Pressurized cabin with access to cargo compartment.">Cabina presurizada con acceso al compartimiento de carga.</li>
+                                            <li>Motores (2): TPE 331-10 ( 850 Hp).</li>
+                                            <li class="tr" data-es="Velocidad de crucero: 265 KTS." data-en="Cruising speed: 265 KTS.">Velocidad de crucero: 265 KTS.</li>
+                                            <li class="tr" data-es="Autonomía Máxima: 5 horas más 1:30 Hr. de reserva." data-en="Maximum Autonomy: 5 hours plus 1:30 Hr. reserve.">Autonomía Máxima: 5 horas más 1:30 Hr. de reserva.</li>
+                                            <li class="tr" data-es="Peso Máximo de Despegue: 13.500 Lb." data-en="Maximum Takeoff Weight: 13,500 Lb.">Peso Máximo de Despegue: 13.500 Lb.</li>
+                                            <li class="tr" data-es="Techo Máximo de Servicio: 25.000 Pies." data-en="Maximum Service Ceiling: 25,000 Feet.">Techo Máximo de Servicio: 25.000 Pies.</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -519,32 +562,32 @@
 
                 <div id="tab-rotatoria" class="servicio-tab-content hidden">
                     <h2 class="text-3xl font-black text-white uppercase mb-2 tr" data-es="Aeronaves de Ala Rotatoria" data-en="Rotary Wing Aircraft">Aeronaves de Ala Rotatoria</h2>
-                    <p class="text-brand-red font-bold uppercase tracking-widest text-xs mb-8 tr" data-es="Especificaciones y Variantes" data-en="Specifications and Variants">Especificaciones y Variantes</p>
+                    <p class="text-blue-400 font-bold uppercase tracking-widest text-xs mb-8 tr" data-es="Helicóptero MD501 y Configuraciones" data-en="MD501 Helicopter and Configurations">Helicóptero MD501 y Configuraciones</p>
                     
-                    <img src="https://www.helitec-main.com/images/fotos/1heli.jpg" class="w-full h-64 md:h-96 object-cover rounded-xl mb-8 shadow-lg border border-white/10" onerror="this.style.display='none'">
+                    <img src="https://www.helitec-main.com/images/fotos/1heli.jpg" class="img-contain" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/MD_Helicopters_MD500E_N500KL.jpg/800px-MD_Helicopters_MD500E_N500KL.jpg'">
                     
                     <p class="text-gray-300 mb-8 text-lg leading-relaxed tr" data-es="Nuestros helicópteros fabricados por MD Helicopters Inc. permiten realizar desde traslados de pasajeros hasta trabajos de alta complejidad en terrenos difíciles. Operamos el modelo MD501 con diferentes configuraciones técnicas de motor y carga, incluyendo la variante con sistema avanzado NOTAR." data-en="Our helicopters manufactured by MD Helicopters Inc. allow everything from passenger transfers to high-complexity work in difficult terrain. We operate the MD501 model with different technical engine and cargo configurations, including the variant with the advanced NOTAR system.">Nuestros helicópteros fabricados por MD Helicopters Inc. permiten realizar desde traslados de pasajeros hasta trabajos de alta complejidad en terrenos difíciles. Operamos el modelo MD501 con diferentes configuraciones técnicas de motor y carga, incluyendo la variante con sistema avanzado NOTAR.</p>
 
                     <div class="space-y-8 mb-10">
                         <div class="bg-[#1c1f2e] border border-white/10 rounded-xl overflow-hidden shadow-2xl flex flex-col md:flex-row">
                             <div class="p-6 md:p-8 flex-1">
-                                <h3 class="text-2xl font-bold text-white mb-4 border-b border-brand-red/30 pb-2">Helicóptero MD501 (Configuración Estándar)</h3>
+                                <h3 class="text-2xl font-bold text-white mb-4 border-b border-blue-500/30 pb-2">Helicóptero MD501 (Configuración Estándar)</h3>
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-gray-300">
                                     <div>
-                                        <h4 class="text-brand-red font-bold uppercase mb-2 tr" data-es="Características Técnicas:" data-en="Technical Characteristics:">Características Técnicas:</h4>
-                                        <ul class="list-disc list-inside space-y-1">
+                                        <h4 class="text-blue-400 font-bold uppercase mb-2 tr" data-es="Características Técnicas:" data-en="Technical Characteristics:">Características Técnicas:</h4>
+                                        <ul class="list-disc list-inside space-y-1 pl-2">
                                             <li>Fabricante: MD Helicopters Inc.</li>
-                                            <li class="tr" data-es="Capacidad de pasajeros: 4" data-en="Passenger capacity: 4">Capacidad de pasajeros: 4</li>
-                                            <li class="tr" data-es="Velocidad de crucero: 115 KTS" data-en="Cruising speed: 115 KTS">Velocidad de crucero: 115 KTS</li>
+                                            <li class="tr" data-es="Capacidad de pasajeros: cuatro (4)." data-en="Passenger capacity: four (4).">Capacidad de pasajeros: cuatro (4).</li>
+                                            <li class="tr" data-es="Velocidad de crucero: 115 KTS." data-en="Cruising speed: 115 KTS.">Velocidad de crucero: 115 KTS.</li>
                                             <li class="tr" data-es="Autonomía Máxima: 2:30 Hr." data-en="Maximum Autonomy: 2:30 Hr.">Autonomía Máxima: 2:30 Hr.</li>
-                                            <li class="tr" data-es="Tanque Auxiliar: 21 US Gal." data-en="Auxiliary Tank: 21 US Gal.">Tanque Auxiliar: 21 US Gal.</li>
-                                            <li>Motor RR 250 C20R1 (450 Hp)</li>
-                                            <li class="tr" data-es="Techo Máximo: 16.000 Pies" data-en="Max Ceiling: 16,000 Feet">Techo Máximo: 16.000 Pies</li>
+                                            <li class="tr" data-es="Tanque Auxiliar de 21 US Gal." data-en="Auxiliary Tank of 21 US Gal.">Tanque Auxiliar de 21 US Gal.</li>
+                                            <li>Motor RR 250 C20R1 (450 Hp).</li>
+                                            <li class="tr" data-es="Techo Máximo de Servicio: 16.000 Pies." data-en="Max Ceiling: 16,000 Feet.">Techo Máximo de Servicio: 16.000 Pies.</li>
                                         </ul>
                                     </div>
                                     <div>
-                                        <h4 class="text-brand-red font-bold uppercase mb-2 tr" data-es="En Configuración de Carga:" data-en="In Cargo Configuration:">En Configuración de Carga:</h4>
-                                        <ul class="list-disc list-inside space-y-1">
+                                        <h4 class="text-blue-400 font-bold uppercase mb-2 tr" data-es="En Configuración de Carga:" data-en="In Cargo Configuration:">En Configuración de Carga:</h4>
+                                        <ul class="list-disc list-inside space-y-1 pl-2">
                                             <li class="tr" data-es="Externa: 450 Kg." data-en="External: 450 Kg.">Externa: 450 Kg.</li>
                                             <li class="tr" data-es="Interna: 500 Kg." data-en="Internal: 500 Kg.">Interna: 500 Kg.</li>
                                             <li class="tr" data-es="Autonomía en carga: 2:30 Hr." data-en="Cargo Autonomy: 2:30 Hr.">Autonomía en carga: 2:30 Hr.</li>
@@ -556,23 +599,23 @@
 
                         <div class="bg-[#1c1f2e] border border-white/10 rounded-xl overflow-hidden shadow-2xl flex flex-col md:flex-row">
                             <div class="p-6 md:p-8 flex-1">
-                                <h3 class="text-2xl font-bold text-white mb-4 border-b border-brand-red/30 pb-2 tr" data-es="Helicóptero MD501 (Alto Rendimiento)" data-en="MD501 Helicopter (High Performance)">Helicóptero MD501 (Alto Rendimiento)</h3>
+                                <h3 class="text-2xl font-bold text-white mb-4 border-b border-blue-500/30 pb-2 tr" data-es="Helicóptero MD501 (Alto Rendimiento)" data-en="MD501 Helicopter (High Performance)">Helicóptero MD501 (Alto Rendimiento)</h3>
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-gray-300">
                                     <div>
-                                        <h4 class="text-brand-red font-bold uppercase mb-2 tr" data-es="Características Técnicas:" data-en="Technical Characteristics:">Características Técnicas:</h4>
-                                        <ul class="list-disc list-inside space-y-1">
+                                        <h4 class="text-blue-400 font-bold uppercase mb-2 tr" data-es="Características Técnicas:" data-en="Technical Characteristics:">Características Técnicas:</h4>
+                                        <ul class="list-disc list-inside space-y-1 pl-2">
                                             <li>Fabricante: MD Helicopters Inc.</li>
-                                            <li class="tr" data-es="Capacidad de pasajeros: 4" data-en="Passenger capacity: 4">Capacidad de pasajeros: 4</li>
-                                            <li class="tr" data-es="Velocidad de crucero: 125 KTS" data-en="Cruising speed: 125 KTS">Velocidad de crucero: 125 KTS</li>
+                                            <li class="tr" data-es="Capacidad de pasajeros: cuatro (4)." data-en="Passenger capacity: four (4).">Capacidad de pasajeros: cuatro (4).</li>
+                                            <li class="tr" data-es="Velocidad de crucero: 125 KTS." data-en="Cruising speed: 125 KTS.">Velocidad de crucero: 125 KTS.</li>
                                             <li class="tr" data-es="Autonomía Máxima: 3:00 Hr." data-en="Maximum Autonomy: 3:00 Hr.">Autonomía Máxima: 3:00 Hr.</li>
-                                            <li class="tr" data-es="Tanque Auxiliar: 52 US Gal." data-en="Auxiliary Tank: 52 US Gal.">Tanque Auxiliar: 52 US Gal.</li>
-                                            <li>Motor (1): RR 250 C30 (650 Hp)</li>
-                                            <li class="tr" data-es="Techo Máximo: 22.000 Pies" data-en="Max Ceiling: 22,000 Feet">Techo Máximo: 22.000 Pies</li>
+                                            <li class="tr" data-es="Tanque Auxiliar de Combustible 52 US Gal." data-en="Auxiliary Fuel Tank 52 US Gal.">Tanque Auxiliar de Combustible 52 US Gal.</li>
+                                            <li>Motor (1): RR 250 C30 (650 Hp).</li>
+                                            <li class="tr" data-es="Techo Máximo de Servicio: 22.000 Pies." data-en="Max Ceiling: 22,000 Feet.">Techo Máximo de Servicio: 22.000 Pies.</li>
                                         </ul>
                                     </div>
                                     <div>
-                                        <h4 class="text-brand-red font-bold uppercase mb-2 tr" data-es="En Configuración de Carga:" data-en="In Cargo Configuration:">En Configuración de Carga:</h4>
-                                        <ul class="list-disc list-inside space-y-1">
+                                        <h4 class="text-blue-400 font-bold uppercase mb-2 tr" data-es="En Configuración de Carga:" data-en="In Cargo Configuration:">En Configuración de Carga:</h4>
+                                        <ul class="list-disc list-inside space-y-1 pl-2">
                                             <li class="tr" data-es="Externa: 650 Kg." data-en="External: 650 Kg.">Externa: 650 Kg.</li>
                                             <li class="tr" data-es="Interna: 500 Kg." data-en="Internal: 500 Kg.">Interna: 500 Kg.</li>
                                             <li class="tr" data-es="Autonomía en carga: 1:30 Hr." data-en="Cargo Autonomy: 1:30 Hr.">Autonomía en carga: 1:30 Hr.</li>
@@ -584,23 +627,23 @@
 
                         <div class="bg-[#1c1f2e] border border-white/10 rounded-xl overflow-hidden shadow-2xl flex flex-col md:flex-row">
                             <div class="p-6 md:p-8 flex-1">
-                                <h3 class="text-2xl font-bold text-white mb-4 border-b border-brand-red/30 pb-2 tr" data-es="Helicóptero MD501 (Sistema NOTAR)" data-en="MD501 Helicopter (NOTAR System)">Helicóptero MD501 (Sistema NOTAR)</h3>
+                                <h3 class="text-2xl font-bold text-white mb-4 border-b border-blue-500/30 pb-2 tr" data-es="Helicóptero MD501 (Sistema NOTAR)" data-en="MD501 Helicopter (NOTAR System)">Helicóptero MD501 (Sistema NOTAR)</h3>
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-gray-300">
                                     <div>
-                                        <h4 class="text-brand-red font-bold uppercase mb-2 tr" data-es="Características Técnicas:" data-en="Technical Characteristics:">Características Técnicas:</h4>
-                                        <ul class="list-disc list-inside space-y-1">
+                                        <h4 class="text-blue-400 font-bold uppercase mb-2 tr" data-es="Características Técnicas:" data-en="Technical Characteristics:">Características Técnicas:</h4>
+                                        <ul class="list-disc list-inside space-y-1 pl-2">
                                             <li>Fabricante: MD Helicopters Inc.</li>
-                                            <li class="tr" data-es="Capacidad de pasajeros: 6" data-en="Passenger capacity: 6">Capacidad de pasajeros: 6</li>
-                                            <li class="tr" data-es="Velocidad de crucero: 125 KTS" data-en="Cruising speed: 125 KTS">Velocidad de crucero: 125 KTS</li>
+                                            <li class="tr" data-es="Capacidad de pasajeros: seis (6)." data-en="Passenger capacity: six (6).">Capacidad de pasajeros: seis (6).</li>
+                                            <li class="tr" data-es="Velocidad de crucero: 125 KTS." data-en="Cruising speed: 125 KTS.">Velocidad de crucero: 125 KTS.</li>
                                             <li class="tr" data-es="Autonomía Máxima: 3:00 Hr." data-en="Maximum Autonomy: 3:00 Hr.">Autonomía Máxima: 3:00 Hr.</li>
                                         </ul>
                                     </div>
                                     <div>
                                         <h4 class="text-transparent font-bold uppercase mb-2 select-none">.</h4>
-                                        <ul class="list-disc list-inside space-y-1">
-                                            <li>Motores (2): PWC 206 (620 Hp)</li>
-                                            <li class="tr" data-es="Techo Máximo: 16.000 Pies" data-en="Max Ceiling: 16,000 Feet">Techo Máximo: 16.000 Pies</li>
-                                            <li class="text-brand-red font-bold tr" data-es="Sistema Antitorque: NOTAR (Sin rotor de cola)" data-en="Anti-torque System: NOTAR (No tail rotor)">Sistema Antitorque: NOTAR (Sin rotor de cola)</li>
+                                        <ul class="list-disc list-inside space-y-1 pl-2">
+                                            <li>Motores 2: PWC 206 (620 Hp).</li>
+                                            <li class="tr" data-es="Techo Máximo de Servicio: 16.000 Pies." data-en="Max Ceiling: 16,000 Feet.">Techo Máximo de Servicio: 16.000 Pies.</li>
+                                            <li class="text-blue-400 font-bold tr" data-es="Sistema Antitorque: NOTAR (Sin rotor de cola)" data-en="Anti-torque System: NOTAR (No tail rotor)">Sistema Antitorque: NOTAR (Sin rotor de cola)</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -611,7 +654,7 @@
 
                 <div id="tab-flota" class="servicio-tab-content hidden">
                     <h2 class="text-3xl font-black text-white uppercase mb-2 tr" data-es="Nuestra Flota Operativa" data-en="Our Operational Fleet">Nuestra Flota Operativa</h2>
-                    <p class="text-brand-red font-bold uppercase tracking-widest text-xs mb-8 tr" data-es="Resumen General" data-en="General Overview">Resumen General</p>
+                    <p class="text-blue-400 font-bold uppercase tracking-widest text-xs mb-8 tr" data-es="Resumen General" data-en="General Overview">Resumen General</p>
                     
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
                         <div class="bg-[#1c1f2e] rounded-xl overflow-hidden shadow-lg border border-white/5 flex flex-col">
@@ -621,18 +664,18 @@
                                     <h4 class="text-xl font-bold uppercase text-white mb-2 tr" data-es="Ala Fija" data-en="Fixed Wing">Ala Fija</h4>
                                     <p class="text-xs text-gray-400 mb-4 tr" data-es="5 Configuraciones Metro III y 23" data-en="5 Metro III & 23 Configurations">5 Configuraciones Metro III y 23</p>
                                 </div>
-                                <button onclick="activateTab('tab-fija')" class="text-brand-red text-sm font-bold uppercase hover:text-white transition tr" data-es="Ver Especificaciones" data-en="View Specifications">Ver Especificaciones</button>
+                                <button onclick="activateTab('tab-fija')" class="text-blue-400 text-sm font-bold uppercase hover:text-white transition tr" data-es="Ver Especificaciones" data-en="View Specifications">Ver Especificaciones</button>
                             </div>
                         </div>
                         
                         <div class="bg-[#1c1f2e] rounded-xl overflow-hidden shadow-lg border border-white/5 flex flex-col">
-                            <img src="https://www.helitec-main.com/images/fotos/1heli.jpg" class="w-full h-48 object-cover" onerror="this.src='images/galeria/Helicoptero_1.jpg'">
+                            <img src="https://www.helitec-main.com/images/fotos/1heli.jpg" class="w-full h-48 object-cover" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/MD_Helicopters_MD500E_N500KL.jpg/800px-MD_Helicopters_MD500E_N500KL.jpg'">
                             <div class="p-6 flex-1 flex flex-col justify-between">
                                 <div>
                                     <h4 class="text-xl font-bold uppercase text-white mb-2 tr" data-es="Ala Rotatoria" data-en="Rotary Wing">Ala Rotatoria</h4>
                                     <p class="text-xs text-gray-400 mb-4 tr" data-es="Helicópteros MD501" data-en="MD501 Helicopters">Helicópteros MD501</p>
                                 </div>
-                                <button onclick="activateTab('tab-rotatoria')" class="text-brand-red text-sm font-bold uppercase hover:text-white transition tr" data-es="Ver Especificaciones" data-en="View Specifications">Ver Especificaciones</button>
+                                <button onclick="activateTab('tab-rotatoria')" class="text-blue-400 text-sm font-bold uppercase hover:text-white transition tr" data-es="Ver Especificaciones" data-en="View Specifications">Ver Especificaciones</button>
                             </div>
                         </div>
 
@@ -643,7 +686,7 @@
                                     <h4 class="text-xl font-bold uppercase text-white mb-2 tr" data-es="Aeromédico" data-en="Aeromedical">Aeromédico</h4>
                                     <p class="text-xs text-gray-400 mb-4 tr" data-es="Cabinas equipadas Spectrum" data-en="Spectrum equipped cabins">Cabinas equipadas Spectrum</p>
                                 </div>
-                                <button onclick="activateTab('tab-aeromedico')" class="text-brand-red text-sm font-bold uppercase hover:text-white transition tr" data-es="Ver Especificaciones" data-en="View Specifications">Ver Especificaciones</button>
+                                <button onclick="activateTab('tab-aeromedico')" class="text-blue-400 text-sm font-bold uppercase hover:text-white transition tr" data-es="Ver Especificaciones" data-en="View Specifications">Ver Especificaciones</button>
                             </div>
                         </div>
                     </div>
@@ -661,7 +704,6 @@
     </footer>
 
     <script>
-        // LÓGICA DE TABS DINÁMICOS
         function activateTab(tabId) {
             document.querySelectorAll('.servicio-tab-content').forEach(el => {
                 el.classList.add('hidden');
@@ -669,7 +711,7 @@
             });
             
             document.querySelectorAll('.tab-btn').forEach(el => {
-                el.classList.remove('active', 'bg-brand-red', 'text-white', 'border-brand-red', 'font-bold');
+                el.classList.remove('active', 'bg-blue-600', 'text-white', 'border-blue-600', 'font-bold');
                 el.classList.add('text-gray-400');
             });
 
@@ -682,7 +724,7 @@
             const activeBtns = document.querySelectorAll(`.tab-btn[data-target="${tabId}"]`);
             activeBtns.forEach(btn => {
                 btn.classList.remove('text-gray-400');
-                btn.classList.add('active', 'bg-brand-red', 'text-white', 'border-brand-red', 'font-bold');
+                btn.classList.add('active', 'bg-blue-600', 'text-white', 'border-blue-600', 'font-bold');
             });
 
             if(window.innerWidth < 1024) {
@@ -713,7 +755,6 @@
             }
         });
 
-        // LÓGICA DEL MENÚ LATERAL MÓVIL
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const closeMenuBtn = document.getElementById('close-menu-btn');
         const menuPanel = document.getElementById('mobile-menu-panel');
@@ -729,7 +770,6 @@
             });
         }
 
-        // FUNCIÓN TRADUCTORA
         let currentLang = 'es';
         function toggleLanguage() {
             currentLang = currentLang === 'es' ? 'en' : 'es';
