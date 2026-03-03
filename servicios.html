@@ -1,110 +1,549 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" style="scroll-behavior: smooth;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servicios - Aerocentro</title>
+    <title>Aerocentro Vuelos - Servicios</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Montserrat', 'sans-serif'] },
-                    colors: { brand: { blue: '#023A78', dark: '#383d51', darker: '#1c1f2e', red: '#8B1E1E' } }
+                    fontFamily: { sans: ['Montserrat', 'sans-serif'], serif: ['Georgia', 'serif'] },
+                    colors: {
+                        brand: { blue: '#023A78', dark: '#383d51', darker: '#1c1f2e', red: '#8B1E1E', whatsapp: '#25D366' }
+                    }
                 }
             }
         }
     </script>
-</head>
-<body class="bg-brand-darker font-sans text-white">
 
-    <nav class="p-6 border-b border-white/10 flex justify-between items-center bg-brand-darker sticky top-0 z-50">
-        <div class="flex items-center gap-2">
-            <div class="h-8 w-12 border border-white flex items-center justify-center">
-                <span class="text-[8px] font-bold">LOGO</span>
+    <style>
+        /* TRANSICIONES */
+        .block-reveal { opacity: 0; transform: translateY(60px); transition: opacity 1.2s ease-out, transform 1.2s cubic-bezier(0.25, 1, 0.5, 1); }
+        .block-reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+        /* FRANJAS LATERALES */
+        .stripe-left { position: absolute; left: 0; top: 0; bottom: 0; width: 80px; background-color: #8B1E1E; z-index: 20; }
+        .stripe-right { position: absolute; right: 0; top: 0; bottom: 0; width: 80px; background-color: #023A78; z-index: 20; }
+        @media (max-width: 768px) { .stripe-left, .stripe-right { width: 15px; } }
+
+        /* HEADER FIJO */
+        #sticky-nav { transition: background-color 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease; z-index: 50; }
+        .nav-scrolled { background-color: #1c1f2e; padding-top: 5px !important; padding-bottom: 10px !important; box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
+
+        /* HERO GRID */
+        .hero-grid { display: grid; grid-template-columns: 1fr auto 1fr; grid-template-rows: auto auto; width: 100%; max-width: 1300px; margin: 0 auto; position: relative; z-index: 50; gap: 10px; transition: gap 0.4s; }
+        .nav-scrolled .hero-grid { gap: 2px; }
+
+        .deco-line { width: 100%; height: 1px; background-color: rgba(255,255,255,0.6); }
+        .line-wrapper { display: flex; align-items: center; width: 100%; }
+        
+        .logo-wrapper { display: flex; align-items: center; justify-content: center; gap: 15px; padding: 0 20px; transition: all 0.3s; }
+        .logo-box { height: 60px; width: 110px; border: 2px solid white; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
+        .nav-scrolled .logo-box { height: 35px; width: 65px; border-width: 1px; }
+        
+        .logo-box-text { color: white; font-weight: bold; letter-spacing: 1px; font-size: 11px; text-align: center; line-height: 1.2; transition: all 0.3s; }
+        .nav-scrolled .logo-box-text { font-size: 8px; }
+        
+        .logo-text { display: flex; flex-direction: column; text-align: left; line-height: 1.1; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.5); transition: transform 0.3s; transform-origin: left center; }
+        .nav-scrolled .logo-text { transform: scale(0.85); }
+        
+        .menu-row { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(12, 1fr); padding-top: 0; align-items: center; }
+        .menu-item { color: white; font-size: 17px; font-weight: 500; cursor: pointer; transition: all 0.3s ease; margin-top: 5px; padding: 8px 16px; border: 1px solid transparent; border-radius: 50px; display: inline-block; } 
+        .menu-item:hover { background-color: white; color: black; transform: scale(1.1); box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        .nav-scrolled .menu-item { font-size: 14px; font-weight: 500; padding: 2px 12px; margin-top: 0; }
+        
+        /* BOTÓN PRESUPUESTO EN HEADER */
+        .btn-presupuesto { border: 2px solid #8B1E1E !important; box-shadow: 0 4px 10px rgba(139, 30, 30, 0.3); }
+        .btn-presupuesto:hover { background-color: #8B1E1E !important; color: white !important; }
+
+        /* MENU DESPLEGABLE SERVICIOS */
+        .pos-servicios { position: relative; }
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background-color: #1c1f2e;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 10px 0;
+            width: 260px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            z-index: 100;
+        }
+        .pos-servicios:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+        .dropdown-header {
+            display: block;
+            padding: 10px 20px 4px 20px;
+            color: #9ca3af;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-align: left;
+        }
+        .dropdown-divider {
+            height: 1px;
+            background-color: rgba(255,255,255,0.2);
+            margin: 8px 0;
+        }
+        .dropdown-item {
+            display: block;
+            padding: 8px 20px;
+            color: white;
+            font-size: 14px;
+            text-align: left;
+            transition: background 0.2s;
+            text-decoration: none;
+        }
+        .dropdown-item:hover {
+            background-color: #023A78;
+        }
+
+        /* REORGANIZACIÓN HEADER GRIDS (Escritorio) */
+        .pos-legal { grid-column: 1 / 3; text-align: left; padding-left: 20px; }
+        .pos-nosotros { grid-column: 3 / 6; text-align: left; }
+        .pos-servicios { grid-column: 8 / 10; text-align: right; }
+        .pos-presupuesto { grid-column: 10 / 13; text-align: right; padding-right: 20px; }
+
+        @media (min-width: 1024px) {
+            #mobile-menu-btn, #close-menu-btn { display: none !important; }
+        }
+
+        /* CONFIGURACIONES ESPECÍFICAS Y EXCLUSIVAS PARA CELULAR */
+        @media (max-width: 1023px) {
+            #sticky-nav {
+                background-color: #1c1f2e !important;
+                padding-top: 10px !important;
+                padding-bottom: 10px !important;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.5) !important;
+            }
+
+            .hero-grid { 
+                display: grid !important; 
+                grid-template-columns: 50px 1fr 50px !important; 
+                align-items: center !important; 
+                padding: 5px 15px !important; 
+                width: 100%; gap: 0 !important;
+            }
+            .line-wrapper { display: none; }
+            
+            #mobile-menu-btn { 
+                position: static !important; 
+                display: flex; align-items: center; justify-content: flex-start;
+                font-size: 32px !important; 
+                color: white; cursor: pointer; z-index: 60; background: none; border: none; 
+            }
+            #close-menu-btn { display: block; position: absolute; top: 20px; right: 20px; font-size: 32px; color: white; background: none; border: none; cursor: pointer; }
+            
+            .logo-wrapper { grid-column: 2; display: flex; justify-content: center; align-items: center; padding: 0; gap: 10px; width: 100%; height: 40px; }
+            .logo-box { height: 38px !important; width: 65px !important; border-width: 1px; margin: 0; transition: none !important; }
+            .logo-box-text { font-size: 8px !important; transition: none !important; }
+            
+            .logo-text { 
+                height: 38px !important; 
+                display: flex !important; 
+                flex-direction: column !important; 
+                justify-content: center !important; 
+                gap: 2px !important; 
+                transform: none !important; 
+                transition: none !important;
+            }
+            .logo-text span { line-height: 1 !important; }
+            .logo-text span:first-child { font-size: 1.05rem !important; }
+            .logo-text span:last-child { font-size: 0.95rem !important; }
+
+            .menu-row { 
+                position: fixed; top: 0; left: -100%; width: 260px; height: 100vh; 
+                background: #1c1f2e; display: flex !important; flex-direction: column !important; 
+                justify-content: flex-start !important; align-items: flex-start !important; 
+                padding: 80px 20px 20px 20px !important; gap: 10px !important; 
+                transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 5px 0 20px rgba(0,0,0,0.7); z-index: 999; margin: 0; overflow-y: auto;
+            }
+            .menu-row.menu-open { left: 0; }
+            
+            .menu-row > div { width: 100%; text-align: left; padding: 0 !important; }
+            .menu-item { 
+                background: transparent !important; border-radius: 0 !important; padding: 15px 10px !important; 
+                font-size: 16px !important; text-align: left; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.05) !important; 
+                display: block; box-shadow: none !important; border-top: none !important; border-left: none !important; border-right: none !important;
+            }
+            .btn-presupuesto { border-bottom: 1px solid #8B1E1E !important; color: #ff6b6b !important; font-weight: bold; }
+
+            .dropdown-menu {
+                position: relative;
+                top: 0;
+                left: 0;
+                transform: none !important;
+                width: 100%;
+                background: rgba(0,0,0,0.2);
+                box-shadow: none;
+                border: none;
+                padding: 0;
+                margin-top: 0;
+                display: none;
+                opacity: 1;
+                visibility: visible;
+                border-radius: 0;
+            }
+            .pos-servicios:hover .dropdown-menu,
+            .pos-servicios:focus-within .dropdown-menu {
+                display: block;
+            }
+            .dropdown-header {
+                display: block;
+                padding: 15px 10px 5px 20px;
+                color: #9ca3af;
+                font-size: 12px;
+                font-weight: 700;
+                text-transform: uppercase;
+                text-align: left;
+            }
+            .dropdown-divider {
+                height: 1px;
+                background-color: rgba(255,255,255,0.2);
+                margin: 4px 0;
+            }
+            .dropdown-item {
+                text-align: left;
+                padding: 10px 10px 10px 35px; 
+                border-bottom: 1px solid rgba(255,255,255,0.05);
+                font-size: 14px;
+            }
+        }
+
+        /* ========================================= */
+        /* BOTONES FLOTANTES: DINÁMICOS EN CELULAR   */
+        /* ========================================= */
+        .fixed-btn-container { position: fixed; bottom: 20px; right: 20px; z-index: 9999; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; transition: all 0.4s ease; transform-origin: bottom right; }
+        .float-btn { 
+            display: flex; align-items: center; justify-content: center; gap: 10px; 
+            width: 140px; 
+            padding: 12px 0; border-radius: 50px; color: white; font-weight: bold; font-size: 14px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s; text-decoration: none; 
+            will-change: width, padding, font-size;
+        }
+        .float-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.4); }
+        .hide-fixed-btns { opacity: 0; visibility: hidden; pointer-events: none; transform: scale(0.8) translateY(20px); }
+        
+        .lang-btn { position: fixed; bottom: 20px; left: 20px; z-index: 9999; display: flex; align-items: center; justify-content: center; gap: 8px; width: auto; min-width: 48px; height: 48px; padding: 0 16px; background-color: #383d51; border: none; border-radius: 50px; color: white; font-size: 14px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s; will-change: min-width, height, font-size, padding; }
+        .lang-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.4); }
+
+        @media (max-width: 600px) {
+            .fixed-btn-container { right: 15px; bottom: 12px; gap: 6px; transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
+            .float-btn { width: 160px !important; font-size: 14px !important; padding: 12px 0 !important; gap: 8px !important; }
+            .lang-btn { left: 15px; bottom: 12px; min-width: 75px !important; height: 44px !important; font-size: 14px !important; padding: 0 14px !important; gap: 6px !important; transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
+            .lang-btn i { font-size: 18px !important; transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
+
+            body.is-scrolled .fixed-btn-container { bottom: 15px; gap: 8px; }
+            body.is-scrolled .float-btn { width: 100px !important; font-size: 11px !important; padding: 8px 0 !important; gap: 6px !important; }
+            body.is-scrolled .lang-btn { bottom: 15px; min-width: 38px !important; height: 38px !important; font-size: 10px !important; padding: 0 10px !important; gap: 4px !important; }
+            body.is-scrolled .lang-btn i { font-size: 14px !important; }
+        }
+
+        body.menu-is-open #floating-buttons, 
+        body.menu-is-open .lang-btn {
+            display: none !important;
+        }
+
+    </style>
+</head>
+<body class="bg-brand-darker font-sans text-gray-700">
+
+    <div class="fixed-btn-container" id="floating-buttons">
+        <a href="tel:+582129590401" class="float-btn bg-brand-blue"><i class="fa fa-phone text-lg"></i> <span class="hidden md:inline tr" data-es="Contáctanos" data-en="Contact us">Contáctanos</span><span class="md:hidden tr" data-es="Llamar" data-en="Call">Llamar</span></a>
+        <a href="https://wa.me/584140000000" class="float-btn bg-[#25D366]"><i class="fa fa-whatsapp text-lg"></i> <span class="hidden md:inline tr" data-es="Escríbenos" data-en="Message us">Escríbenos</span><span class="md:hidden tr" data-es="Chat" data-en="Chat">Chat</span></a>
+    </div>
+
+    <button class="lang-btn" onclick="toggleLanguage()" title="Cambiar Idioma">
+        <i class="fa fa-globe text-lg"></i>
+        <span id="lang-text">EN</span>
+    </button>
+
+    <nav id="sticky-nav" class="fixed top-0 w-full z-50 pt-2 pb-2 md:pt-4 md:pb-4">
+        <div class="hero-grid relative">
+            <button id="mobile-menu-btn" title="Menú">
+                <i class="fa fa-bars"></i>
+            </button>
+
+            <div class="line-wrapper"><div class="deco-line"></div></div>
+            <div class="logo-wrapper">
+                <div class="logo-box"><span class="logo-box-text">LOGO<br>NUEVO</span></div>
+                <div class="logo-text">
+                    <span class="font-bold text-xl uppercase tracking-wider text-white">Aerocentro</span>
+                    <span class="font-light text-xl tracking-wider text-white">Vuelos</span>
+                </div>
             </div>
-            <span class="font-bold uppercase tracking-widest text-sm">Aerocentro</span>
+            
+            <div class="md:hidden w-[50px]"></div>
+            
+            <div class="line-wrapper"><div class="deco-line"></div></div>
+            
+            <div class="menu-row" id="mobile-menu-panel">
+                <button id="close-menu-btn" title="Cerrar Menú">
+                    <i class="fa fa-times"></i>
+                </button>
+                <div class="pos-legal"><a href="legal.html" class="menu-item tr" data-es="Legal" data-en="Legal">Legal</a></div>
+                <div class="pos-nosotros"><a href="nosotros.html" class="menu-item tr" data-es="Nosotros" data-en="About Us">Nosotros</a></div>
+                
+                <div class="pos-servicios relative">
+                    <a href="servicios.html" class="menu-item tr" data-es="Servicios <i class='fa fa-angle-down ml-1'></i>" data-en="Services <i class='fa fa-angle-down ml-1'></i>">Servicios <i class="fa fa-angle-down ml-1"></i></a>
+                    <div class="dropdown-menu">
+                        <span class="dropdown-header tr" data-es="Según trabajo:" data-en="By work:">Según trabajo:</span>
+                        <a href="#trabajo" class="dropdown-item tr" data-es="Vuelos Charter" data-en="Charter Flights">Vuelos Charter</a>
+                        <a href="#trabajo" class="dropdown-item tr" data-es="Transporte de carga" data-en="Cargo Transport">Transporte de carga</a>
+                        <a href="#trabajo" class="dropdown-item tr" data-es="Traslados aeromédicos" data-en="Aeromedical Transfers">Traslados aeromédicos</a>
+                        
+                        <div class="dropdown-divider"></div>
+                        
+                        <span class="dropdown-header tr" data-es="Según modelo:" data-en="By model:">Según modelo:</span>
+                        <a href="#modelo" class="dropdown-item tr" data-es="Ala fija (Aviones)" data-en="Fixed wing (Airplanes)">Ala fija (Aviones)</a>
+                        <a href="#modelo" class="dropdown-item tr" data-es="Ala rotatoria (Helicóp.)" data-en="Rotary wing (Helicopters)">Ala rotatoria (Helicóp.)</a>
+                        
+                        <div class="dropdown-divider"></div>
+                        
+                        <a href="#flota" class="dropdown-item tr font-bold" data-es="Nuestra flota" data-en="Our Fleet">Nuestra flota</a>
+                    </div>
+                </div>
+
+                <div class="pos-presupuesto"><a href="contacto.html" class="menu-item btn-presupuesto tr" data-es="Solicitar Presupuesto" data-en="Request Quote">Solicitar Presupuesto</a></div>
+            </div>
         </div>
-        <a href="index.html" class="text-xs uppercase tracking-widest opacity-70 hover:opacity-100 transition">← Inicio</a>
     </nav>
 
-    <header class="py-16 bg-gradient-to-b from-brand-dark to-brand-darker px-6 text-center">
-        <h1 class="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-4">Nuestros Servicios</h1>
-        <p class="text-gray-400 max-w-2xl mx-auto">Excelencia operativa en cada despegue. Soluciones integrales para transporte aéreo especializado.</p>
-    </header>
+    <section class="relative w-full h-[40vh] min-h-[300px] md:min-h-[400px] bg-black overflow-hidden flex flex-col justify-center items-center pt-20">
+        <img src="https://www.aeroambulanciasilva.com/web/image/51242-f242b5bc/Gemini_Generated_Image_opxoj0opxoj0opxo.png" class="absolute inset-0 w-full h-full object-cover opacity-40">
+        <div class="relative z-10 text-center px-4 block-reveal">
+            <h1 class="text-4xl md:text-6xl font-black uppercase tracking-[0.2em] text-white tr" data-es="Nuestros Servicios" data-en="Our Services">Nuestros Servicios</h1>
+            <div class="w-24 h-1 bg-brand-red mx-auto mt-6"></div>
+        </div>
+    </section>
 
-    <main class="container mx-auto px-6 py-12 space-y-24">
-        
-        <section class="flex flex-col md:flex-row items-center gap-12">
-            <div class="w-full md:w-1/2">
-                <img src="https://www.aeroambulanciasilva.com/web/image/51213-193cf1c1/Archivo_003.PNG" alt="Ambulancia Aérea" class="rounded-lg shadow-2xl border border-white/10">
+    <div class="bg-[#1c1f2e] sticky top-[60px] md:top-[80px] z-40 border-b border-white/10 shadow-lg hidden md:block">
+        <div class="container mx-auto px-4 flex justify-center gap-8 md:gap-16 py-4 text-xs md:text-sm font-bold text-white uppercase tracking-widest">
+            <a href="#trabajo" class="hover:text-brand-red transition whitespace-nowrap tr" data-es="Según Trabajo" data-en="By Work">Según Trabajo</a>
+            <a href="#modelo" class="hover:text-brand-red transition whitespace-nowrap tr" data-es="Según Modelo" data-en="By Model">Según Modelo</a>
+            <a href="#flota" class="hover:text-brand-red transition whitespace-nowrap tr" data-es="Nuestra Flota" data-en="Our Fleet">Nuestra Flota</a>
+        </div>
+    </div>
+
+    <section id="trabajo" class="py-16 md:py-24 bg-brand-dark block-reveal pt-24 md:pt-32 -mt-12 md:-mt-16">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-black uppercase tracking-widest text-white tr" data-es="Según Trabajo" data-en="By Work">Según Trabajo</h2>
+                <div class="w-16 h-1 bg-white/20 mx-auto mt-4 mb-6"></div>
+                <p class="max-w-2xl mx-auto text-gray-300 text-sm md:text-base tr" data-es="Brindamos soluciones aéreas a medida, diseñadas para garantizar eficiencia, confort y seguridad en cada una de sus operaciones." data-en="We provide tailor-made aerial solutions, designed to ensure efficiency, comfort, and safety in every operation.">Brindamos soluciones aéreas a medida, diseñadas para garantizar eficiencia, confort y seguridad en cada una de sus operaciones.</p>
             </div>
-            <div class="w-full md:w-1/2">
-                <div class="flex items-center gap-4 mb-4 text-brand-red">
-                    <i class="fa fa-heartbeat text-3xl"></i>
-                    <h2 class="text-3xl font-bold uppercase">Traslados Aeromédicos</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="bg-[#252839] rounded-xl overflow-hidden shadow-2xl border border-white/5 flex flex-col hover:transform hover:-translate-y-2 transition-all duration-300">
+                    <img src="https://www.aeroambulanciasilva.com/web/image/51234-b4cce626/3.TURBINA.JPG" class="w-full h-56 object-cover opacity-80">
+                    <div class="p-8 flex-1 flex flex-col items-center text-center">
+                        <i class="fa fa-plane text-4xl text-brand-red mb-4"></i>
+                        <h3 class="text-xl font-bold uppercase text-white mb-3 tr" data-es="Vuelos Charter" data-en="Charter Flights">Vuelos Charter</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed tr" data-es="Vuelos charter privados nacionales e internacionales. Optimizamos el tiempo de ejecutivos y corporaciones con horarios flexibles, además de coordinar viajes urgentes y traslados de grupos privados con estricta confidencialidad." data-en="Private national and international charter flights. We optimize the time of executives and corporations with flexible schedules, as well as coordinate urgent trips and private group transfers with strict confidentiality.">Vuelos charter privados nacionales e internacionales...</p>
+                    </div>
                 </div>
-                <p class="text-gray-300 mb-6 leading-relaxed">
-                    Unidades de cuidados intensivos aladas. Contamos con equipos médicos de última generación y personal especializado para el traslado de pacientes críticos a nivel nacional e internacional.
-                </p>
-                <ul class="space-y-2 text-sm text-gray-400">
-                    <li><i class="fa fa-check text-brand-red mr-2"></i> Equipamiento ICU completo.</li>
-                    <li><i class="fa fa-check text-brand-red mr-2"></i> Coordinación cama a cama.</li>
-                    <li><i class="fa fa-check text-brand-red mr-2"></i> Disponibilidad 24/7/365.</li>
-                </ul>
-            </div>
-        </section>
-
-        <section class="flex flex-col md:flex-row-reverse items-center gap-12">
-            <div class="w-full md:w-1/2">
-                <img src="https://www.aeroambulanciasilva.com/web/image/51234-b4cce626/3.TURBINA.JPG" alt="Vuelos Charter" class="rounded-lg shadow-2xl border border-white/10">
-            </div>
-            <div class="w-full md:w-1/2 text-right md:text-left">
-                <div class="flex items-center md:justify-start justify-end gap-4 mb-4 text-brand-blue">
-                    <i class="fa fa-plane text-3xl"></i>
-                    <h2 class="text-3xl font-bold uppercase">Vuelos Charter</h2>
+                
+                <div class="bg-[#252839] rounded-xl overflow-hidden shadow-2xl border border-white/5 flex flex-col hover:transform hover:-translate-y-2 transition-all duration-300">
+                    <img src="https://www.helitec-main.com/images/fotos/2CargaMetro23.PNG" class="w-full h-56 object-cover opacity-80">
+                    <div class="p-8 flex-1 flex flex-col items-center text-center">
+                        <i class="fa fa-cube text-4xl text-brand-red mb-4"></i>
+                        <h3 class="text-xl font-bold uppercase text-white mb-3 tr" data-es="Transporte de Carga" data-en="Cargo Transport">Transporte de Carga</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed tr" data-es="Logística aérea precisa y segura. Transportamos hasta 1.500 Kg en aviones, y realizamos transporte de carga interna (500 Kg) o externa con eslinga (650 Kg) mediante helicópteros, ideal para lugares de difícil acceso." data-en="Precise and secure air logistics. We transport up to 1,500 Kg in airplanes, and perform internal cargo transport (500 Kg) or external with sling (650 Kg) using helicopters, ideal for hard-to-reach locations.">Logística aérea precisa y segura...</p>
+                    </div>
                 </div>
-                <p class="text-gray-300 mb-6 leading-relaxed">
-                    Viajes ejecutivos y de placer con total privacidad y flexibilidad de horarios. Acceda a destinos donde las aerolíneas comerciales no llegan, con un servicio de catering y atención personalizada.
-                </p>
-                <ul class="space-y-2 text-sm text-gray-400 inline-block text-left">
-                    <li><i class="fa fa-check text-brand-blue mr-2"></i> Itinerarios personalizados.</li>
-                    <li><i class="fa fa-check text-brand-blue mr-2"></i> Terminales privadas (FBO).</li>
-                    <li><i class="fa fa-check text-brand-blue mr-2"></i> Flota de aviones y helicópteros.</li>
-                </ul>
-            </div>
-        </section>
-
-        <section class="flex flex-col md:flex-row items-center gap-12">
-            <div class="w-full md:w-1/2">
-                <img src="https://www.helitec-main.com/images/fotos/2CargaMetro23.PNG" alt="Carga" class="rounded-lg shadow-2xl border border-white/10">
-            </div>
-            <div class="w-full md:w-1/2">
-                <div class="flex items-center gap-4 mb-4 text-gray-300">
-                    <i class="fa fa-cube text-3xl"></i>
-                    <h2 class="text-3xl font-bold uppercase">Transporte de Carga</h2>
+                
+                <div class="bg-[#252839] rounded-xl overflow-hidden shadow-2xl border border-white/5 flex flex-col hover:transform hover:-translate-y-2 transition-all duration-300">
+                    <img src="https://www.aeroambulanciasilva.com/web/image/51213-193cf1c1/Archivo_003.PNG" class="w-full h-56 object-cover opacity-80">
+                    <div class="p-8 flex-1 flex flex-col items-center text-center">
+                        <i class="fa fa-heartbeat text-4xl text-brand-red mb-4"></i>
+                        <h3 class="text-xl font-bold uppercase text-white mb-3 tr" data-es="Traslados Aeromédicos" data-en="Aeromedical Transfers">Traslados Aeromédicos</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed tr" data-es="Asistencia inmediata y oportuna. Contamos con aviones presurizados equipados con camillas Spectrum Aeromed certificadas, capaces de trasladar hasta 2 pacientes simultáneos acompañados por paramédicos especializados." data-en="Immediate and timely assistance. We have pressurized aircraft equipped with certified Spectrum Aeromed stretchers, capable of transferring up to 2 patients simultaneously accompanied by specialized paramedics.">Asistencia inmediata y oportuna...</p>
+                    </div>
                 </div>
-                <p class="text-gray-300 mb-6 leading-relaxed">
-                    Soluciones logísticas para carga crítica, repuestos industriales, valores o insumos médicos. Garantizamos una entrega rápida y segura en cualquier aeropuerto.
-                </p>
-                <ul class="space-y-2 text-sm text-gray-400">
-                    <li><i class="fa fa-check text-white mr-2"></i> Manejo de carga peligrosa.</li>
-                    <li><i class="fa fa-check text-white mr-2"></i> Rastreo de envío constante.</li>
-                    <li><i class="fa fa-check text-white mr-2"></i> Despacho inmediato.</li>
-                </ul>
             </div>
-        </section>
+        </div>
+    </section>
 
-    </main>
+    <section id="modelo" class="py-16 md:py-24 bg-brand-darker text-white block-reveal pt-24 md:pt-32 -mt-12 md:-mt-16">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-black uppercase tracking-widest text-white tr" data-es="Según Modelo" data-en="By Model">Según Modelo</h2>
+                <div class="w-16 h-1 bg-brand-red mx-auto mt-4 mb-10"></div>
+            </div>
 
-    <footer class="py-16 text-center border-t border-white/10 bg-brand-darker">
-        <h3 class="text-xl font-bold mb-4">¿NECESITA UNA COTIZACIÓN?</h3>
-        <a href="https://wa.me/584140000000" class="inline-block bg-[#25D366] text-white font-bold py-4 px-8 rounded-full shadow-lg hover:scale-105 transition uppercase text-sm tracking-widest">
-            Contactar ahora
-        </a>
+            <div class="flex flex-col md:flex-row items-center gap-10 lg:gap-16 mb-20">
+                <div class="w-full md:w-1/2">
+                    <div class="relative rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.8)] border border-white/10">
+                        <img src="https://www.aeroambulanciasilva.com/web/image/51234-b4cce626/3.TURBINA.JPG" class="w-full h-72 md:h-96 object-cover opacity-85 hover:scale-105 transition duration-700">
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <h3 class="text-2xl md:text-3xl font-bold uppercase mb-6 text-brand-red flex items-center gap-3 tr" data-es="Ala Fija (Aviones)" data-en="Fixed Wing (Airplanes)"><i class="fa fa-plane"></i> Ala Fija (Aviones)</h3>
+                    <p class="text-gray-300 text-base md:text-lg leading-relaxed mb-6 tr" data-es="Con 34 años de experiencia, operamos la versátil serie de turbohélices Fairchild Swearingen (Metro III, Metro 23 Ejecutivo y Commuter). Sus cabinas presurizadas y potentes motores permiten vuelos de alta velocidad (275 KTS) y gran altitud (25.000 pies), asegurando un traslado ejecutivo, comercial o médico sin contratiempos, con autonomía para viajes directos de hasta 5 horas." data-en="With 34 years of experience, we operate the versatile Fairchild Swearingen turboprop series (Metro III, Metro 23 Executive, and Commuter). Their pressurized cabins and powerful engines allow for high-speed (275 KTS) and high-altitude (25,000 feet) flights, ensuring smooth executive, commercial, or medical transport, with autonomy for direct trips of up to 5 hours.">Con 34 años de experiencia...</p>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row-reverse items-center gap-10 lg:gap-16">
+                <div class="w-full md:w-1/2">
+                    <div class="relative rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.8)] border border-white/10">
+                        <img src="https://www.helitec-main.com/images/fotos/1heli.jpg" class="w-full h-72 md:h-96 object-cover opacity-85 hover:scale-105 transition duration-700" onerror="this.src='https://www.aeroambulanciasilva.com/web/image/51242-f242b5bc/Gemini_Generated_Image_opxoj0opxoj0opxo.png'">
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <h3 class="text-2xl md:text-3xl font-bold uppercase mb-6 text-brand-red flex items-center gap-3 tr" data-es="Ala Rotatoria (Helicópteros)" data-en="Rotary Wing (Helicopters)"><i class="fa fa-paper-plane-o"></i> Ala Rotatoria (Helicópteros)</h3>
+                    <p class="text-gray-300 text-base md:text-lg leading-relaxed mb-6 tr" data-es="Cuando el trabajo exige precisión extrema y los métodos tradicionales no son viables, nuestra flota de MD Helicopters es la solución. Realizamos desde el transporte privado de ejecutivos hasta inspecciones de líneas de alta tensión, apoyo agrícola, filmaciones aéreas y levantamientos topográficos de vanguardia utilizando tecnología láser aerotransportada (LIDAR)." data-en="When the job demands extreme precision and traditional methods are unviable, our fleet of MD Helicopters is the solution. We handle everything from private executive transport to high-voltage line inspections, agricultural support, aerial filming, and cutting-edge topographical surveys using airborne laser technology (LIDAR).">Cuando el trabajo exige precisión extrema...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="flota" class="py-16 md:py-24 bg-[#1a1d2b] text-white block-reveal pt-24 md:pt-32 -mt-12 md:-mt-16">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-black uppercase tracking-widest text-white tr" data-es="Nuestra Flota" data-en="Our Fleet">Nuestra Flota</h2>
+                <div class="w-16 h-1 bg-brand-red mx-auto mt-4 mb-6"></div>
+                <p class="text-gray-400 tr" data-es="Conozca las capacidades técnicas de nuestras aeronaves operativas." data-en="Discover the technical capabilities of our operational aircraft.">Conozca las capacidades técnicas de nuestras aeronaves operativas.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-[#252839] border border-white/5 rounded-xl p-8 hover:border-brand-red transition duration-300 shadow-lg relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-brand-red text-white text-xs font-bold px-3 py-1 rounded-bl-lg">METRO III / 23</div>
+                    <i class="fa fa-plane text-3xl text-gray-500 mb-4 opacity-50"></i>
+                    <h4 class="text-xl font-bold uppercase mb-1">Aviones Turbohélice</h4>
+                    <p class="text-xs text-brand-blue mb-6 font-bold uppercase tracking-wider tr" data-es="Configuración Ejecutiva / Commuter" data-en="Executive / Commuter Configuration">Configuración Ejecutiva / Commuter</p>
+                    <ul class="space-y-4 text-sm text-gray-300">
+                        <li class="flex justify-between border-b border-white/5 pb-2"><span><i class="fa fa-users w-5 text-gray-500"></i> <span class="tr" data-es="Pasajeros" data-en="Passengers">Pasajeros</span></span> <span class="font-bold text-white">6 a 18</span></li>
+                        <li class="flex justify-between border-b border-white/5 pb-2"><span><i class="fa fa-dashboard w-5 text-gray-500"></i> <span class="tr" data-es="Velocidad" data-en="Speed">Velocidad</span></span> <span class="font-bold text-white">265 - 275 KTS</span></li>
+                        <li class="flex justify-between border-b border-white/5 pb-2"><span><i class="fa fa-clock-o w-5 text-gray-500"></i> <span class="tr" data-es="Autonomía" data-en="Autonomy">Autonomía</span></span> <span class="font-bold text-white">5 Horas</span></li>
+                        <li class="flex justify-between border-b border-white/5 pb-2"><span><i class="fa fa-arrow-up w-5 text-gray-500"></i> <span class="tr" data-es="Techo de Vuelo" data-en="Flight Ceiling">Techo de Vuelo</span></span> <span class="font-bold text-white">25.000 Pies</span></li>
+                        <li class="flex justify-between pt-1"><span><i class="fa fa-suitcase w-5 text-gray-500"></i> <span class="tr" data-es="Carga Máx." data-en="Max Cargo">Carga Máx.</span></span> <span class="font-bold text-white">Hasta 1.500 Kg</span></li>
+                    </ul>
+                </div>
+                
+                <div class="bg-[#252839] border border-white/5 rounded-xl p-8 hover:border-brand-red transition duration-300 shadow-lg relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-brand-red text-white text-xs font-bold px-3 py-1 rounded-bl-lg">MD 501 / SERIES</div>
+                    <i class="fa fa-paper-plane-o text-3xl text-gray-500 mb-4 opacity-50"></i>
+                    <h4 class="text-xl font-bold uppercase mb-1">Helicópteros</h4>
+                    <p class="text-xs text-brand-blue mb-6 font-bold uppercase tracking-wider tr" data-es="Carga y Trabajos Especiales" data-en="Cargo and Special Jobs">Carga y Trabajos Especiales</p>
+                    <ul class="space-y-4 text-sm text-gray-300">
+                        <li class="flex justify-between border-b border-white/5 pb-2"><span><i class="fa fa-users w-5 text-gray-500"></i> <span class="tr" data-es="Pasajeros" data-en="Passengers">Pasajeros</span></span> <span class="font-bold text-white">4 a 6</span></li>
+                        <li class="flex justify-between border-b border-white/5 pb-2"><span><i class="fa fa-dashboard w-5 text-gray-500"></i> <span class="tr" data-es="Velocidad" data-en="Speed">Velocidad</span></span> <span class="font-bold text-white">115 - 125 KTS</span></li>
+                        <li class="flex justify-between border-b border-white/5 pb-2"><span><i class="fa fa-clock-o w-5 text-gray-500"></i> <span class="tr" data-es="Autonomía" data-en="Autonomy">Autonomía</span></span> <span class="font-bold text-white">2.5 a 3 Horas</span></li>
+                        <li class="flex justify-between border-b border-white/5 pb-2"><span><i class="fa fa-arrow-up w-5 text-gray-500"></i> <span class="tr" data-es="Techo de Vuelo" data-en="Flight Ceiling">Techo de Vuelo</span></span> <span class="font-bold text-white">16.000 a 22.000 Pies</span></li>
+                        <li class="flex justify-between pt-1"><span><i class="fa fa-link w-5 text-gray-500"></i> <span class="tr" data-es="Carga Externa" data-en="External Cargo">Carga Externa</span></span> <span class="font-bold text-white">Hasta 650 Kg</span></li>
+                    </ul>
+                </div>
+
+                <div class="bg-[#252839] border border-white/5 rounded-xl p-8 hover:border-brand-red transition duration-300 shadow-lg relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-brand-red text-white text-xs font-bold px-3 py-1 rounded-bl-lg">AEROAMBULANCIA</div>
+                    <i class="fa fa-ambulance text-3xl text-gray-500 mb-4 opacity-50"></i>
+                    <h4 class="text-xl font-bold uppercase mb-1">Unidades Médicas</h4>
+                    <p class="text-xs text-brand-blue mb-6 font-bold uppercase tracking-wider tr" data-es="Traslado de Alta Complejidad" data-en="High Complexity Transfer">Traslado de Alta Complejidad</p>
+                    <ul class="space-y-4 text-sm text-gray-300">
+                        <li class="flex justify-between border-b border-white/5 pb-2"><span><i class="fa fa-bed w-5 text-gray-500"></i> <span class="tr" data-es="Pacientes" data-en="Patients">Pacientes</span></span> <span class="font-bold text-white">1 a 2 simultáneos</span></li>
+                        <li class="flex justify-between border-b border-white/5 pb-2"><span><i class="fa fa-user-md w-5 text-gray-500"></i> <span class="tr" data-es="Personal" data-en="Personnel">Personal</span></span> <span class="font-bold text-white">Médico y Paramédico</span></li>
+                        <li class="flex justify-between border-b border-white/5 pb-2"><span><i class="fa fa-medkit w-5 text-gray-500"></i> <span class="tr" data-es="Soporte Vital" data-en="Life Support">Soporte Vital</span></span> <span class="font-bold text-white">Camillas Spectrum</span></li>
+                        <li class="flex justify-between border-b border-white/5 pb-2"><span><i class="fa fa-shield w-5 text-gray-500"></i> <span class="tr" data-es="Seguridad" data-en="Safety">Seguridad</span></span> <span class="font-bold text-white">Cabina sin contaminación</span></li>
+                        <li class="flex justify-between pt-1"><span><i class="fa fa-globe w-5 text-gray-500"></i> <span class="tr" data-es="Cobertura" data-en="Coverage">Cobertura</span></span> <span class="font-bold text-white">Internacional</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center">
+                <a href="contacto.html" class="bg-brand-blue text-white font-bold py-4 px-10 rounded-full shadow-lg hover:bg-blue-600 transition text-sm tracking-widest uppercase inline-block tr" data-es="SOLICITAR UN SERVICIO" data-en="REQUEST A SERVICE">SOLICITAR UN SERVICIO</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#12141E] border-t border-white/10 py-8 text-white text-sm block-reveal">
+        <div class="container mx-auto flex flex-col md:flex-row justify-center items-center gap-4">
+            <p class="opacity-50">© 2026 Aerocentro Vuelos.</p>
+            <div class="logo-box" style="height: 40px; width: 80px; border-width: 1px;"><span class="logo-box-text" style="font-size: 10px;">LOGO<br>NUEVO</span></div>
+        </div>
     </footer>
 
+    <script>
+        // LÓGICA DEL MENÚ LATERAL MÓVIL Y OCULTAR BOTONES
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const menuPanel = document.getElementById('mobile-menu-panel');
+
+        if (mobileMenuBtn && closeMenuBtn && menuPanel) {
+            mobileMenuBtn.addEventListener('click', () => {
+                menuPanel.classList.add('menu-open');
+                document.body.classList.add('menu-is-open'); 
+            });
+            closeMenuBtn.addEventListener('click', () => {
+                menuPanel.classList.remove('menu-open');
+                document.body.classList.remove('menu-is-open'); 
+            });
+            
+            // Cierra el menú móvil al tocar un enlace
+            const menuLinks = menuPanel.querySelectorAll('a[href^="#"]');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    menuPanel.classList.remove('menu-open');
+                    document.body.classList.remove('menu-is-open');
+                });
+            });
+        }
+
+        // FUNCIÓN TRADUCTORA
+        let currentLang = 'es';
+        function toggleLanguage() {
+            currentLang = currentLang === 'es' ? 'en' : 'es';
+            
+            document.getElementById('lang-text').innerText = currentLang === 'es' ? 'EN' : 'ESP';
+
+            document.querySelectorAll('.tr').forEach(el => {
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    if (el.hasAttribute('data-' + currentLang + '-placeholder')) {
+                        el.placeholder = el.getAttribute('data-' + currentLang + '-placeholder');
+                    }
+                } else {
+                    if (el.hasAttribute('data-' + currentLang)) {
+                        el.innerHTML = el.getAttribute('data-' + currentLang);
+                    }
+                }
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const nav = document.getElementById('sticky-nav');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    nav.classList.add('nav-scrolled');
+                    document.body.classList.add('is-scrolled');
+                } else {
+                    nav.classList.remove('nav-scrolled');
+                    document.body.classList.remove('is-scrolled'); 
+                }
+            });
+
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
+            }, { threshold: 0.01 });
+            document.querySelectorAll('.block-reveal').forEach(el => revealObserver.observe(el));
+        });
+    </script>
 </body>
 </html>
