@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+</html><!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -69,10 +69,61 @@
         .btn-presupuesto { border: 2px solid #8B1E1E !important; box-shadow: 0 4px 10px rgba(139, 30, 30, 0.3); }
         .btn-presupuesto:hover { background-color: #8B1E1E !important; color: white !important; }
 
+        /* MENU DESPLEGABLE SERVICIOS */
+        .pos-servicios { position: relative; }
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background-color: #1c1f2e;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 10px 0;
+            width: 260px; /* Ensanchado un poco para el nuevo texto */
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            z-index: 100;
+        }
+        .pos-servicios:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+        .dropdown-header {
+            display: block;
+            padding: 10px 20px 4px 20px;
+            color: #9ca3af;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-align: left;
+        }
+        .dropdown-divider {
+            height: 1px;
+            background-color: rgba(255,255,255,0.2);
+            margin: 8px 0;
+        }
+        .dropdown-item {
+            display: block;
+            padding: 8px 20px;
+            color: white;
+            font-size: 14px;
+            text-align: left; /* Alineado a la izquierda por el nuevo formato */
+            transition: background 0.2s;
+            text-decoration: none;
+        }
+        .dropdown-item:hover {
+            background-color: #023A78;
+        }
+
         /* REORGANIZACIÓN HEADER GRIDS (Escritorio) */
         .pos-legal { grid-column: 1 / 3; text-align: left; padding-left: 20px; }
-        .pos-servicios { grid-column: 3 / 6; text-align: left; }
-        .pos-nosotros { grid-column: 8 / 10; text-align: right; }
+        .pos-nosotros { grid-column: 3 / 6; text-align: left; }
+        .pos-servicios { grid-column: 8 / 10; text-align: right; }
         .pos-presupuesto { grid-column: 10 / 13; text-align: right; padding-right: 20px; }
 
         /* SERVICIOS PANELS */
@@ -161,6 +212,48 @@
             }
             .btn-presupuesto { border-bottom: 1px solid #8B1E1E !important; color: #ff6b6b !important; font-weight: bold; }
 
+            /* AJUSTE DROPDOWN EN CELULAR */
+            .dropdown-menu {
+                position: relative;
+                top: 0;
+                left: 0;
+                transform: none !important;
+                width: 100%;
+                background: rgba(0,0,0,0.2);
+                box-shadow: none;
+                border: none;
+                padding: 0;
+                margin-top: 0;
+                display: none;
+                opacity: 1;
+                visibility: visible;
+                border-radius: 0;
+            }
+            .pos-servicios:hover .dropdown-menu,
+            .pos-servicios:focus-within .dropdown-menu {
+                display: block;
+            }
+            .dropdown-header {
+                display: block;
+                padding: 15px 10px 5px 20px;
+                color: #9ca3af;
+                font-size: 12px;
+                font-weight: 700;
+                text-transform: uppercase;
+                text-align: left;
+            }
+            .dropdown-divider {
+                height: 1px;
+                background-color: rgba(255,255,255,0.2);
+                margin: 4px 0;
+            }
+            .dropdown-item {
+                text-align: left;
+                padding: 10px 10px 10px 35px; /* Indentado para distinguir que están dentro */
+                border-bottom: 1px solid rgba(255,255,255,0.05);
+                font-size: 14px;
+            }
+
             /* DESACTIVAR HOVER DE SERVICIOS EN MÓVIL */
             .svc-panel:hover .panel-bg { transform: none !important; filter: brightness(0.45) !important; }
             .svc-panel:hover .panel-content { padding-bottom: 40px !important; }
@@ -187,16 +280,21 @@
             #hero-section { 
                 display: flex !important; 
                 flex-direction: column !important; 
-                min-height: 100vh !important; 
-                height: auto !important;
+                
+                /* Se cambia de min-height a height fijo para que la animación fluya acelerada por hardware */
+                height: 100vh !important; 
                 background-color: #1c1f2e !important; 
                 padding-top: 60px !important; /* Respeta el espacio del header */
-                transition: min-height 0.4s ease-out !important; /* Transición para cuando se scrollea */
+                
+                /* Transición súper suave usando cubic-bezier en lugar de ease-out o linear */
+                transition: height 0.6s cubic-bezier(0.25, 1, 0.5, 1) !important; 
+                will-change: height;
+                overflow: hidden !important; /* Previene saltos visuales durante la transición */
             }
             
-            /* ACHICAR EL ESPACIO AL HACER SCROLL */
+            /* ACHICAR EL ESPACIO AL HACER SCROLL SUAVEMENTE */
             body.is-scrolled #hero-section {
-                min-height: 75vh !important;
+                height: 75vh !important;
             }
 
             #hero-image { 
@@ -223,7 +321,9 @@
                 justify-content: flex-start !important; 
                 align-items: center !important;
                 padding-top: 10px !important; 
-                transition: padding 0.4s ease-out !important;
+                
+                transition: padding-top 0.6s cubic-bezier(0.25, 1, 0.5, 1) !important;
+                will-change: padding-top;
             }
             
             body.is-scrolled #hero-text-container {
@@ -246,7 +346,9 @@
                 top: auto !important; bottom: auto !important; left: auto !important; right: auto !important;
                 margin-top: 15px !important;
                 padding-bottom: 20px !important;
-                transition: margin-top 0.4s ease-out, padding-bottom 0.4s ease-out !important;
+                
+                transition: margin-top 0.6s cubic-bezier(0.25, 1, 0.5, 1), padding-bottom 0.6s cubic-bezier(0.25, 1, 0.5, 1) !important;
+                will-change: margin-top, padding-bottom;
             }
             
             body.is-scrolled .hero-subtitle-mobile-container {
@@ -285,22 +387,23 @@
             display: flex; align-items: center; justify-content: center; gap: 10px; 
             width: 140px; 
             padding: 12px 0; border-radius: 50px; color: white; font-weight: bold; font-size: 14px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: transform 0.3s, box-shadow 0.3s; text-decoration: none; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s; text-decoration: none; 
+            will-change: width, padding, font-size;
         }
         .float-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.4); }
         .hide-fixed-btns { opacity: 0; visibility: hidden; pointer-events: none; transform: scale(0.8) translateY(20px); }
         
-        .lang-btn { position: fixed; bottom: 20px; left: 20px; z-index: 9999; display: flex; align-items: center; justify-content: center; gap: 8px; width: auto; min-width: 48px; height: 48px; padding: 0 16px; background-color: #383d51; border: none; border-radius: 50px; color: white; font-size: 14px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: transform 0.3s, box-shadow 0.3s; }
+        .lang-btn { position: fixed; bottom: 20px; left: 20px; z-index: 9999; display: flex; align-items: center; justify-content: center; gap: 8px; width: auto; min-width: 48px; height: 48px; padding: 0 16px; background-color: #383d51; border: none; border-radius: 50px; color: white; font-size: 14px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s; will-change: min-width, height, font-size, padding; }
         .lang-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.4); }
 
         @media (max-width: 600px) {
             /* ESTADO INICIAL (Al cargar la página): Grandes, pegados entre sí y bajitos para no tapar texto */
-            .fixed-btn-container { right: 15px; bottom: 12px; gap: 6px; transition: all 0.3s ease; }
-            .float-btn { width: 160px !important; font-size: 14px !important; padding: 12px 0 !important; gap: 8px !important; transition: all 0.3s ease; }
-            .lang-btn { left: 15px; bottom: 12px; min-width: 75px !important; height: 44px !important; font-size: 14px !important; padding: 0 14px !important; gap: 6px !important; transition: all 0.3s ease; }
-            .lang-btn i { font-size: 18px !important; transition: all 0.3s ease; }
+            .fixed-btn-container { right: 15px; bottom: 12px; gap: 6px; transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
+            .float-btn { width: 160px !important; font-size: 14px !important; padding: 12px 0 !important; gap: 8px !important; }
+            .lang-btn { left: 15px; bottom: 12px; min-width: 75px !important; height: 44px !important; font-size: 14px !important; padding: 0 14px !important; gap: 6px !important; transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
+            .lang-btn i { font-size: 18px !important; transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
 
-            /* ESTADO SCROLLEADO: Vuelven a achicarse como pediste */
+            /* ESTADO SCROLLEADO: Vuelven a achicarse como pediste de manera suave */
             body.is-scrolled .fixed-btn-container { bottom: 15px; gap: 8px; }
             body.is-scrolled .float-btn { width: 100px !important; font-size: 11px !important; padding: 8px 0 !important; gap: 6px !important; }
             body.is-scrolled .lang-btn { bottom: 15px; min-width: 38px !important; height: 38px !important; font-size: 10px !important; padding: 0 10px !important; gap: 4px !important; }
@@ -351,14 +454,34 @@
                     <i class="fa fa-times"></i>
                 </button>
                 <div class="pos-legal"><a href="legal.html" class="menu-item tr" data-es="Legal" data-en="Legal">Legal</a></div>
-                <div class="pos-servicios"><a href="servicios.html" class="menu-item tr" data-es="Servicios" data-en="Services">Servicios</a></div>
                 <div class="pos-nosotros"><a href="nosotros.html" class="menu-item tr" data-es="Nosotros" data-en="About Us">Nosotros</a></div>
+                
+                <div class="pos-servicios relative">
+                    <a href="servicios.html" class="menu-item tr" data-es="Servicios <i class='fa fa-angle-down ml-1'></i>" data-en="Services <i class='fa fa-angle-down ml-1'></i>">Servicios <i class="fa fa-angle-down ml-1"></i></a>
+                    <div class="dropdown-menu">
+                        <span class="dropdown-header tr" data-es="Según trabajo:" data-en="By work:">Según trabajo:</span>
+                        <a href="#" class="dropdown-item tr" data-es="Vuelos Charter" data-en="Charter Flights">Vuelos Charter</a>
+                        <a href="#" class="dropdown-item tr" data-es="Transporte de carga" data-en="Cargo Transport">Transporte de carga</a>
+                        <a href="#" class="dropdown-item tr" data-es="Traslados aeromédicos" data-en="Aeromedical Transfers">Traslados aeromédicos</a>
+                        
+                        <div class="dropdown-divider"></div>
+                        
+                        <span class="dropdown-header tr" data-es="Según modelo:" data-en="By model:">Según modelo:</span>
+                        <a href="#" class="dropdown-item tr" data-es="Ala fija (Aviones)" data-en="Fixed wing (Airplanes)">Ala fija (Aviones)</a>
+                        <a href="#" class="dropdown-item tr" data-es="Ala rotatoria (Helicóp.)" data-en="Rotary wing (Helicopters)">Ala rotatoria (Helicóp.)</a>
+                        
+                        <div class="dropdown-divider"></div>
+                        
+                        <a href="#" class="dropdown-item tr font-bold" data-es="Nuestra flota" data-en="Our Fleet">Nuestra flota</a>
+                    </div>
+                </div>
+
                 <div class="pos-presupuesto"><a href="contacto.html" class="menu-item btn-presupuesto tr" data-es="Solicitar Presupuesto" data-en="Request Quote">Solicitar Presupuesto</a></div>
             </div>
         </div>
     </nav>
 
-    <section id="hero-section" class="relative w-full h-screen min-h-[700px] bg-brand-darker overflow-hidden">
+    <section id="hero-section" class="relative w-full h-screen bg-brand-darker overflow-hidden">
         
         <img id="hero-image" src="https://www.aeroambulanciasilva.com/web/image/51242-f242b5bc/Gemini_Generated_Image_opxoj0opxoj0opxo.png" class="absolute inset-0 w-full h-full object-cover opacity-60 hero-img-mobile" style="transform: scale(1.15); transform-origin: top;">
         
