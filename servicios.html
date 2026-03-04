@@ -128,8 +128,8 @@
             .logo-text span:first-child { font-size: 1.05rem !important; }
             .logo-text span:last-child { font-size: 0.95rem !important; }
 
-            .menu-row { position: fixed; top: 0; left: -100%; width: 260px; height: 100vh; background: #1c1f2e; display: flex !important; flex-direction: column !important; justify-content: flex-start !important; align-items: flex-start !important; padding: 80px 20px 20px 20px !important; gap: 10px !important; transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 5px 0 20px rgba(0,0,0,0.7); z-index: 999; margin: 0; overflow-y: auto; }
-            .menu-row.menu-open { left: 0; }
+            .menu-row { position: fixed !important; top: 0 !important; left: -100% !important; width: 260px !important; height: 100vh !important; background: #1c1f2e !important; display: flex !important; flex-direction: column !important; justify-content: flex-start !important; align-items: flex-start !important; padding: 80px 20px 20px 20px !important; gap: 10px !important; transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important; box-shadow: 5px 0 20px rgba(0,0,0,0.7) !important; z-index: 999 !important; margin: 0 !important; overflow-y: auto !important; }
+            .menu-row.menu-open { left: 0 !important; }
             .menu-row > div { width: 100%; text-align: left; padding: 0 !important; }
             .menu-item { background: transparent !important; border-radius: 0 !important; padding: 15px 10px !important; font-size: 16px !important; text-align: left; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.05) !important; display: block; box-shadow: none !important; border-top: none !important; border-left: none !important; border-right: none !important; }
             .btn-presupuesto { border-bottom: 1px solid #2563eb !important; color: #60a5fa !important; font-weight: bold; }
@@ -218,7 +218,7 @@
                         
                         <div class="dropdown-divider"></div>
                         
-                        <a onclick="activateTab('tab-flota')" href="#servicios-content-area" class="dropdown-item tr font-bold" data-es="Nuestra flota" data-en="Our Fleet">Nuestra flota</a>
+                        <a onclick="activateTab('tab-flota')" href="#servicios-content-area" class="dropdown-item tr font-bold text-blue-400" data-es="Nuestra flota" data-en="Our Fleet">Nuestra flota</a>
                     </div>
                 </div>
 
@@ -262,7 +262,7 @@
                     <h2 class="text-3xl font-black text-white uppercase mb-2 tr" data-es="Vuelos Charter Ejecutivos" data-en="Executive Charter Flights">Vuelos Charter Ejecutivos</h2>
                     <p class="text-blue-400 font-bold uppercase tracking-widest text-xs mb-8 tr" data-es="Nacionales e Internacionales" data-en="National and International">Nacionales e Internacionales</p>
                     
-                    <img src="https://www.helitec-main.com/images/fotos/1_Aviones_1.jpg" class="img-contain" onerror="this.src='https://www.aeroambulanciasilva.com/web/image/51234-b4cce626/3.TURBINA.JPG'">
+                    <img src="YV147T_EXT1.jpg" class="img-contain" onerror="this.style.display='none'">
                     
                     <p class="text-gray-300 mb-6 leading-relaxed text-lg tr" data-es="Brindamos soluciones a medida para traslados de pasajeros y grupos con vuelos charter privados, diseñados para garantizar eficiencia, confort y seguridad en cada viaje. Brindamos el servicio de traslado de pasajeros además de la posibilidad de coordinar vuelos charters o vuelos especiales nacionales e internacionales para viajeros individuales o en grupos, corporativos, de negocios o particulares, en las rutas y destinos para los cuales estamos autorizados a cubrir." data-en="We provide tailor-made solutions for passenger and group transfers with private charter flights, designed to ensure efficiency, comfort, and safety on every trip. We provide passenger transfer services as well as the possibility of coordinating domestic and international charter flights or special flights for individual travelers or groups, corporate, business, or private, on the routes and destinations we are authorized to cover.">Brindamos soluciones a medida para traslados de pasajeros y grupos con vuelos charter privados, diseñados para garantizar eficiencia, confort y seguridad en cada viaje. Brindamos el servicio de traslado de pasajeros además de la posibilidad de coordinar vuelos charters o vuelos especiales nacionales e internacionales para viajeros individuales o en grupos, corporativos, de negocios o particulares, en las rutas y destinos para los cuales estamos autorizados a cubrir.</p>
 
@@ -303,8 +303,8 @@
                     <p class="text-gray-300 mb-8 leading-relaxed text-lg tr" data-es="En general, cuando un trabajo exige precisión y los métodos tradicionales no son aplicables, nuestras aeronaves pueden realizar el trabajo de forma rápida y segura." data-en="In general, when a job demands precision and traditional methods are not applicable, our aircraft can do the job quickly and safely.">En general, cuando un trabajo exige precisión y los métodos tradicionales no son aplicables, nuestras aeronaves pueden realizar el trabajo de forma rápida y segura.</p>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
-                        <img src="https://www.helitec-main.com/images/fotos/2CargaMetro23.PNG" class="w-full h-64 object-contain bg-black/40 rounded-xl shadow-lg border border-white/10" onerror="this.src='https://www.aeroambulanciasilva.com/web/image/51234-b4cce626/3.TURBINA.JPG'">
-                        <img src="https://www.helitec-main.com/images/fotos/Carga_1.jpg" class="w-full h-64 object-contain bg-black/40 rounded-xl shadow-lg border border-white/10" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Cargo_loading.jpg/800px-Cargo_loading.jpg'">
+                        <img src="https://www.helitec-main.com/images/fotos/2CargaMetro23.PNG" class="w-full h-64 object-contain bg-black/40 rounded-xl shadow-lg border border-white/10" onerror="this.style.display='none'">
+                        <img src="https://www.helitec-main.com/images/fotos/Carga_1.jpg" class="w-full h-64 object-contain bg-black/40 rounded-xl shadow-lg border border-white/10" onerror="this.style.display='none'">
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
@@ -355,9 +355,9 @@
                     <p class="text-blue-400 font-bold uppercase tracking-widest text-xs mb-8 tr" data-es="Socio estratégico: AEROAMBULANCIAS SILVA" data-en="Strategic partner: AEROAMBULANCIAS SILVA">Socio estratégico: AEROAMBULANCIAS SILVA</p>
                     
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-8">
-                        <img src="https://www.helitec-main.com/images/galeria/Aeromedico_1.jpg" class="w-full h-48 md:h-64 object-contain bg-black/40 rounded-xl shadow-lg border border-white/10">
-                        <img src="https://www.helitec-main.com/images/galeria/Avion%20y%20Ambulancia1.jpg" class="w-full h-48 md:h-64 object-contain bg-black/40 rounded-xl shadow-lg border border-white/10">
-                        <img src="https://www.helitec-main.com/images/galeria/Avion%20y%20Ambulancia%202.jpg" class="w-full h-48 md:h-64 object-contain bg-black/40 rounded-xl shadow-lg border border-white/10 hidden lg:block">
+                        <img src="https://www.helitec-main.com/images/galeria/Aeromedico_1.jpg" class="w-full h-48 md:h-64 object-contain bg-black/40 rounded-xl shadow-lg border border-white/10" onerror="this.style.display='none'">
+                        <img src="https://www.helitec-main.com/images/galeria/Avion%20y%20Ambulancia1.jpg" class="w-full h-48 md:h-64 object-contain bg-black/40 rounded-xl shadow-lg border border-white/10" onerror="this.style.display='none'">
+                        <img src="https://www.helitec-main.com/images/galeria/Avion%20y%20Ambulancia%202.jpg" class="w-full h-48 md:h-64 object-contain bg-black/40 rounded-xl shadow-lg border border-white/10 hidden lg:block" onerror="this.style.display='none'">
                     </div>
                     
                     <p class="text-gray-300 mb-4 leading-relaxed text-lg tr" data-es="Brindamos servicios de traslado aeromédico (nacional e internacional), servicios de ambulancia, repatriación de restos, repatriación sanitaria (nacional e internacional), servicio médico escolta, dotación Medevac." data-en="We provide aeromedical transfer services (domestic and international), ambulance services, repatriation of remains, medical repatriation (domestic and international), medical escort service, Medevac provision.">Brindamos servicios de traslado aeromédico (nacional e internacional), servicios de ambulancia, repatriación de restos, repatriación sanitaria (nacional e internacional), servicio médico escolta, dotación Medevac.</p>
@@ -420,15 +420,15 @@
                             </div>
                             
                             <div class="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide w-full h-64 md:h-[400px] bg-black relative">
-                                <img src="./YV147T_EXT1.jpg" alt="Metro III Exterior 1" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]">
-                                <img src="./YV147T_EXT2.jpg" alt="Metro III Exterior 2" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]">
-                                <img src="./YV147T_1.jpg" alt="Metro III Interior" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]">
-                                <img src="./YV147T-2.jpg" alt="Metro III Interior" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]">
-                                <img src="./YV147T_3.jpg" alt="Metro III Interior" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]">
-                                <img src="./YV147T_4.jpg" alt="Metro III Interior" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]">
-                                <img src="./YV147T_5.jpg" alt="Metro III Interior" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]">
-                                <img src="./YV147T_6.jpg" alt="Metro III Interior" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]">
-                                <img src="./Cabina%20YV147T.png" alt="Metro III Diagrama" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-white">
+                                <img src="YV147T_EXT1.jpg" alt="Metro III Exterior 1" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]" onerror="this.style.display='none'">
+                                <img src="YV147T_EXT2.jpg" alt="Metro III Exterior 2" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]" onerror="this.style.display='none'">
+                                <img src="YV147T_1.jpg" alt="Metro III Interior" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]" onerror="this.style.display='none'">
+                                <img src="YV147T-2.jpg" alt="Metro III Interior" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]" onerror="this.style.display='none'">
+                                <img src="YV147T_3.jpg" alt="Metro III Interior" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]" onerror="this.style.display='none'">
+                                <img src="YV147T_4.jpg" alt="Metro III Interior" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]" onerror="this.style.display='none'">
+                                <img src="YV147T_5.jpg" alt="Metro III Interior" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]" onerror="this.style.display='none'">
+                                <img src="YV147T_6.jpg" alt="Metro III Interior" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]" onerror="this.style.display='none'">
+                                <img src="Cabina%20YV147T.png" alt="Metro III Diagrama" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-white" onerror="this.style.display='none'">
                             </div>
                             
                             <div class="p-6 md:p-8">
@@ -466,12 +466,12 @@
                             </div>
 
                             <div class="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide w-full h-64 md:h-[400px] bg-black relative">
-                                <img src="./YV185T_1.jpg" alt="Metro 23 Ejecutivo Interior 1" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]">
-                                <img src="./YV185T_2.jpg" alt="Metro 23 Ejecutivo Interior 2" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]">
-                                <img src="./YV185T_3.jpg" alt="Metro 23 Ejecutivo Interior 3" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]">
-                                <img src="./YV185T_4.jpg" alt="Metro 23 Ejecutivo Interior 4" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]">
-                                <img src="./YV185T_5.jpg" alt="Metro 23 Ejecutivo Interior 5" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]">
-                                <img src="./Cabina%20YV185T.png" alt="Metro 23 Ejecutivo Diagrama" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-white">
+                                <img src="YV185T_1.jpg" alt="Metro 23 Ejecutivo Interior 1" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]" onerror="this.style.display='none'">
+                                <img src="YV185T_2.jpg" alt="Metro 23 Ejecutivo Interior 2" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]" onerror="this.style.display='none'">
+                                <img src="YV185T_3.jpg" alt="Metro 23 Ejecutivo Interior 3" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]" onerror="this.style.display='none'">
+                                <img src="YV185T_4.jpg" alt="Metro 23 Ejecutivo Interior 4" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]" onerror="this.style.display='none'">
+                                <img src="YV185T_5.jpg" alt="Metro 23 Ejecutivo Interior 5" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]" onerror="this.style.display='none'">
+                                <img src="Cabina%20YV185T.png" alt="Metro 23 Ejecutivo Diagrama" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-white" onerror="this.style.display='none'">
                             </div>
 
                             <div class="p-6 md:p-8">
@@ -503,7 +503,7 @@
                         </div>
 
                         <div class="bg-[#1c1f2e] border border-white/10 rounded-xl overflow-hidden shadow-2xl">
-                            <img src="https://www.helitec-main.com/images/galeria/Interior_2.jpg" class="w-full h-64 object-contain bg-black/40" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Metro_III_Cabin.jpg/800px-Metro_III_Cabin.jpg'">
+                            <img src="https://www.helitec-main.com/images/galeria/Interior_2.jpg" class="w-full h-64 object-contain bg-black/40" onerror="this.style.display='none'">
                             <div class="p-6 md:p-8">
                                 <h3 class="text-2xl font-bold text-white mb-4 border-b border-blue-500/30 pb-2">Avión Modelo METRO 23 Commuter</h3>
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-gray-300">
@@ -533,7 +533,7 @@
                         </div>
 
                         <div class="bg-[#1c1f2e] border border-white/10 rounded-xl overflow-hidden shadow-2xl">
-                            <img src="https://www.helitec-main.com/images/fotos/Merlin_1.jpg" class="w-full h-64 object-contain bg-black/40" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Swearingen_SA226-T_Merlin_IIIB_N333K.jpg/800px-Swearingen_SA226-T_Merlin_IIIB_N333K.jpg'">
+                            <img src="https://www.helitec-main.com/images/fotos/Merlin_1.jpg" class="w-full h-64 object-contain bg-black/40" onerror="this.style.display='none'">
                             <div class="p-6 md:p-8">
                                 <h3 class="text-2xl font-bold text-white mb-4 border-b border-blue-500/30 pb-2">Avión Modelo METRO 23 Merlin IIIB</h3>
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-gray-300">
@@ -568,16 +568,16 @@
                             </div>
 
                             <div class="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide w-full h-64 md:h-[400px] bg-black relative">
-                                <img src="./YV1923_ext.jpg" alt="Merlin 300 Exterior YV1923" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]">
-                                <img src="./YV1923_1.jpg" alt="Merlin 300 Interior 1" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]">
-                                <img src="./YV1923_2.jpg" alt="Merlin 300 Interior 2" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]">
-                                <img src="./YV1923_3.jpg" alt="Merlin 300 Interior 3" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]">
-                                <img src="./YV1923_5.jpg" alt="Merlin 300 Interior 5" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]">
-                                <img src="./YV1923_7.jpg" alt="Merlin 300 Interior 7" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]">
-                                <img src="./YV1923_8.jpg" alt="Merlin 300 Interior 8" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]">
-                                <img src="./YV1923_9.jpg" alt="Merlin 300 Interior 9" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]">
-                                <img src="./YV1923_11.jpg" alt="Merlin 300 Interior 11" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]">
-                                <img src="./YV1923_13.jpg" alt="Merlin 300 Interior 13" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]">
+                                <img src="YV1923_ext.jpg" alt="Merlin 300 Exterior YV1923" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]" onerror="this.style.display='none'">
+                                <img src="YV1923_1.jpg" alt="Merlin 300 Interior 1" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]" onerror="this.style.display='none'">
+                                <img src="YV1923_2.jpg" alt="Merlin 300 Interior 2" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]" onerror="this.style.display='none'">
+                                <img src="YV1923_3.jpg" alt="Merlin 300 Interior 3" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]" onerror="this.style.display='none'">
+                                <img src="YV1923_5.jpg" alt="Merlin 300 Interior 5" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]" onerror="this.style.display='none'">
+                                <img src="YV1923_7.jpg" alt="Merlin 300 Interior 7" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]" onerror="this.style.display='none'">
+                                <img src="YV1923_8.jpg" alt="Merlin 300 Interior 8" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]" onerror="this.style.display='none'">
+                                <img src="YV1923_9.jpg" alt="Merlin 300 Interior 9" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]" onerror="this.style.display='none'">
+                                <img src="YV1923_11.jpg" alt="Merlin 300 Interior 11" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]" onerror="this.style.display='none'">
+                                <img src="YV1923_13.jpg" alt="Merlin 300 Interior 13" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]" onerror="this.style.display='none'">
                             </div>
 
                             <div class="p-6 md:p-8">
@@ -614,7 +614,7 @@
                     <h2 class="text-3xl font-black text-white uppercase mb-2 tr" data-es="Aeronaves de Ala Rotatoria" data-en="Rotary Wing Aircraft">Aeronaves de Ala Rotatoria</h2>
                     <p class="text-blue-400 font-bold uppercase tracking-widest text-xs mb-8 tr" data-es="Helicóptero MD501 y Configuraciones" data-en="MD501 Helicopter and Configurations">Helicóptero MD501 y Configuraciones</p>
                     
-                    <img src="https://www.helitec-main.com/images/fotos/1heli.jpg" class="img-contain" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/MD_Helicopters_MD500E_N500KL.jpg/800px-MD_Helicopters_MD500E_N500KL.jpg'">
+                    <img src="https://www.helitec-main.com/images/fotos/1heli.jpg" class="img-contain" onerror="this.style.display='none'">
                     
                     <p class="text-gray-300 mb-8 text-lg leading-relaxed tr" data-es="Nuestros helicópteros fabricados por MD Helicopters Inc. permiten realizar desde traslados de pasajeros hasta trabajos de alta complejidad en terrenos difíciles. Operamos el modelo MD501 con diferentes configuraciones técnicas de motor y carga, incluyendo la variante con sistema avanzado NOTAR." data-en="Our helicopters manufactured by MD Helicopters Inc. allow everything from passenger transfers to high-complexity work in difficult terrain. We operate the MD501 model with different technical engine and cargo configurations, including the variant with the advanced NOTAR system.">Nuestros helicópteros fabricados por MD Helicopters Inc. permiten realizar desde traslados de pasajeros hasta trabajos de alta complejidad en terrenos difíciles. Operamos el modelo MD501 con diferentes configuraciones técnicas de motor y carga, incluyendo la variante con sistema avanzado NOTAR.</p>
 
@@ -708,7 +708,7 @@
                     
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
                         <div class="bg-[#1c1f2e] rounded-xl overflow-hidden shadow-lg border border-white/5 flex flex-col">
-                            <img src="https://www.aeroambulanciasilva.com/web/image/51234-b4cce626/3.TURBINA.JPG" class="w-full h-48 object-cover">
+                            <img src="YV147T_EXT1.jpg" class="w-full h-48 object-cover" onerror="this.src='https://www.aeroambulanciasilva.com/web/image/51234-b4cce626/3.TURBINA.JPG'">
                             <div class="p-6 flex-1 flex flex-col justify-between">
                                 <div>
                                     <h4 class="text-xl font-bold uppercase text-white mb-2 tr" data-es="Ala Fija" data-en="Fixed Wing">Ala Fija</h4>
@@ -719,7 +719,7 @@
                         </div>
                         
                         <div class="bg-[#1c1f2e] rounded-xl overflow-hidden shadow-lg border border-white/5 flex flex-col">
-                            <img src="https://www.helitec-main.com/images/fotos/1heli.jpg" class="w-full h-48 object-cover" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/MD_Helicopters_MD500E_N500KL.jpg/800px-MD_Helicopters_MD500E_N500KL.jpg'">
+                            <img src="https://www.helitec-main.com/images/fotos/1heli.jpg" class="w-full h-48 object-cover" onerror="this.style.display='none'">
                             <div class="p-6 flex-1 flex flex-col justify-between">
                                 <div>
                                     <h4 class="text-xl font-bold uppercase text-white mb-2 tr" data-es="Ala Rotatoria" data-en="Rotary Wing">Ala Rotatoria</h4>
@@ -730,7 +730,7 @@
                         </div>
 
                         <div class="bg-[#1c1f2e] rounded-xl overflow-hidden shadow-lg border border-white/5 flex flex-col">
-                            <img src="https://www.helitec-main.com/images/galeria/Aeromedico_1.jpg" class="w-full h-48 object-cover">
+                            <img src="https://www.helitec-main.com/images/galeria/Aeromedico_1.jpg" class="w-full h-48 object-cover" onerror="this.style.display='none'">
                             <div class="p-6 flex-1 flex flex-col justify-between">
                                 <div>
                                     <h4 class="text-xl font-bold uppercase text-white mb-2 tr" data-es="Aeromédico" data-en="Aeromedical">Aeromédico</h4>
