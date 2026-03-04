@@ -59,7 +59,6 @@
         .menu-item:hover { background-color: white; color: black; transform: scale(1.1); box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
         .nav-scrolled .menu-item { font-size: 14px; font-weight: 500; padding: 2px 12px; margin-top: 0; }
         
-        /* BOTÓN PRESUPUESTO EN AZUL AHORA */
         .btn-presupuesto { border: 2px solid #2563eb !important; box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3); }
         .btn-presupuesto:hover { background-color: #2563eb !important; color: white !important; }
 
@@ -82,7 +81,7 @@
         .pos-servicios { grid-column: 8 / 10; text-align: right; }
         .pos-presupuesto { grid-column: 10 / 13; text-align: right; padding-right: 20px; }
 
-        /* TABS DE SERVICIOS - COLOR AZUL PARA EL ESTADO ACTIVO */
+        /* TABS DE SERVICIOS */
         .tab-btn { transition: all 0.3s ease; border: 1px solid transparent; }
         .tab-btn.active { background-color: #2563eb; color: white; border-color: #2563eb; font-weight: bold; }
         .tab-btn:not(.active):hover { background-color: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); }
@@ -105,7 +104,7 @@
             border: 1px solid rgba(255,255,255,0.05); 
         }
 
-        /* CLASE PARA OCULTAR LA BARRA DE DESPLAZAMIENTO EN GALERÍAS */
+        /* CLASE PARA OCULTAR LA BARRA DE DESPLAZAMIENTO EN GALERÍAS (Opcional) */
         .scrollbar-hide::-webkit-scrollbar { display: none; }
         .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 
@@ -300,7 +299,7 @@
                     <h2 class="text-3xl font-black text-white uppercase mb-2 tr" data-es="Transporte de Carga y Trabajos Aéreos" data-en="Cargo Transport and Aerial Works">Transporte de Carga y Trabajos Aéreos</h2>
                     <p class="text-blue-400 font-bold uppercase tracking-widest text-xs mb-8 tr" data-es="Logística y Precisión" data-en="Logistics and Precision">Logística y Precisión</p>
                     
-                    <p class="text-gray-300 mb-8 leading-relaxed text-lg tr" data-es="En general, cuando un trabajo exige precisión y los métodos tradicionales no son aplicables, nuestras aeronaves pueden realizar el trabajo de forma rápida y segura." data-en="In general, when a job demands precision and traditional methods are not applicable, our aircraft can do the job quickly and safely.">En general, when a job demands precision and traditional methods are not applicable, our aircraft can do the job quickly and safely.</p>
+                    <p class="text-gray-300 mb-8 leading-relaxed text-lg tr" data-es="En general, cuando un trabajo exige precisión y los métodos tradicionales no son aplicables, nuestras aeronaves pueden realizar el trabajo de forma rápida y segura." data-en="In general, when a job demands precision and traditional methods are not applicable, our aircraft can do the job quickly and safely.">En general, cuando un trabajo exige precisión y los métodos tradicionales no son aplicables, nuestras aeronaves pueden realizar el trabajo de forma rápida y segura.</p>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
                         <img src="https://www.helitec-main.com/images/fotos/2CargaMetro23.PNG" class="w-full h-64 object-contain bg-black/40 rounded-xl shadow-lg border border-white/10" onerror="this.src='https://www.aeroambulanciasilva.com/web/image/51234-b4cce626/3.TURBINA.JPG'">
@@ -322,7 +321,7 @@
                             <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-3 border-b border-white/10 pb-3"><i class="fa fa-paper-plane-o text-blue-400 text-2xl"></i> <span class="tr" data-es="Carga en Helicópteros" data-en="Helicopter Cargo">Carga en Helicópteros</span></h3>
                             <ul class="space-y-4 text-gray-300">
                                 <li class="flex gap-3"><i class="fa fa-chevron-right text-blue-400 mt-1"></i> <span><strong class="text-white tr" data-es="Carga Interna:" data-en="Internal Cargo:">Carga Interna:</strong> <span class="tr" data-es="Capacidad de hasta 500 kgs en cabina." data-en="Capacity of up to 500 kgs in cabin.">Capacidad de hasta 500 kgs en cabina.</span></span></li>
-                                <li class="flex gap-3"><i class="fa fa-chevron-right text-blue-400 mt-1"></i> <span><strong class="text-white tr" data-es="Carga Externa:" data-en="External Cargo:">Carga Externa:</strong> <span class="tr" data-es="Capacidad entre 450 Kg y 650 Kg dependiendo de la configuración." data-en="Capacity between 450 Kg and 650 Kg depending on configuration.">Capacidad entre 450 Kg and 650 Kg depending on configuration.</span></span></li>
+                                <li class="flex gap-3"><i class="fa fa-chevron-right text-blue-400 mt-1"></i> <span><strong class="text-white tr" data-es="Carga Externa:" data-en="External Cargo:">Carga Externa:</strong> <span class="tr" data-es="Capacidad entre 450 Kg y 650 Kg dependiendo de la configuración." data-en="Capacity between 450 Kg and 650 Kg depending on configuration.">Capacidad entre 450 Kg y 650 Kg dependiendo de la configuración.</span></span></li>
                                 <li class="flex gap-3"><i class="fa fa-chevron-right text-blue-400 mt-1"></i> <span class="tr" data-es="Helitec dispone de helicópteros habilitados para carga externa con Eslinga de 15 y 30 Mts." data-en="Helitec has helicopters authorized for external cargo with 15 and 30 Mts sling.">Helitec dispone de helicópteros habilitados para carga externa con Eslinga de 15 y 30 Mts.</span></li>
                             </ul>
                         </div>
@@ -333,7 +332,7 @@
 
                     <div class="bg-black/30 p-8 rounded-xl border border-white/5">
                         <h3 class="text-2xl font-bold text-blue-400 mb-4 tr" data-es="Levantamiento Topográfico con tecnología Laser (LIDAR)" data-en="Topographical Survey with Laser technology (LIDAR)">Levantamiento Topográfico con tecnología Laser (LIDAR)</h3>
-                        <p class="text-gray-300 mb-4 leading-relaxed tr" data-es="LIDAR es un sistema que combina un escaneo Light Detection And Ranging (LiDAR) aerotransportado sobre el terreno con un Sistema de Posicionamiento Global (GPS) y la Unidad de Medida Inercial (IMU) de una aeronave, mapeando la superficie del terreno." data-en="LIDAR is a system that combines an airborne Light Detection And Ranging (LiDAR) scan over the terrain with a Global Positioning System (GPS) and the Inertial Measurement Unit (IMU) of an aircraft, mapping the terrain surface.">LIDAR es un sistema que combina un escaneo Light Detection And Ranging (LiDAR) aerotransportado sobre el terreno con un Sistema de Posicionamiento Global (GPS) and the Inertial Measurement Unit (IMU) of an aircraft, mapping the terrain surface.</p>
+                        <p class="text-gray-300 mb-4 leading-relaxed tr" data-es="LIDAR es un sistema que combina un escaneo Light Detection And Ranging (LiDAR) aerotransportado sobre el terreno con un Sistema de Posicionamiento Global (GPS) y la Unidad de Medida Inercial (IMU) de una aeronave, mapeando la superficie del terreno." data-en="LIDAR is a system that combines an airborne Light Detection And Ranging (LiDAR) scan over the terrain with a Global Positioning System (GPS) and the Inertial Measurement Unit (IMU) of an aircraft, mapping the terrain surface.">LIDAR es un sistema que combina un escaneo Light Detection And Ranging (LiDAR) aerotransportado sobre el terreno con un Sistema de Posicionamiento Global (GPS) y la Unidad de Medida Inercial (IMU) de una aeronave, mapeando la superficie del terreno.</p>
                         <p class="text-gray-300 mb-8 leading-relaxed tr" data-es="El sensor láser (LIDAR) constituye una tecnología eficiente para la adquisición de Modelos Digitales del Terreno y Modelos Digitales de Superficie (MDT y MDS) de grandes áreas. Los MDT pueden ser generados a alta resolución con un detalle considerable, haciendo que la tecnología sea más eficiente en términos de coste cuando se compara con los métodos fotogramétricos." data-en="The laser sensor (LIDAR) constitutes an efficient technology for the acquisition of Digital Terrain Models and Digital Surface Models (DTM and DSM) of large areas. DTMs can be generated at high resolution with considerable detail, making the technology more cost-efficient when compared to photogrammetric methods.">El sensor láser (LIDAR) constituye una tecnología eficiente para la adquisición de Modelos Digitales del Terreno y Modelos Digitales de Superficie (MDT y MDS) de grandes áreas. Los MDT pueden ser generados a alta resolución con un detalle considerable, haciendo que la tecnología sea más eficiente en términos de coste cuando se compara con los métodos fotogramétricos.</p>
                         
                         <h4 class="font-bold text-white text-lg mb-4 border-b border-white/10 pb-2 tr" data-es="Nuestros offering de servicios cubren las siguientes áreas:" data-en="Our service offerings cover the following areas:">Nuestros offering de servicios cubren las siguientes áreas:</h4>
@@ -414,29 +413,91 @@
                     <div class="space-y-12">
                         
                         <div class="bg-[#1c1f2e] border border-white/10 rounded-xl overflow-hidden shadow-2xl">
-                            <img src="https://www.aeroambulanciasilva.com/web/image/51234-b4cce626/3.TURBINA.JPG" class="w-full h-64 object-contain bg-black/40" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Fairchild_SA227-DC_Metro_23_N3010FA.jpg/800px-Fairchild_SA227-DC_Metro_23_N3010FA.jpg'">
+                            
+                            <div class="bg-blue-500/20 text-blue-400 text-xs text-center py-2 font-bold tracking-widest uppercase md:hidden">
+                                <i class="fa fa-arrows-h mr-2"></i> Desliza para ver galería
+                            </div>
+                            
+                            <div class="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide w-full h-64 md:h-[400px] bg-black relative">
+                                <img src="./YV147T_EXT1.jpg" alt="Metro III Exterior 1" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]">
+                                <img src="./YV147T_EXT2.jpg" alt="Metro III Exterior 2" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]">
+                                <img src="./YV147T_1.jpg" alt="Metro III Interior" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]">
+                                <img src="./YV147T-2.jpg" alt="Metro III Interior" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]">
+                                <img src="./YV147T_3.jpg" alt="Metro III Interior" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]">
+                                <img src="./YV147T_4.jpg" alt="Metro III Interior" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]">
+                                <img src="./YV147T_5.jpg" alt="Metro III Interior" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]">
+                                <img src="./YV147T_6.jpg" alt="Metro III Interior" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]">
+                                <img src="./Cabina%20YV147T.png" alt="Metro III Diagrama" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-white">
+                            </div>
+                            
                             <div class="p-6 md:p-8">
-                                <h3 class="text-2xl font-bold text-white mb-4 border-b border-blue-500/30 pb-2">Avión Modelo METRO III</h3>
+                                <h3 class="text-2xl font-bold text-white mb-4 border-b border-blue-500/30 pb-2">Avión Modelo METRO III <span class="text-sm font-normal text-gray-400 ml-2">(YV147T)</span></h3>
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-gray-300">
                                     <div>
-                                        <h4 class="text-blue-400 font-bold uppercase mb-2 tr" data-es="Configuración Interior:" data-en="Interior Configuration:">Configuración Interior:</h4>
-                                        <ul class="list-disc list-inside space-y-1 pl-2">
+                                        <h4 class="text-blue-400 font-bold uppercase mb-3 flex items-center gap-2"><i class="fa fa-cogs"></i> <span class="tr" data-es="Configuración Interior:" data-en="Interior Configuration:">Configuración Interior:</span></h4>
+                                        <ul class="list-disc list-inside space-y-2 pl-2">
                                             <li class="tr" data-es="Capacidad: Trece (13) pasajeros en configuracion Ejecutiva." data-en="Capacity: Thirteen (13) passengers in Executive configuration.">Capacidad: Trece (13) pasajeros en configuracion Ejecutiva.</li>
                                             <li class="tr" data-es="Dos Club Seating de 4 puestos con mesa plegable, 2 asientos frontales un Sofa de 3 puestos." data-en="Two Club Seating of 4 seats with folding table, 2 front seats a Sofa of 3 seats.">Dos Club Seating de 4 puestos con mesa plegable, 2 asientos frontales un Sofa de 3 puestos.</li>
-                                            <li class="tr" data-es="Compartimiento de Carga Trasero: 350 Kg. máximo." data-en="Rear Cargo Compartment: 350 Kg. maximum.">Compartimiento de Carga Trasero: 350 Kg. máximo.</li>
+                                            <li class="tr" data-es="Compartimiento de Carga Trasero: 350 Kg. máximo de carga." data-en="Rear Cargo Compartment: 350 Kg. maximum cargo.">Compartimiento de Carga Trasero: 350 Kg. máximo de carga.</li>
                                             <li class="tr" data-es="Un compartimiento de carga delantero de hasta 100Kgs." data-en="One front cargo compartment up to 100Kgs.">Un compartimiento de carga delantero de hasta 100Kgs.</li>
                                             <li class="tr" data-es="Un baño." data-en="One restroom.">Un baño.</li>
                                         </ul>
                                     </div>
                                     <div>
-                                        <h4 class="text-blue-400 font-bold uppercase mb-2 tr" data-es="Características Técnicas:" data-en="Technical Characteristics:">Características Técnicas:</h4>
-                                        <ul class="list-disc list-inside space-y-1 pl-2">
+                                        <h4 class="text-blue-400 font-bold uppercase mb-3 flex items-center gap-2"><i class="fa fa-wrench"></i> <span class="tr" data-es="Características Técnicas:" data-en="Technical Characteristics:">Características Técnicas:</span></h4>
+                                        <ul class="list-disc list-inside space-y-2 pl-2">
                                             <li class="tr" data-es="Cabina presurizada con acceso al compartimiento de carga." data-en="Pressurized cabin with access to cargo compartment.">Cabina presurizada con acceso al compartimiento de carga.</li>
                                             <li>Motores (2): TPE 331-11 (1.000 Hp).</li>
                                             <li class="tr" data-es="Velocidad de crucero: 265 KTS." data-en="Cruising speed: 265 KTS.">Velocidad de crucero: 265 KTS.</li>
                                             <li class="tr" data-es="Autonomía Máxima: 5 horas más 1:30 Hr. de reserva." data-en="Maximum Autonomy: 5 hours plus 1:30 Hr. reserve.">Autonomía Máxima: 5 horas más 1:30 Hr. de reserva.</li>
                                             <li class="tr" data-es="Peso Máximo de Despegue: 16.000 Lb." data-en="Maximum Takeoff Weight: 16,000 Lb.">Peso Máximo de Despegue: 16.000 Lb.</li>
-                                            <li class="tr" data-es=" Techo Máximo de Servicio: 25.000 Pies." data-en="Maximum Service Ceiling: 25,000 Feet."> Techo Máximo de Servicio: 25.000 Pies.</li>
+                                            <li class="tr" data-es="Techo Máximo de Servicio: 25.000 Pies." data-en="Maximum Service Ceiling: 25,000 Feet.">Techo Máximo de Servicio: 25.000 Pies.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-[#1c1f2e] border border-white/10 rounded-xl overflow-hidden shadow-2xl">
+                            
+                            <div class="bg-blue-500/20 text-blue-400 text-xs text-center py-2 font-bold tracking-widest uppercase md:hidden">
+                                <i class="fa fa-arrows-h mr-2"></i> Desliza para ver galería
+                            </div>
+
+                            <div class="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide w-full h-64 md:h-[400px] bg-black relative">
+                                <img src="./YV1923_ext.jpg" alt="Merlin 300 Exterior YV1923" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]">
+                                <img src="./YV1923_1.jpg" alt="Merlin 300 Interior 1" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]">
+                                <img src="./YV1923_2.jpg" alt="Merlin 300 Interior 2" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]">
+                                <img src="./YV1923_3.jpg" alt="Merlin 300 Interior 3" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]">
+                                <img src="./YV1923_5.jpg" alt="Merlin 300 Interior 5" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]">
+                                <img src="./YV1923_7.jpg" alt="Merlin 300 Interior 7" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]">
+                                <img src="./YV1923_8.jpg" alt="Merlin 300 Interior 8" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]">
+                                <img src="./YV1923_9.jpg" alt="Merlin 300 Interior 9" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]">
+                                <img src="./YV1923_11.jpg" alt="Merlin 300 Interior 11" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]">
+                                <img src="./YV1923_13.jpg" alt="Merlin 300 Interior 13" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]">
+                            </div>
+
+                            <div class="p-6 md:p-8">
+                                <h3 class="text-2xl font-bold text-white mb-4 border-b border-blue-500/30 pb-2">Avión Modelo METRO 23 Merlin 300 <span class="text-sm font-normal text-gray-400 ml-2">(YV1923)</span></h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-gray-300">
+                                    <div>
+                                        <h4 class="text-blue-400 font-bold uppercase mb-3 flex items-center gap-2"><i class="fa fa-cogs"></i> <span class="tr" data-es="Configuración Interior:" data-en="Interior Configuration:">Configuración Interior:</span></h4>
+                                        <ul class="list-disc list-inside space-y-2 pl-2">
+                                            <li class="tr" data-es="Capacidad: Seis (6) pasajeros en configuracion ejecutiva." data-en="Capacity: Six (6) passengers in executive configuration.">Capacidad: Seis (6) pasajeros en configuracion ejecutiva.</li>
+                                            <li class="tr" data-es="Compartimiento de carga trasero con acceso en vuelo de hasta 100Kgs." data-en="Rear cargo compartment with in-flight access up to 100Kgs.">Compartimiento de carga trasero con acceso en vuelo de hasta 100Kgs.</li>
+                                            <li class="tr" data-es="Un compartimiento delantero de hasta 100Kgs." data-en="One front compartment up to 100Kgs.">Un compartimiento delantero de hasta 100Kgs.</li>
+                                            <li class="tr" data-es="Un baño (diván de popa convertible con cinturón de seguridad)." data-en="One restroom (aft convertible divan with seat belt).">Un baño (diván de popa convertible con cinturón de seguridad).</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-blue-400 font-bold uppercase mb-3 flex items-center gap-2"><i class="fa fa-wrench"></i> <span class="tr" data-es="Características Técnicas:" data-en="Technical Characteristics:">Características Técnicas:</span></h4>
+                                        <ul class="list-disc list-inside space-y-2 pl-2">
+                                            <li class="tr" data-es="Cabina presurizada con acceso al compartimiento de carga." data-en="Pressurized cabin with access to cargo compartment.">Cabina presurizada con acceso al compartimiento de carga.</li>
+                                            <li>Motores (2): TPE 331-10 ( 850 Hp).</li>
+                                            <li class="tr" data-es="Velocidad de crucero: 265 KTS." data-en="Cruising speed: 265 KTS.">Velocidad de crucero: 265 KTS.</li>
+                                            <li class="tr" data-es="Autonomía Máxima: 5 horas más 1:30 Hr. de reserva." data-en="Maximum Autonomy: 5 hours plus 1:30 Hr. reserve.">Autonomía Máxima: 5 horas más 1:30 Hr. de reserva.</li>
+                                            <li class="tr" data-es="Peso Máximo de Despegue: 13.500 Lb." data-en="Maximum Takeoff Weight: 13,500 Lb.">Peso Máximo de Despegue: 13.500 Lb.</li>
+                                            <li class="tr" data-es="Techo Máximo de Servicio: 25.000 Pies." data-en="Maximum Service Ceiling: 25,000 Feet.">Techo Máximo de Servicio: 25.000 Pies.</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -525,42 +586,6 @@
                                             <li class="tr" data-es="Velocidad de crucero: 265 KTS." data-en="Cruising speed: 265 KTS.">Velocidad de crucero: 265 KTS.</li>
                                             <li class="tr" data-es="Autonomía Máxima: 5 horas más 1:30 Hr. de reserva." data-en="Maximum Autonomy: 5 hours plus 1:30 Hr. reserve.">Autonomía Máxima: 5 horas más 1:30 Hr. de reserva.</li>
                                             <li class="tr" data-es="Peso Máximo de Despegue: 12.500 Lb." data-en="Maximum Takeoff Weight: 12,500 Lb.">Peso Máximo de Despegue: 12.500 Lb.</li>
-                                            <li class="tr" data-es=" Techo Máximo de Servicio: 25.000 Pies." data-en="Maximum Service Ceiling: 25,000 Feet."> Techo Máximo de Servicio: 25.000 Pies.</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="bg-[#1c1f2e] border border-white/10 rounded-xl overflow-hidden shadow-2xl">
-                            <div class="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide w-full h-64 md:h-96 bg-black relative">
-                                <img src="merlin300_YV1923_exterior.png" alt="Merlin 300 Exterior YV1923" class="w-full md:w-2/3 flex-none snap-center h-full object-contain">
-                                <img src="merlin300_hélice_exterior.png" alt="Merlin 300 Exterior Propeller" class="w-full md:w-2/3 flex-none snap-center h-full object-contain">
-                                <img src="merlin300_interiores_asientos_azules.png" alt="Merlin 300 Interior Blue Seats" class="w-full md:w-2/3 flex-none snap-center h-full object-contain">
-                                <img src="merlin300_mesas_desplegadas.png" alt="Merlin 300 Interior Tables Deployed" class="w-full md:w-2/3 flex-none snap-center h-full object-contain">
-                                <img src="merlin300_mesa_mapa.png" alt="Merlin 300 Interior Table with Map" class="w-full md:w-2/3 flex-none snap-center h-full object-contain">
-                                <img src="merlin300_divan_baño.png" alt="Merlin 300 Divan and Toilet" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-[#1c1f2e]">
-                            </div>
-                            <div class="p-6 md:p-8">
-                                <h3 class="text-2xl font-bold text-white mb-4 border-b border-blue-500/30 pb-2">Avión Modelo METRO 23 Merlin 300 <span class="text-sm font-normal text-gray-400 ml-2">(YV1923)</span></h3>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-gray-300">
-                                    <div>
-                                        <h4 class="text-blue-400 font-bold uppercase mb-3 flex items-center gap-2"><i class="fa fa-cogs"></i> <span class="tr" data-es="Configuración Interior:" data-en="Interior Configuration:">Configuración Interior:</span></h4>
-                                        <ul class="list-disc list-inside space-y-2 pl-2">
-                                            <li class="tr" data-es="Capacidad: Seis (6) pasajeros en configuracion ejecutiva." data-en="Capacity: Six (6) passengers in executive configuration.">Capacidad: Seis (6) pasajeros en configuracion ejecutiva.</li>
-                                            <li class="tr" data-es="Compartimiento de carga trasero con acceso en vuelo de hasta 100Kgs." data-en="Rear cargo compartment with in-flight access up to 100Kgs.">Compartimiento de carga trasero con acceso en vuelo de hasta 100Kgs.</li>
-                                            <li class="tr" data-es="Un compartimiento delantero de hasta 100Kgs." data-en="One front compartment up to 100Kgs.">Un compartimiento delantero de hasta 100Kgs.</li>
-                                            <li class="tr" data-es="Un baño (diván de popa convertible con cinturón de seguridad)." data-en="One restroom (aft convertible divan with seat belt).">Un baño (diván de popa convertible con cinturón de seguridad).</li>
-                                        </ul>
-                                    </div>
-                                    <div>
-                                        <h4 class="text-blue-400 font-bold uppercase mb-3 flex items-center gap-2"><i class="fa fa-wrench"></i> <span class="tr" data-es="Características Técnicas:" data-en="Technical Characteristics:">Características Técnicas:</span></h4>
-                                        <ul class="list-disc list-inside space-y-2 pl-2">
-                                            <li class="tr" data-es="Cabina presurizada con acceso al compartimiento de carga." data-en="Pressurized cabin with access to cargo compartment.">Cabina presurizada con acceso al compartimiento de carga.</li>
-                                            <li>Motores (2): TPE 331-10 ( 850 Hp).</li>
-                                            <li class="tr" data-es="Velocidad de crucero: 265 KTS." data-en="Cruising speed: 265 KTS.">Velocidad de crucero: 265 KTS.</li>
-                                            <li class="tr" data-es="Autonomía Máxima: 5 horas más 1:30 Hr. de reserva." data-en="Maximum Autonomy: 5 hours plus 1:30 Hr. reserve.">Autonomía Máxima: 5 horas más 1:30 Hr. de reserva.</li>
-                                            <li class="tr" data-es="Peso Máximo de Despegue: 13.500 Lb." data-en="Maximum Takeoff Weight: 13,500 Lb.">Peso Máximo de Despegue: 13.500 Lb.</li>
                                             <li class="tr" data-es="Techo Máximo de Servicio: 25.000 Pies." data-en="Maximum Service Ceiling: 25,000 Feet.">Techo Máximo de Servicio: 25.000 Pies.</li>
                                         </ul>
                                     </div>
