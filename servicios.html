@@ -59,8 +59,9 @@
         .menu-item:hover { background-color: white; color: black; transform: scale(1.1); box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
         .nav-scrolled .menu-item { font-size: 14px; font-weight: 500; padding: 2px 12px; margin-top: 0; }
         
-        .btn-presupuesto { border: 2px solid #8B1E1E !important; box-shadow: 0 4px 10px rgba(139, 30, 30, 0.3); }
-        .btn-presupuesto:hover { background-color: #8B1E1E !important; color: white !important; }
+        /* BOTÓN PRESUPUESTO EN AZUL AHORA */
+        .btn-presupuesto { border: 2px solid #2563eb !important; box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3); }
+        .btn-presupuesto:hover { background-color: #2563eb !important; color: white !important; }
 
         /* MENU DESPLEGABLE SERVICIOS */
         .pos-servicios { position: relative; }
@@ -81,16 +82,15 @@
         .pos-servicios { grid-column: 8 / 10; text-align: right; }
         .pos-presupuesto { grid-column: 10 / 13; text-align: right; padding-right: 20px; }
 
-        /* TABS DE SERVICIOS */
+        /* TABS DE SERVICIOS - COLOR AZUL PARA EL ESTADO ACTIVO */
         .tab-btn { transition: all 0.3s ease; border: 1px solid transparent; }
-        /* Cambiado el color activo a un azul brillante */
         .tab-btn.active { background-color: #2563eb; color: white; border-color: #2563eb; font-weight: bold; }
         .tab-btn:not(.active):hover { background-color: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); }
 
         /* ESTILOS DE TARJETAS DE ESPECIFICACIONES */
         .spec-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
         .spec-card { background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); padding: 24px; border-radius: 8px; transition: border 0.3s; }
-        .spec-card:hover { border-color: rgba(59, 130, 246, 0.5); } /* Hover border blue */
+        .spec-card:hover { border-color: rgba(59, 130, 246, 0.5); } 
 
         /* IMÁGENES CONTENIDAS (Para que no se corten nunca) */
         .img-contain { 
@@ -104,6 +104,10 @@
             padding: 5px; 
             border: 1px solid rgba(255,255,255,0.05); 
         }
+
+        /* CLASE PARA OCULTAR LA BARRA DE DESPLAZAMIENTO EN GALERÍAS */
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 
         @media (min-width: 1024px) {
             #mobile-menu-btn, #close-menu-btn { display: none !important; }
@@ -128,7 +132,7 @@
             .menu-row.menu-open { left: 0; }
             .menu-row > div { width: 100%; text-align: left; padding: 0 !important; }
             .menu-item { background: transparent !important; border-radius: 0 !important; padding: 15px 10px !important; font-size: 16px !important; text-align: left; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.05) !important; display: block; box-shadow: none !important; border-top: none !important; border-left: none !important; border-right: none !important; }
-            .btn-presupuesto { border-bottom: 1px solid #8B1E1E !important; color: #ff6b6b !important; font-weight: bold; }
+            .btn-presupuesto { border-bottom: 1px solid #2563eb !important; color: #60a5fa !important; font-weight: bold; }
 
             .dropdown-menu { position: relative; top: 0; left: 0; transform: none !important; width: 100%; background: rgba(0,0,0,0.2); box-shadow: none; border: none; padding: 0; margin-top: 0; display: none; opacity: 1; visibility: visible; border-radius: 0; }
             .pos-servicios:hover .dropdown-menu, .pos-servicios:focus-within .dropdown-menu { display: block; }
@@ -136,7 +140,7 @@
             .dropdown-divider { height: 1px; background-color: rgba(255,255,255,0.2); margin: 4px 0; }
             .dropdown-item { text-align: left; padding: 10px 10px 10px 35px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 14px; }
             
-            .img-contain { max-height: 250px; } /* Ajuste responsivo de imágenes */
+            .img-contain { max-height: 250px; }
         }
 
         /* BOTONES FLOTANTES */
@@ -410,23 +414,34 @@
                     <div class="space-y-12">
                         
                         <div class="bg-[#1c1f2e] border border-white/10 rounded-xl overflow-hidden shadow-2xl">
-                            <img src="https://www.aeroambulanciasilva.com/web/image/51234-b4cce626/3.TURBINA.JPG" class="w-full h-64 object-contain bg-black/40" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Fairchild_SA227-DC_Metro_23_N3010FA.jpg/800px-Fairchild_SA227-DC_Metro_23_N3010FA.jpg'">
+                            <div class="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide w-full h-64 md:h-96 bg-black relative">
+                                <img src="YV147T_EXT1.jpg" alt="Metro III Exterior 1" class="w-full md:w-2/3 flex-none snap-center h-full object-cover">
+                                <img src="YV147T_EXT2.jpg" alt="Metro III Exterior 2" class="w-full md:w-2/3 flex-none snap-center h-full object-cover">
+                                <img src="YV147T_5.jpg" alt="Metro III Interior" class="w-full md:w-2/3 flex-none snap-center h-full object-cover">
+                                <img src="YV147T_6.jpg" alt="Metro III Interior" class="w-full md:w-2/3 flex-none snap-center h-full object-cover">
+                                <img src="YV147T_1.jpg" alt="Metro III Interior" class="w-full md:w-2/3 flex-none snap-center h-full object-cover">
+                                <img src="YV147T-2.jpg" alt="Metro III Interior" class="w-full md:w-2/3 flex-none snap-center h-full object-cover">
+                                <img src="YV147T_3.jpg" alt="Metro III Interior" class="w-full md:w-2/3 flex-none snap-center h-full object-cover">
+                                <img src="YV147T_4.jpg" alt="Metro III Interior" class="w-full md:w-2/3 flex-none snap-center h-full object-cover">
+                                <img src="Cabina YV147T.png" alt="Metro III Diagrama" class="w-full md:w-2/3 flex-none snap-center h-full object-contain bg-white">
+                            </div>
+                            
                             <div class="p-6 md:p-8">
-                                <h3 class="text-2xl font-bold text-white mb-4 border-b border-blue-500/30 pb-2">Avión Modelo METRO III</h3>
+                                <h3 class="text-2xl font-bold text-white mb-4 border-b border-blue-500/30 pb-2">Avión Modelo METRO III <span class="text-sm font-normal text-gray-400 ml-2">(YV147T)</span></h3>
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-gray-300">
                                     <div>
-                                        <h4 class="text-blue-400 font-bold uppercase mb-2 tr" data-es="Configuración Interior:" data-en="Interior Configuration:">Configuración Interior:</h4>
-                                        <ul class="list-disc list-inside space-y-1 pl-2">
+                                        <h4 class="text-blue-400 font-bold uppercase mb-3 flex items-center gap-2"><i class="fa fa-cogs"></i> <span class="tr" data-es="Configuración Interior:" data-en="Interior Configuration:">Configuración Interior:</span></h4>
+                                        <ul class="list-disc list-inside space-y-2 pl-2">
                                             <li class="tr" data-es="Capacidad: Trece (13) pasajeros en configuracion Ejecutiva." data-en="Capacity: Thirteen (13) passengers in Executive configuration.">Capacidad: Trece (13) pasajeros en configuracion Ejecutiva.</li>
                                             <li class="tr" data-es="Dos Club Seating de 4 puestos con mesa plegable, 2 asientos frontales un Sofa de 3 puestos." data-en="Two Club Seating of 4 seats with folding table, 2 front seats a Sofa of 3 seats.">Dos Club Seating de 4 puestos con mesa plegable, 2 asientos frontales un Sofa de 3 puestos.</li>
-                                            <li class="tr" data-es="Compartimiento de Carga Trasero: 350 Kg. máximo." data-en="Rear Cargo Compartment: 350 Kg. maximum.">Compartimiento de Carga Trasero: 350 Kg. máximo.</li>
+                                            <li class="tr" data-es="Compartimiento de Carga Trasero: 350 Kg. máximo de carga." data-en="Rear Cargo Compartment: 350 Kg. maximum cargo.">Compartimiento de Carga Trasero: 350 Kg. máximo de carga.</li>
                                             <li class="tr" data-es="Un compartimiento de carga delantero de hasta 100Kgs." data-en="One front cargo compartment up to 100Kgs.">Un compartimiento de carga delantero de hasta 100Kgs.</li>
                                             <li class="tr" data-es="Un baño." data-en="One restroom.">Un baño.</li>
                                         </ul>
                                     </div>
                                     <div>
-                                        <h4 class="text-blue-400 font-bold uppercase mb-2 tr" data-es="Características Técnicas:" data-en="Technical Characteristics:">Características Técnicas:</h4>
-                                        <ul class="list-disc list-inside space-y-1 pl-2">
+                                        <h4 class="text-blue-400 font-bold uppercase mb-3 flex items-center gap-2"><i class="fa fa-wrench"></i> <span class="tr" data-es="Características Técnicas:" data-en="Technical Characteristics:">Características Técnicas:</span></h4>
+                                        <ul class="list-disc list-inside space-y-2 pl-2">
                                             <li class="tr" data-es="Cabina presurizada con acceso al compartimiento de carga." data-en="Pressurized cabin with access to cargo compartment.">Cabina presurizada con acceso al compartimiento de carga.</li>
                                             <li>Motores (2): TPE 331-11 (1.000 Hp).</li>
                                             <li class="tr" data-es="Velocidad de crucero: 265 KTS." data-en="Cruising speed: 265 KTS.">Velocidad de crucero: 265 KTS.</li>
@@ -662,7 +677,7 @@
                             <div class="p-6 flex-1 flex flex-col justify-between">
                                 <div>
                                     <h4 class="text-xl font-bold uppercase text-white mb-2 tr" data-es="Ala Fija" data-en="Fixed Wing">Ala Fija</h4>
-                                    <p class="text-xs text-gray-400 mb-4 tr" data-es="5 Configuraciones Metro III y 23" data-en="5 Metro III & 23 Configurations">5 Configuraciones Metro III y 23</p>
+                                    <p class="text-xs text-gray-400 mb-4 tr" data-es="5 Configuraciones Metro y Merlin" data-en="5 Metro & Merlin Configurations">5 Configuraciones Metro y Merlin</p>
                                 </div>
                                 <button onclick="activateTab('tab-fija')" class="text-blue-400 text-sm font-bold uppercase hover:text-white transition tr" data-es="Ver Especificaciones" data-en="View Specifications">Ver Especificaciones</button>
                             </div>
