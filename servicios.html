@@ -19,7 +19,7 @@
                 extend: {
                     fontFamily: { sans: ['Montserrat', 'sans-serif'], serif: ['Georgia', 'serif'] },
                     colors: {
-                        brand: { blue: '#023A78', dark: '#383d51', darker: '#1c1f2e', whatsapp: '#25D366' }
+                        brand: { blue: '#023A78', dark: '#383d51', darker: '#1c1f2e', red: '#8B1E1E', whatsapp: '#25D366' }
                     }
                 }
             }
@@ -82,17 +82,32 @@
         .pos-servicios { grid-column: 8 / 10; text-align: right; }
         .pos-presupuesto { grid-column: 10 / 13; text-align: right; padding-right: 20px; }
 
-        /* TABS DE SERVICIOS */
+        /* TABS DE SERVICIOS - COLOR AZUL PARA EL ESTADO ACTIVO */
         .tab-btn { transition: all 0.3s ease; border: 1px solid transparent; }
         .tab-btn.active { background-color: #2563eb; color: white; border-color: #2563eb; font-weight: bold; }
         .tab-btn:not(.active):hover { background-color: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); }
 
         /* ESTILOS DE TARJETAS DE ESPECIFICACIONES */
         .spec-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .spec-card { background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); padding: 24px; border-radius: 8px; transition: border 0.3s; }
+        .spec-card { background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); padding: 24px; border-radius: 8px; transition: border 0.3s; }
         .spec-card:hover { border-color: rgba(59, 130, 246, 0.5); } 
 
-        /* GALERÍAS Y FONDOS IGUALADOS AL CARD (#252839) */
+        /* IMÁGENES CONTENIDAS Y GALERÍA SCROLL MOUSE */
+        .img-contain { 
+            width: 100%; 
+            height: auto; 
+            max-height: 400px; 
+            object-fit: contain; 
+            background-color: transparent; 
+            border-radius: 12px; 
+            margin-bottom: 24px; 
+            padding: 5px; 
+            border: 1px solid rgba(255,255,255,0.05); 
+        }
+
+        .gallery-item { cursor: pointer; }
+        .gallery-item img { width: 100%; height: auto; }
+        
         .gallery-container { position: relative; width: 100%; height: 300px; border-radius: 12px; overflow: hidden; background-color: #252839; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         @media (min-width: 768px) { .gallery-container { height: 450px; } }
         
@@ -113,8 +128,13 @@
         #expand-modal { display: none; }
         #expand-modal.show { display: flex; }
 
+        /* SCROLLBARS */
         .scrollbar-hide::-webkit-scrollbar { display: none; }
         .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #2563eb; border-radius: 4px; }
 
         @media (min-width: 1024px) {
             #mobile-menu-btn, #close-menu-btn { display: none !important; }
@@ -139,7 +159,7 @@
             .menu-row.menu-open { left: 0 !important; }
             .menu-row > div { width: 100%; text-align: left; padding: 0 !important; }
             .menu-item { background: transparent !important; border-radius: 0 !important; padding: 15px 10px !important; font-size: 16px !important; text-align: left; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.05) !important; display: block; box-shadow: none !important; border-top: none !important; border-left: none !important; border-right: none !important; }
-            .btn-presupuesto { border-bottom: 1px solid #8B1E1E !important; color: #ff6b6b !important; font-weight: bold; }
+            .btn-presupuesto { border-bottom: 1px solid #8B1E1E !important; color: #ff6b6b !important; font-weight: bold; } /* ROJO EN MOVIL TAMBIEN */
 
             .dropdown-menu { position: relative; top: 0; left: 0; transform: none !important; width: 100%; background: rgba(0,0,0,0.2); box-shadow: none; border: none; padding: 0; margin-top: 0; display: none; opacity: 1; visibility: visible; border-radius: 0; }
             .pos-servicios:hover .dropdown-menu, .pos-servicios:focus-within .dropdown-menu { display: block; }
@@ -158,7 +178,7 @@
         .lang-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.4); }
 
         @media (max-width: 600px) {
-            .fixed-btn-container { right: 15px; bottom: 12px; gap: 6px; transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
+            .fixed-btn-container { right: 15px; bottom: 12px; gap: 6px; }
             .float-btn { width: 160px !important; font-size: 14px !important; padding: 12px 0 !important; gap: 8px !important; }
             .lang-btn { left: 15px; bottom: 12px; min-width: 75px !important; height: 44px !important; font-size: 14px !important; padding: 0 14px !important; gap: 6px !important; }
             .lang-btn i { font-size: 18px !important; }
@@ -241,7 +261,7 @@
         <div class="container mx-auto px-4 md:px-6 flex flex-col lg:flex-row gap-8">
             
             <div class="w-full lg:w-1/4">
-                <div class="bg-[#1c1f2e] rounded-xl border border-white/10 p-4 sticky top-[100px] shadow-2xl tabs-container overflow-x-auto lg:overflow-visible flex lg:flex-col gap-2 whitespace-nowrap lg:whitespace-normal">
+                <div class="bg-[#1c1f2e] rounded-xl border border-white/10 p-4 sticky top-[100px] shadow-2xl tabs-container overflow-x-auto lg:overflow-y-auto lg:max-h-[calc(100vh-120px)] flex lg:flex-col gap-2 whitespace-nowrap lg:whitespace-normal custom-scrollbar">
                     
                     <h3 class="text-xs text-gray-500 font-bold uppercase tracking-widest px-4 py-2 hidden lg:block tr" data-es="Según Trabajo" data-en="By Work">Según Trabajo</h3>
                     <button data-target="tab-charter" onclick="activateTab('tab-charter')" class="tab-btn active w-full text-left px-5 py-3 rounded-lg text-sm mb-1 tr" data-es="Vuelos Charter" data-en="Charter Flights">Vuelos Charter</button>
@@ -304,29 +324,30 @@
                     
                     <p class="text-gray-300 mb-8 leading-relaxed text-lg tr" data-es="En general, cuando un trabajo exige precisión y los métodos tradicionales no son aplicables, nuestras aeronaves pueden realizar el trabajo de forma rápida y segura." data-en="In general, when a job demands precision and traditional methods are not applicable, our aircraft can do the job quickly and safely.">En general, cuando un trabajo exige precisión y los métodos tradicionales no son aplicables, nuestras aeronaves pueden realizar el trabajo de forma rápida y segura.</p>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-                        <img src="1CargaMetro23.jpg" class="w-full h-64 object-cover rounded-xl shadow-xl cursor-zoom-in" onclick="openModal(this.src)" alt="Carga Avión" onerror="this.style.display='none'">
-                        <img src="Helicoptero%20Eslinga%205.jpg" class="w-full h-64 object-cover rounded-xl shadow-xl cursor-zoom-in" onclick="openModal(this.src)" alt="Carga Helicóptero" onerror="this.style.display='none'">
-                    </div>
-
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-                        <div class="bg-[#1c1f2e] border border-blue-500/30 rounded-xl p-8 shadow-xl">
-                            <h3 class="text-xl font-bold text-white mb-6 border-b border-white/10 pb-3 tr" data-es="Carga en Aviones" data-en="Airplane Cargo">Carga en Aviones</h3>
-                            <ul class="space-y-4 text-gray-300">
-                                <li class="flex gap-3"><i class="fa fa-chevron-right text-blue-400 mt-1"></i> <span><strong class="text-white">Metro 23:</strong> <span class="tr" data-es="Puede transportar hasta 1.500 Kg en una ruta de vuelo de dos horas." data-en="Can transport up to 1,500 Kg on a two-hour flight route.">Puede transportar hasta 1.500 Kg en una ruta de vuelo de dos horas.</span></span></li>
-                                <li class="flex gap-3"><i class="fa fa-chevron-right text-blue-400 mt-1"></i> <span><strong class="text-white">Metro III:</strong> <span class="tr" data-es="Puede transportar entre 1.100 a 1.200 Kg. en la misma ruta." data-en="The Metro III can transport between 1,100 to 1,200 Kg on the same route.">Puede transportar entre 1.100 a 1.200 Kg. en la misma ruta.</span></span></li>
-                                <li class="flex gap-3"><i class="fa fa-chevron-right text-blue-400 mt-1"></i> <span class="tr" data-es="Compartimiento de carga trasero con acceso en vuelo de hasta 350Kgs." data-en="Rear cargo compartment with in-flight access up to 350Kgs.">Compartimiento de carga trasero con acceso en vuelo de hasta 350Kgs.</span></li>
-                                <li class="flex gap-3"><i class="fa fa-chevron-right text-blue-400 mt-1"></i> <span class="tr" data-es="Compartimiento de carga delantero de hasta 100Kgs." data-en="Front cargo compartment up to 100Kgs.">Compartimiento de carga delantero de hasta 100Kgs.</span></li>
-                            </ul>
+                        <div class="flex flex-col gap-6">
+                            <img src="1CargaMetro23.jpg" class="w-full h-64 object-cover rounded-xl shadow-xl cursor-zoom-in border border-white/5" onclick="openModal(this.src)" alt="Carga Avión" onerror="this.style.display='none'">
+                            <div class="bg-[#1c1f2e] border border-blue-500/30 rounded-xl p-8 shadow-xl flex-1">
+                                <h3 class="text-xl font-bold text-white mb-6 border-b border-white/10 pb-3 tr" data-es="Carga en Aviones" data-en="Airplane Cargo">Carga en Aviones</h3>
+                                <ul class="space-y-4 text-gray-300">
+                                    <li class="flex gap-3"><i class="fa fa-chevron-right text-blue-400 mt-1"></i> <span><strong class="text-white">Metro 23:</strong> <span class="tr" data-es="Puede transportar hasta 1.500 Kg en una ruta de vuelo de dos horas." data-en="Can transport up to 1,500 Kg on a two-hour flight route.">Puede transportar hasta 1.500 Kg en una ruta de vuelo de dos horas.</span></span></li>
+                                    <li class="flex gap-3"><i class="fa fa-chevron-right text-blue-400 mt-1"></i> <span><strong class="text-white">Metro III:</strong> <span class="tr" data-es="Puede transportar entre 1.100 a 1.200 Kg. en la misma ruta." data-en="The Metro III can transport between 1,100 to 1,200 Kg on the same route.">Puede transportar entre 1.100 a 1.200 Kg. en la misma ruta.</span></span></li>
+                                    <li class="flex gap-3"><i class="fa fa-chevron-right text-blue-400 mt-1"></i> <span class="tr" data-es="Compartimiento de carga trasero con acceso en vuelo de hasta 350Kgs." data-en="Rear cargo compartment with in-flight access up to 350Kgs.">Compartimiento de carga trasero con acceso en vuelo de hasta 350Kgs.</span></li>
+                                    <li class="flex gap-3"><i class="fa fa-chevron-right text-blue-400 mt-1"></i> <span class="tr" data-es="Compartimiento de carga delantero de hasta 100Kgs." data-en="Front cargo compartment up to 100Kgs.">Compartimiento de carga delantero de hasta 100Kgs.</span></li>
+                                </ul>
+                            </div>
                         </div>
                         
-                        <div class="bg-[#1c1f2e] border border-blue-500/30 rounded-xl p-8 shadow-xl">
-                            <h3 class="text-xl font-bold text-white mb-6 border-b border-white/10 pb-3 tr" data-es="Carga en Helicópteros" data-en="Helicopter Cargo">Carga en Helicópteros</h3>
-                            <ul class="space-y-4 text-gray-300">
-                                <li class="flex gap-3"><i class="fa fa-chevron-right text-blue-400 mt-1"></i> <span><strong class="text-white tr" data-es="Carga Interna:" data-en="Internal Cargo:">Carga Interna:</strong> <span class="tr" data-es="Capacidad de hasta 500 kgs en cabina." data-en="Capacity of up to 500 kgs in cabin.">Capacidad de hasta 500 kgs en cabina.</span></span></li>
-                                <li class="flex gap-3"><i class="fa fa-chevron-right text-blue-400 mt-1"></i> <span><strong class="text-white tr" data-es="Carga Externa:" data-en="External Cargo:">Carga Externa:</strong> <span class="tr" data-es="Capacidad entre 450 Kg y 650 Kg dependiendo de la configuración." data-en="Capacity between 450 Kg and 650 Kg depending on configuration.">Capacidad entre 450 Kg y 650 Kg dependiendo de la configuración.</span></span></li>
-                                <li class="flex gap-3"><i class="fa fa-chevron-right text-blue-400 mt-1"></i> <span class="tr" data-es="Helitec dispone de helicópteros habilitados para carga externa con Eslinga de 15 y 30 Mts." data-en="Helitec has helicopters authorized for external cargo with 15 and 30 Mts sling.">Helitec dispone de helicópteros habilitados para carga externa con Eslinga de 15 y 30 Mts.</span></li>
-                            </ul>
+                        <div class="flex flex-col gap-6">
+                            <img src="Helicoptero%20Eslinga%205.jpg" class="w-full h-64 object-cover rounded-xl shadow-xl cursor-zoom-in border border-white/5" onclick="openModal(this.src)" alt="Carga Helicóptero" onerror="this.style.display='none'">
+                            <div class="bg-[#1c1f2e] border border-blue-500/30 rounded-xl p-8 shadow-xl flex-1">
+                                <h3 class="text-xl font-bold text-white mb-6 border-b border-white/10 pb-3 tr" data-es="Carga en Helicópteros" data-en="Helicopter Cargo">Carga en Helicópteros</h3>
+                                <ul class="space-y-4 text-gray-300">
+                                    <li class="flex gap-3"><i class="fa fa-chevron-right text-blue-400 mt-1"></i> <span><strong class="text-white tr" data-es="Carga Interna:" data-en="Internal Cargo:">Carga Interna:</strong> <span class="tr" data-es="Capacidad de hasta 500 kgs en cabina." data-en="Capacity of up to 500 kgs in cabin.">Capacidad de hasta 500 kgs en cabina.</span></span></li>
+                                    <li class="flex gap-3"><i class="fa fa-chevron-right text-blue-400 mt-1"></i> <span><strong class="text-white tr" data-es="Carga Externa:" data-en="External Cargo:">Carga Externa:</strong> <span class="tr" data-es="Capacidad entre 450 Kg y 650 Kg dependiendo de la configuración." data-en="Capacity between 450 Kg and 650 Kg depending on configuration.">Capacidad entre 450 Kg y 650 Kg dependiendo de la configuración.</span></span></li>
+                                    <li class="flex gap-3"><i class="fa fa-chevron-right text-blue-400 mt-1"></i> <span class="tr" data-es="Helitec dispone de helicópteros habilitados para carga externa con Eslinga de 15 y 30 Mts." data-en="Helitec has helicopters authorized for external cargo with 15 and 30 Mts sling.">Helitec dispone de helicópteros habilitados para carga externa con Eslinga de 15 y 30 Mts.</span></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
@@ -353,26 +374,31 @@
                 </div>
 
                 <div id="tab-aeromedico" class="servicio-tab-content hidden">
-                    <h2 class="text-3xl font-black text-white uppercase mb-2 tr" data-es="Traslados Aeromédicos" data-en="Aeromedical Transfers">Traslados Aeromédicos</h2>
-                    <p class="text-blue-400 font-bold uppercase tracking-widest text-xs mb-8 tr" data-es="Socio estratégico: AEROAMBULANCIAS SILVA" data-en="Strategic partner: AEROAMBULANCIAS SILVA">Socio estratégico: AEROAMBULANCIAS SILVA</p>
+                    <h2 class="text-3xl font-black text-white uppercase mb-8 tr" data-es="Traslados Aeromédicos" data-en="Aeromedical Transfers">Traslados Aeromédicos</h2>
+                    
+                    <div class="bg-[#1c1f2e] border border-blue-500/30 p-6 md:p-8 rounded-xl flex flex-col md:flex-row items-center md:items-start gap-8 mb-10 shadow-2xl">
+                        <img src="logosinfondo.png" alt="Aeroambulancias Silva Logo" class="w-48 h-auto object-contain" onerror="this.style.display='none'">
+                        <div class="flex-1 text-center md:text-left flex flex-col justify-center">
+                            <p class="text-gray-400 font-bold uppercase tracking-widest text-sm mb-2 tr" data-es="Socio estratégico:" data-en="Strategic partner:">Socio estratégico:</p>
+                            <h3 class="text-3xl md:text-4xl font-black text-blue-400 uppercase tracking-widest mb-6">AEROAMBULANCIAS SILVA</h3>
+                            <div>
+                                <a href="https://www.aeroambulanciasilva.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold uppercase px-8 py-4 rounded-full transition-colors shadow-lg shadow-blue-500/30">
+                                    <span class="tr" data-es="Ir a su página web" data-en="Visit their website">Ir a su página web</span>
+                                    <i class="fa fa-external-link"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                     
                     <img src="f5-fullsizerender.jpg" class="w-full h-auto max-h-[500px] object-cover rounded-xl shadow-2xl mb-10 cursor-zoom-in border border-white/5 mx-auto block" onclick="openModal(this.src)" alt="Aeroambulancia" onerror="this.style.display='none'">
                     
                     <p class="text-gray-300 mb-4 leading-relaxed text-lg tr" data-es="Brindamos servicios de traslado aeromédico (nacional e internacional), servicios de ambulancia, repatriación de restos, repatriación sanitaria (nacional e internacional), servicio médico escolta, dotación Medevac." data-en="We provide aeromedical transfer services (domestic and international), ambulance services, repatriation of remains, medical repatriation (domestic and international), medical escort service, Medevac provision.">Brindamos servicios de traslado aeromédico (nacional e internacional), servicios de ambulancia, repatriación de restos, repatriación sanitaria (nacional e internacional), servicio médico escolta, dotación Medevac.</p>
                     
-                    <p class="text-gray-300 mb-8 leading-relaxed tr" data-es="Ofrecemos servicios de traslado aeromédico en Venezuela, Colombia, Ecuador, Costa Rica, Panamá, México, Aruba, Curaçao, Bonaire, Trinidad, Tobago, Guyana." data-en="We offer aeromedical transfer services in Venezuela, Colombia, Ecuador, Costa Rica, Panama, Mexico, Aruba, Curaçao, Bonaire, Trinidad, Tobago, Guyana.">Ofrecemos servicios de traslado aeromédico en Venezuela, Colombia, Ecuador, Costa Rica, Panamá, México, Aruba, Curaçao, Bonaire, Trinidad, Tobago, Guyana.</p>
-
-                    <div class="bg-[#1c1f2e] border-l-4 border-blue-500 p-8 rounded-r-xl mb-10 shadow-2xl">
-                        <h4 class="text-2xl font-bold text-white mb-4 flex items-center gap-3"><i class="fa fa-heartbeat text-blue-400"></i> <span class="tr" data-es="Transporte Aeromédico en Aviones Metro III y Metro 23" data-en="Aeromedical Transport in Metro III and Metro 23 Airplanes">Transporte Aeromédico en Aviones Metro III y Metro 23</span></h4>
-                        <p class="text-gray-300 text-base mb-6 tr" data-es="Este servicio consiste en el transporte desde uno (1) hasta tres (3) pacientes a través de aviones acondicionados con materiales, equipos y tripulación especializada para prestar atención en caso de traslados sanitarios cuyos pacientes requieran traslado rápido, oportuno y asistencia inmediata." data-en="This service consists of transporting from one (1) to three (3) patients via aircraft equipped with materials, equipment, and specialized crew to provide care in case of sanitary transfers whose patients require rapid, timely transfer, and immediate assistance.">Este servicio consiste en el transporte desde uno (1) hasta tres (3) pacientes a través de aviones acondicionados con materiales, equipos y tripulación especializada para prestar atención en caso de traslados sanitarios cuyos pacientes requieran traslado rápido, oportuno y asistencia inmediata.</p>
-                        <div class="bg-blue-500/10 border border-blue-500 text-blue-400 font-bold uppercase text-sm p-4 rounded-lg text-center tracking-widest tr" data-es="Capacidad Aeromédica: Piloto, hasta dos (2) pacientes y un (1) Paramédico." data-en="Aeromedical Capacity: Pilot, up to two (2) patients and one (1) Paramedic.">
-                            Capacidad Aeromédica: Piloto, hasta dos (2) pacientes y un (1) Paramédico.
-                        </div>
-                    </div>
+                    <p class="text-gray-300 mb-8 leading-relaxed text-lg tr" data-es="Ofrecemos servicios de traslado aeromédico en Venezuela, Colombia, Ecuador, Costa Rica, Panamá, México, Aruba, Curaçao, Bonaire, Trinidad, Tobago, Guyana." data-en="We offer aeromedical transfer services in Venezuela, Colombia, Ecuador, Costa Rica, Panama, Mexico, Aruba, Curaçao, Bonaire, Trinidad, Tobago, Guyana.">Ofrecemos servicios de traslado aeromédico en Venezuela, Colombia, Ecuador, Costa Rica, Panamá, México, Aruba, Curaçao, Bonaire, Trinidad, Tobago, Guyana.</p>
 
                     <h3 class="text-2xl font-bold text-white mb-6 border-b border-white/10 pb-2 tr" data-es="Características del Servicio:" data-en="Service Characteristics:">Características del Servicio:</h3>
+                    
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-300 text-sm">
-                        
                         <div class="bg-[#1c1f2e] p-6 rounded-xl border border-white/5 shadow-lg">
                             <i class="fa fa-bed text-3xl text-blue-400 mb-4 block"></i>
                             <p class="tr" data-es="Camilla fabricada por Spectrum Aeromed, certificada por la autoridad aeronáutica venezolana (INAC) para ser intaladas en cualquiera de las tres aeronaves Metro III y Metro 23." data-en="Stretcher manufactured by Spectrum Aeromed, certified by the Venezuelan aeronautical authority (INAC) to be installed in any of the three Metro III and Metro 23 aircraft.">Camilla fabricada por Spectrum Aeromed, certificada por la autoridad aeronáutica venezolana (INAC) para ser intaladas en cualquiera de las tres aeronaves Metro III y Metro 23.</p>
@@ -407,7 +433,6 @@
                             <i class="fa fa-wheelchair text-3xl text-blue-400 mb-4 block"></i>
                             <p class="tr" data-es="El o los pacientes están ubicados en la parte trasera de la cabina de pasajeros lo cual facilita la movilización de ellos a través de la compuerta de carga de la aeronave ubicada hacia el cono de cola de la aeronave." data-en="The patient(s) are located in the rear of the passenger cabin which facilitates their mobilization through the aircraft's cargo door located towards the aircraft's tail cone.">El o los pacientes están ubicados en la parte trasera de la cabina de pasajeros lo cual facilita la movilización de ellos a través de la compuerta de carga de la aeronave ubicada hacia el cono de cola de la aeronave.</p>
                         </div>
-
                     </div>
                 </div>
 
@@ -548,7 +573,7 @@
                         <div class="bg-[#1c1f2e] border border-white/10 rounded-xl overflow-hidden shadow-2xl">
                             <div class="gallery-container group" data-count="10">
                                 <div class="gallery-track">
-                                    <img src="YV1923_ext.jpg" alt="Merlin 300 Exterior YV1923" onclick="openModal(this.src)" draggable="false">
+                                    <img src="YV1923_ext.jpg" alt="Merlin 300 Exterior" onclick="openModal(this.src)" draggable="false">
                                     <img src="YV1923_1.jpg" alt="Merlin 300 Interior 1" onclick="openModal(this.src)" draggable="false">
                                     <img src="YV1923_2.jpg" alt="Merlin 300 Interior 2" onclick="openModal(this.src)" draggable="false">
                                     <img src="YV1923_3.jpg" alt="Merlin 300 Interior 3" onclick="openModal(this.src)" draggable="false">
@@ -625,11 +650,10 @@
                     <h2 class="text-3xl font-black text-white uppercase mb-2 tr" data-es="Aeronaves de Ala Rotatoria" data-en="Rotary Wing Aircraft">Aeronaves de Ala Rotatoria</h2>
                     <p class="text-blue-400 font-bold uppercase tracking-widest text-xs mb-8 tr" data-es="Helicóptero MD501 y Configuraciones" data-en="MD501 Helicopter and Configurations">Helicóptero MD501 y Configuraciones</p>
                     
-                    <div class="gallery-container group mb-8" data-count="3">
+                    <div class="gallery-container group mb-8" data-count="2">
                         <div class="gallery-track">
                             <img src="Helicoptero_en%20pico.jpg" alt="Helicoptero en pico" onclick="openModal(this.src)" draggable="false" onerror="this.style.display='none'">
                             <img src="Helicoptero%20Eslinga%201.jpg" alt="Helicoptero Eslinga Bosque" onclick="openModal(this.src)" draggable="false" onerror="this.style.display='none'">
-                            <img src="Helicoptero%20Eslinga%205.jpg" alt="Helicoptero Eslinga Plataforma" onclick="openModal(this.src)" draggable="false" onerror="this.style.display='none'">
                         </div>
                         <button class="nav-btn nav-btn-prev" onclick="moveGallery(this, -1)"><i class="fa fa-chevron-left"></i></button>
                         <button class="nav-btn nav-btn-next" onclick="moveGallery(this, 1)"><i class="fa fa-chevron-right"></i></button>
@@ -753,7 +777,7 @@
                             <div class="p-6 flex-1 flex flex-col justify-between">
                                 <div>
                                     <h4 class="text-xl font-bold uppercase text-white mb-2 tr" data-es="Aeromédico" data-en="Aeromedical">Aeromédico</h4>
-                                    <p class="text-xs text-gray-400 mb-4 tr" data-es="Cabinas equipadas Spectrum" data-en="Spectrum equipped cabins">Cabinas equipadas Spectrum</p>
+                                    <p class="text-xs text-gray-400 mb-4 tr" data-es="Cabinas equipadas" data-en="Equipped cabins">Cabinas equipadas</p>
                                 </div>
                                 <button class="text-blue-400 text-sm font-bold uppercase hover:text-white transition tr" data-es="Ver Especificaciones" data-en="View Specifications">Ver Especificaciones</button>
                             </div>
@@ -785,10 +809,9 @@
                 let count = parseInt(gallery.dataset.count);
                 if(count > 1) {
                     gallery.dataset.index = 0;
-                    // Auto slide cada 4 segundos
+                    
                     gallery.interval = setInterval(() => slideGallery(gallery, 1), 4000);
                     
-                    // Pausar al poner el mouse
                     gallery.addEventListener('mouseenter', () => clearInterval(gallery.interval));
                     gallery.addEventListener('mouseleave', () => {
                         gallery.interval = setInterval(() => slideGallery(gallery, 1), 4000);
@@ -813,7 +836,6 @@
                     track.addEventListener('mouseup', (e) => {
                         isDown = false;
                         track.style.cursor = 'grab';
-                        // Calcular a qué imagen ir según el desplazamiento
                         let walk = e.pageX - track.offsetLeft - startX;
                         if(walk < -50) slideGallery(gallery, 1);
                         else if(walk > 50) slideGallery(gallery, -1);
@@ -844,7 +866,7 @@
             track.style.transform = `translateX(-${index * 100}%)`;
         }
 
-        // LÓGICA DE TABS DINÁMICOS
+        // LÓGICA DE TABS DINÁMICOS Y SCROLL
         function activateTab(tabId) {
             document.querySelectorAll('.servicio-tab-content').forEach(el => {
                 el.classList.add('hidden');
@@ -868,12 +890,11 @@
                 btn.classList.add('active', 'bg-blue-600', 'text-white', 'border-blue-600', 'font-bold');
             });
 
-            if(window.innerWidth < 1024) {
-                const contentArea = document.getElementById('servicios-content-area');
-                if(contentArea) {
-                    const y = contentArea.getBoundingClientRect().top + window.scrollY - 80;
-                    window.scrollTo({top: y, behavior: 'smooth'});
-                }
+            // SCROLL TOP PARA EL CONTENEDOR EN TODAS LAS PANTALLAS
+            const contentArea = document.getElementById('servicios-content-area');
+            if(contentArea) {
+                const y = contentArea.getBoundingClientRect().top + window.scrollY - 80;
+                window.scrollTo({top: y, behavior: 'smooth'});
             }
             
             const menuPanel = document.getElementById('mobile-menu-panel');
@@ -889,7 +910,6 @@
             const expandedImg = document.getElementById('expanded-image');
             expandedImg.src = src;
             modal.style.display = 'flex';
-            // Pequeño timeout para la transición
             setTimeout(() => {
                 modal.classList.add('opacity-100', 'pointer-events-auto');
             }, 10);
