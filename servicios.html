@@ -59,7 +59,7 @@
         .menu-item:hover { background-color: white; color: black; transform: scale(1.1); box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
         .nav-scrolled .menu-item { font-size: 14px; font-weight: 500; padding: 2px 12px; margin-top: 0; }
         
-        /* BOTÓN PRESUPUESTO EN ROJO */
+        /* BOTÓN PRESUPUESTO HEADER EN ROJO */
         .btn-presupuesto { border: 2px solid #8B1E1E !important; box-shadow: 0 4px 10px rgba(139, 30, 30, 0.3); }
         .btn-presupuesto:hover { background-color: #8B1E1E !important; color: white !important; }
 
@@ -82,7 +82,7 @@
         .pos-servicios { grid-column: 8 / 10; text-align: right; }
         .pos-presupuesto { grid-column: 10 / 13; text-align: right; padding-right: 20px; }
 
-        /* TABS DE SERVICIOS */
+        /* TABS DE SERVICIOS - COLOR AZUL PARA EL ESTADO ACTIVO */
         .tab-btn { transition: all 0.3s ease; border: 1px solid transparent; }
         .tab-btn.active { background-color: #2563eb; color: white; border-color: #2563eb; font-weight: bold; }
         .tab-btn:not(.active):hover { background-color: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); }
@@ -228,19 +228,19 @@
                     <a href="servicios.html" class="menu-item tr" data-es="Servicios <i class='fa fa-angle-down ml-1'></i>" data-en="Services <i class='fa fa-angle-down ml-1'></i>">Servicios <i class="fa fa-angle-down ml-1"></i></a>
                     <div class="dropdown-menu">
                         <span class="dropdown-header tr" data-es="Según trabajo:" data-en="By work:">Según trabajo:</span>
-                        <a onclick="activateTab('tab-charter')" href="#servicios-content-area" class="dropdown-item tr" data-es="Vuelos Charter" data-en="Charter Flights">Vuelos Charter</a>
-                        <a onclick="activateTab('tab-carga')" href="#servicios-content-area" class="dropdown-item tr" data-es="Transporte de carga" data-en="Cargo Transport">Transporte de carga</a>
-                        <a onclick="activateTab('tab-aeromedico')" href="#servicios-content-area" class="dropdown-item tr" data-es="Traslados aeromédicos" data-en="Aeromedical Transfers">Traslados aeromédicos</a>
+                        <a onclick="activateTab('tab-charter')" class="dropdown-item tr cursor-pointer" data-es="Vuelos Charter" data-en="Charter Flights">Vuelos Charter</a>
+                        <a onclick="activateTab('tab-carga')" class="dropdown-item tr cursor-pointer" data-es="Transporte de carga" data-en="Cargo Transport">Transporte de carga</a>
+                        <a onclick="activateTab('tab-aeromedico')" class="dropdown-item tr cursor-pointer" data-es="Traslados aeromédicos" data-en="Aeromedical Transfers">Traslados aeromédicos</a>
                         
                         <div class="dropdown-divider"></div>
                         
                         <span class="dropdown-header tr" data-es="Según modelo:" data-en="By model:">Según modelo:</span>
-                        <a onclick="activateTab('tab-fija')" href="#servicios-content-area" class="dropdown-item tr" data-es="Ala fija (Aviones)" data-en="Fixed wing (Airplanes)">Ala fija (Aviones)</a>
-                        <a onclick="activateTab('tab-rotatoria')" href="#servicios-content-area" class="dropdown-item tr" data-es="Ala rotatoria (Helicóp.)" data-en="Rotary wing (Helicopters)">Ala rotatoria (Helicóp.)</a>
+                        <a onclick="activateTab('tab-fija')" class="dropdown-item tr cursor-pointer" data-es="Ala fija (Aviones)" data-en="Fixed wing (Airplanes)">Ala fija (Aviones)</a>
+                        <a onclick="activateTab('tab-rotatoria')" class="dropdown-item tr cursor-pointer" data-es="Ala rotatoria (Helicóp.)" data-en="Rotary wing (Helicopters)">Ala rotatoria (Helicóp.)</a>
                         
                         <div class="dropdown-divider"></div>
                         
-                        <a onclick="activateTab('tab-flota')" href="#servicios-content-area" class="dropdown-item tr font-bold text-blue-400" data-es="Nuestra flota" data-en="Our Fleet">Nuestra flota</a>
+                        <a onclick="activateTab('tab-flota')" class="dropdown-item tr font-bold text-blue-400 cursor-pointer" data-es="Nuestra flota" data-en="Our Fleet">Nuestra flota</a>
                     </div>
                 </div>
 
@@ -250,7 +250,7 @@
     </nav>
 
     <section class="relative w-full h-[35vh] min-h-[250px] md:min-h-[350px] bg-black overflow-hidden flex flex-col justify-center items-center pt-20">
-        <img src="https://www.aeroambulanciasilva.com/web/image/51242-f242b5bc/Gemini_Generated_Image_opxoj0opxoj0opxo.png" class="absolute inset-0 w-full h-full object-cover opacity-30">
+        <img src="https://www.aeroambulanciasilva.com/web/image/51242-f242b5bc/Gemini_Generated_Image_opxoj0opxoj0opxo.png" class="absolute inset-0 w-full h-full object-cover opacity-30" alt="Banner">
         <div class="relative z-10 text-center px-4 block-reveal">
             <h1 class="text-3xl md:text-5xl font-black uppercase tracking-[0.2em] text-white tr" data-es="Catálogo de Servicios" data-en="Service Catalog">Catálogo de Servicios</h1>
             <div class="w-24 h-1 bg-blue-500 mx-auto mt-4"></div>
@@ -284,7 +284,7 @@
                     <h2 class="text-3xl font-black text-white uppercase mb-2 tr" data-es="Vuelos Charter Ejecutivos" data-en="Executive Charter Flights">Vuelos Charter Ejecutivos</h2>
                     <p class="text-blue-400 font-bold uppercase tracking-widest text-xs mb-8 tr" data-es="Nacionales e Internacionales" data-en="National and International">Nacionales e Internacionales</p>
                     
-                    <img src="f4_9425.jpg" class="w-full h-auto max-h-[500px] object-cover rounded-xl shadow-2xl mb-10 cursor-zoom-in border border-white/5 mx-auto block" onclick="openModal(this.src)" alt="Vuelos Charter" onerror="this.style.display='none'">
+                    <img src="f4_9425.jpg" class="w-full h-auto max-h-[500px] object-cover rounded-xl shadow-2xl mb-10 cursor-zoom-in border border-white/5 mx-auto block" onclick="openModal(this.src)" alt="Vuelos Charter" onerror="this.src='https://www.aeroambulanciasilva.com/web/image/51234-b4cce626/3.TURBINA.JPG'">
                     
                     <p class="text-gray-300 mb-6 leading-relaxed text-lg tr" data-es="Brindamos soluciones a medida para traslados de pasajeros y grupos con vuelos charter privados, diseñados para garantizar eficiencia, confort y seguridad en cada viaje. Brindamos el servicio de traslado de pasajeros además de la posibilidad de coordinar vuelos charters o vuelos especiales nacionales e internacionales para viajeros individuales o en grupos, corporativos, de negocios o particulares, en las rutas y destinos para los cuales estamos autorizados a cubrir." data-en="We provide tailor-made solutions for passenger and group transfers with private charter flights, designed to ensure efficiency, comfort, and safety on every trip. We provide passenger transfer services as well as the possibility of coordinating domestic and international charter flights or special flights for individual travelers or groups, corporate, business, or private, on the routes and destinations we are authorized to cover.">Brindamos soluciones a medida para traslados de pasajeros y grupos con vuelos charter privados, diseñados para garantizar eficiencia, confort y seguridad en cada viaje. Brindamos el servicio de traslado de pasajeros además de la posibilidad de coordinar vuelos charters o vuelos especiales nacionales e internacionales para viajeros individuales o en grupos, corporativos, de negocios o particulares, en las rutas y destinos para los cuales estamos autorizados a cubrir.</p>
 
@@ -448,7 +448,7 @@
                     <div class="space-y-12">
                         
                         <div class="bg-[#1c1f2e] border border-white/10 rounded-xl overflow-hidden shadow-2xl">
-                            <div class="gallery-container group" data-count="9">
+                            <div class="gallery-container group">
                                 <div class="gallery-track">
                                     <img src="YV147T_EXT1.jpg" alt="Metro III Exterior 1" onclick="openModal(this.src)" draggable="false">
                                     <img src="YV147T_EXT2.jpg" alt="Metro III Exterior 2" onclick="openModal(this.src)" draggable="false">
@@ -493,9 +493,9 @@
                         </div>
 
                         <div class="bg-[#1c1f2e] border border-white/10 rounded-xl overflow-hidden shadow-2xl">
-                            <div class="gallery-container group" data-count="7">
+                            <div class="gallery-container group">
                                 <div class="gallery-track">
-                                    <img src="image_711e9b.jpg" alt="Metro 23 Ejecutivo Exterior" onclick="openModal(this.src)" draggable="false" onerror="this.style.display='none'">
+                                    <img src="image_711e9b.jpg" alt="Metro 23 Ejecutivo Exterior" onclick="openModal(this.src)" draggable="false">
                                     <img src="YV185T_1.jpg" alt="Metro 23 Ejecutivo Interior 1" onclick="openModal(this.src)" draggable="false">
                                     <img src="YV185T_2.jpg" alt="Metro 23 Ejecutivo Interior 2" onclick="openModal(this.src)" draggable="false">
                                     <img src="YV185T_3.jpg" alt="Metro 23 Ejecutivo Interior 3" onclick="openModal(this.src)" draggable="false">
@@ -536,10 +536,10 @@
                         </div>
 
                         <div class="bg-[#1c1f2e] border border-white/10 rounded-xl overflow-hidden shadow-2xl">
-                            <div class="gallery-container group" data-count="2">
+                            <div class="gallery-container group">
                                 <div class="gallery-track">
-                                    <img src="YV221T_1.jpg" alt="Metro 23 Commuter Interior 1" onclick="openModal(this.src)" draggable="false" onerror="this.style.display='none'">
-                                    <img src="YV221T_2.jpg" alt="Metro 23 Commuter Interior 2" onclick="openModal(this.src)" draggable="false" onerror="this.style.display='none'">
+                                    <img src="YV221T_1.jpg" alt="Metro 23 Commuter Interior 1" onclick="openModal(this.src)" draggable="false">
+                                    <img src="YV221T_2.jpg" alt="Metro 23 Commuter Interior 2" onclick="openModal(this.src)" draggable="false">
                                 </div>
                                 <button class="nav-btn nav-btn-prev" onclick="moveGallery(this, -1)"><i class="fa fa-chevron-left"></i></button>
                                 <button class="nav-btn nav-btn-next" onclick="moveGallery(this, 1)"><i class="fa fa-chevron-right"></i></button>
@@ -574,7 +574,7 @@
                         </div>
 
                         <div class="bg-[#1c1f2e] border border-white/10 rounded-xl overflow-hidden shadow-2xl">
-                            <div class="gallery-container group" data-count="10">
+                            <div class="gallery-container group">
                                 <div class="gallery-track">
                                     <img src="YV1923_ext.jpg" alt="Merlin 300 Exterior" onclick="openModal(this.src)" draggable="false">
                                     <img src="YV1923_1.jpg" alt="Merlin 300 Interior 1" onclick="openModal(this.src)" draggable="false">
@@ -653,10 +653,10 @@
                     <h2 class="text-3xl font-black text-white uppercase mb-2 tr" data-es="Aeronaves de Ala Rotatoria" data-en="Rotary Wing Aircraft">Aeronaves de Ala Rotatoria</h2>
                     <p class="text-blue-400 font-bold uppercase tracking-widest text-xs mb-8 tr" data-es="Helicóptero MD501 y Configuraciones" data-en="MD501 Helicopter and Configurations">Helicóptero MD501 y Configuraciones</p>
                     
-                    <div class="gallery-container group mb-8" data-count="2">
+                    <div class="gallery-container group mb-8">
                         <div class="gallery-track">
-                            <img src="Helicoptero_en%20pico.jpg" alt="Helicoptero en pico" onclick="openModal(this.src)" draggable="false" onerror="this.style.display='none'">
-                            <img src="Helicoptero%20Eslinga%201.jpg" alt="Helicoptero Eslinga Bosque" onclick="openModal(this.src)" draggable="false" onerror="this.style.display='none'">
+                            <img src="Helicoptero_en%20pico.jpg" alt="Helicoptero en pico" onclick="openModal(this.src)" draggable="false">
+                            <img src="Helicoptero%20Eslinga%201.jpg" alt="Helicoptero Eslinga Bosque" onclick="openModal(this.src)" draggable="false">
                         </div>
                         <button class="nav-btn nav-btn-prev" onclick="moveGallery(this, -1)"><i class="fa fa-chevron-left"></i></button>
                         <button class="nav-btn nav-btn-next" onclick="moveGallery(this, 1)"><i class="fa fa-chevron-right"></i></button>
@@ -752,7 +752,7 @@
                     <h2 class="text-3xl font-black text-white uppercase mb-2 tr" data-es="Nuestra Flota Operativa" data-en="Our Operational Fleet">Nuestra Flota Operativa</h2>
                     <p class="text-blue-400 font-bold uppercase tracking-widest text-xs mb-8 tr" data-es="Resumen General" data-en="General Overview">Resumen General</p>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center mb-10">
                         <div class="bg-[#1c1f2e] rounded-xl overflow-hidden shadow-lg border border-white/5 flex flex-col cursor-pointer hover:border-blue-500/50 transition" onclick="activateTab('tab-fija')">
                             <img src="f4_9425.jpg" class="w-full h-48 object-cover" onerror="this.src='https://www.aeroambulanciasilva.com/web/image/51234-b4cce626/3.TURBINA.JPG'">
                             <div class="p-6 flex-1 flex flex-col justify-between">
@@ -786,6 +786,12 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="flex flex-col sm:flex-row justify-center items-center gap-6 mt-4">
+                        <a href="galeria.html" class="inline-block bg-[#1c1f2e] border-2 border-blue-500 text-blue-400 font-bold uppercase tracking-widest py-4 px-10 rounded-full hover:bg-blue-600 hover:text-white transition-colors shadow-lg w-full sm:w-auto text-center tr" data-es="Ver Galería" data-en="View Gallery">Ver Galería</a>
+                        
+                        <a href="contacto.html" class="inline-block bg-[#8B1E1E] text-white font-bold uppercase tracking-widest py-4 px-10 rounded-full hover:bg-red-800 transition-colors shadow-[0_4px_15px_rgba(139,30,30,0.4)] hover:shadow-[0_6px_20px_rgba(139,30,30,0.6)] w-full sm:w-auto text-center tr" data-es="Solicitar Presupuesto" data-en="Request Quote">Solicitar Presupuesto</a>
+                    </div>
                 </div>
 
             </div>
@@ -805,11 +811,15 @@
     </footer>
 
     <script>
-        // GALERÍA AUTOMÁTICA Y MANUAL (Drag habilitado)
+        // GALERÍA AUTOMÁTICA Y MANUAL DINÁMICA (Drag habilitado)
         function initGalleries() {
             let galleries = document.querySelectorAll('.gallery-container');
             galleries.forEach(gallery => {
-                let count = parseInt(gallery.dataset.count);
+                let track = gallery.querySelector('.gallery-track');
+                let imgs = track.querySelectorAll('img');
+                let count = imgs.length; // Se calcula automáticamente 
+                gallery.dataset.count = count;
+                
                 if(count > 1) {
                     gallery.dataset.index = 0;
                     
@@ -826,19 +836,18 @@
                     let isDown = false;
                     let startX;
                     let scrollLeft;
-                    let track = gallery.querySelector('.gallery-track');
 
                     track.addEventListener('mousedown', (e) => {
                         isDown = true;
                         track.style.cursor = 'grabbing';
                         startX = e.pageX - track.offsetLeft;
-                        scrollLeft = track.scrollLeft;
                     });
                     track.addEventListener('mouseleave', () => {
                         isDown = false;
                         track.style.cursor = 'grab';
                     });
                     track.addEventListener('mouseup', (e) => {
+                        if (!isDown) return;
                         isDown = false;
                         track.style.cursor = 'grab';
                         let walk = e.pageX - track.offsetLeft - startX;
@@ -864,6 +873,7 @@
 
         function slideGallery(gallery, dir) {
             let count = parseInt(gallery.dataset.count);
+            if (count === 0) return;
             let index = parseInt(gallery.dataset.index);
             index = (index + dir + count) % count;
             gallery.dataset.index = index;
@@ -871,7 +881,7 @@
             track.style.transform = `translateX(-${index * 100}%)`;
         }
 
-        // LÓGICA DE TABS DINÁMICOS Y SCROLL HACIA ARRIBA
+        // LÓGICA DE TABS DINÁMICOS Y SCROLL AL INICIO DEL CONTENEDOR
         function activateTab(tabId) {
             document.querySelectorAll('.servicio-tab-content').forEach(el => {
                 el.classList.add('hidden');
@@ -895,13 +905,16 @@
                 btn.classList.add('active', 'bg-blue-600', 'text-white', 'border-blue-600', 'font-bold');
             });
 
-            // HACER SCROLL SUAVE AL INICIO DEL CONTENEDOR DE SERVICIOS
+            // SCROLL SUAVE AL INICIO DE LA SECCIÓN (CORREGIDO PARA NO DEJAR A MITAD DE PÁGINA)
             const contentArea = document.getElementById('servicios-content-area');
             if(contentArea) {
-                // Offset para no quedar tapado por el header
-                const offset = window.innerWidth < 1024 ? 60 : 80;
-                const y = contentArea.getBoundingClientRect().top + window.scrollY - offset;
-                window.scrollTo({top: y, behavior: 'smooth'});
+                const headerOffset = window.innerWidth < 1024 ? 60 : 80;
+                const elementPosition = contentArea.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.scrollY - headerOffset;
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
             }
             
             const menuPanel = document.getElementById('mobile-menu-panel');
