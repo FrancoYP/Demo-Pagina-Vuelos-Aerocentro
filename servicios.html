@@ -19,7 +19,7 @@
                 extend: {
                     fontFamily: { sans: ['Montserrat', 'sans-serif'], serif: ['Georgia', 'serif'] },
                     colors: {
-                        brand: { blue: '#023A78', dark: '#383d51', darker: '#1c1f2e', whatsapp: '#25D366' }
+                        brand: { blue: '#023A78', dark: '#383d51', darker: '#1c1f2e', red: '#8B1E1E', whatsapp: '#25D366' }
                     }
                 }
             }
@@ -82,7 +82,7 @@
         .pos-servicios { grid-column: 8 / 10; text-align: right; }
         .pos-presupuesto { grid-column: 10 / 13; text-align: right; padding-right: 20px; }
 
-        /* TABS DE SERVICIOS - COLOR AZUL PARA EL ESTADO ACTIVO */
+        /* TABS DE SERVICIOS */
         .tab-btn { transition: all 0.3s ease; border: 1px solid transparent; }
         .tab-btn.active { background-color: #2563eb; color: white; border-color: #2563eb; font-weight: bold; }
         .tab-btn:not(.active):hover { background-color: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); }
@@ -158,7 +158,7 @@
             .menu-row.menu-open { left: 0 !important; }
             .menu-row > div { width: 100%; text-align: left; padding: 0 !important; }
             .menu-item { background: transparent !important; border-radius: 0 !important; padding: 15px 10px !important; font-size: 16px !important; text-align: left; width: 100%; border-bottom: 1px solid rgba(255,255,255,0.05) !important; display: block; box-shadow: none !important; border-top: none !important; border-left: none !important; border-right: none !important; }
-            .btn-presupuesto { border-bottom: 1px solid #8B1E1E !important; color: #ff6b6b !important; font-weight: bold; }
+            .btn-presupuesto { border-bottom: 1px solid #8B1E1E !important; color: #ff6b6b !important; font-weight: bold; } /* ROJO EN MOVIL TAMBIEN */
 
             .dropdown-menu { position: relative; top: 0; left: 0; transform: none !important; width: 100%; background: rgba(0,0,0,0.2); box-shadow: none; border: none; padding: 0; margin-top: 0; display: none; opacity: 1; visibility: visible; border-radius: 0; }
             .pos-servicios:hover .dropdown-menu, .pos-servicios:focus-within .dropdown-menu { display: block; }
@@ -177,10 +177,10 @@
         .lang-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.4); }
 
         @media (max-width: 600px) {
-            .fixed-btn-container { right: 15px; bottom: 12px; gap: 6px; }
+            .fixed-btn-container { right: 15px; bottom: 12px; gap: 6px; transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
             .float-btn { width: 160px !important; font-size: 14px !important; padding: 12px 0 !important; gap: 8px !important; }
-            .lang-btn { left: 15px; bottom: 12px; min-width: 75px !important; height: 44px !important; font-size: 14px !important; padding: 0 14px !important; gap: 6px !important; }
-            .lang-btn i { font-size: 18px !important; }
+            .lang-btn { left: 15px; bottom: 12px; min-width: 75px !important; height: 44px !important; font-size: 14px !important; padding: 0 14px !important; gap: 6px !important; transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
+            .lang-btn i { font-size: 18px !important; transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
 
             body.is-scrolled .fixed-btn-container { bottom: 15px; gap: 8px; }
             body.is-scrolled .float-btn { width: 100px !important; font-size: 11px !important; padding: 8px 0 !important; gap: 6px !important; }
@@ -273,9 +273,9 @@
                     <button data-target="tab-rotatoria" onclick="activateTab('tab-rotatoria')" class="tab-btn text-gray-400 w-full text-left px-5 py-3 rounded-lg text-sm mb-4 lg:mb-4 tr" data-es="Ala Rotatoria (Helicópteros)" data-en="Rotary Wing (Helicopters)">Ala Rotatoria (Helicópteros)</button>
 
                     <div class="hidden lg:block w-full h-px bg-white/10 my-2"></div>
-                    <button data-target="tab-flota" onclick="activateTab('tab-flota')" class="tab-btn text-gray-400 w-full text-left px-5 py-3 rounded-lg text-sm font-bold lg:mt-4 tr" data-es="Nuestra Flota" data-en="Our Fleet">Nuestra Flota</button>
+                    <button data-target="tab-flota" onclick="activateTab('tab-flota')" class="tab-btn text-gray-400 w-full text-left px-5 py-3 rounded-lg text-sm font-bold lg:mt-4 mb-4 tr" data-es="Nuestra Flota" data-en="Our Fleet">Nuestra Flota</button>
 
-                    <a href="contacto.html" class="flex-shrink-0 flex items-center justify-center bg-[#8B1E1E] text-white font-bold uppercase tracking-widest px-6 py-4 rounded-xl hover:bg-red-800 transition-colors shadow-[0_4px_15px_rgba(139,30,30,0.4)] mt-2 lg:mt-6 text-xs md:text-sm lg:w-full tr" data-es="Solicitar Presupuesto" data-en="Request Quote">Solicitar Presupuesto</a>
+                    <a href="contacto.html" class="flex-shrink-0 flex items-center justify-center bg-[#8B1E1E] text-white font-bold uppercase tracking-widest px-6 py-4 rounded-xl hover:bg-red-800 transition-colors shadow-[0_4px_15px_rgba(139,30,30,0.4)] mt-2 lg:mt-4 text-xs md:text-sm lg:w-full tr" data-es="Solicitar Presupuesto" data-en="Request Quote">Solicitar Presupuesto</a>
                 </div>
             </div>
 
@@ -325,7 +325,7 @@
                     
                     <p class="text-gray-300 mb-8 leading-relaxed text-lg tr" data-es="En general, cuando un trabajo exige precisión y los métodos tradicionales no son aplicables, nuestras aeronaves pueden realizar el trabajo de forma rápida y segura." data-en="In general, when a job demands precision and traditional methods are not applicable, our aircraft can do the job quickly and safely.">En general, cuando un trabajo exige precisión y los métodos tradicionales no son aplicables, nuestras aeronaves pueden realizar el trabajo de forma rápida y segura.</p>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                         <div class="bg-[#1c1f2e] border border-blue-500/30 rounded-xl p-8 shadow-xl">
                             <h3 class="text-xl font-bold text-white mb-6 border-b border-white/10 pb-3 tr" data-es="Carga en Aviones" data-en="Airplane Cargo">Carga en Aviones</h3>
                             <ul class="space-y-4 text-gray-300">
@@ -346,10 +346,10 @@
                         </div>
                     </div>
 
-                    <div class="gallery-container group mb-12">
+                    <div class="gallery-container group mb-12" data-count="2">
                         <div class="gallery-track">
-                            <img src="1CargaMetro23.jpg" alt="Carga Avión" onclick="openModal(this.src)">
-                            <img src="Helicoptero%20Eslinga%205.jpg" alt="Carga Helicóptero" onclick="openModal(this.src)">
+                            <img src="image_306168.jpg" alt="Carga Avión" onclick="openModal(this.src)" draggable="false">
+                            <img src="Helicoptero%20Eslinga%205.jpg" alt="Carga Helicóptero" onclick="openModal(this.src)" draggable="false">
                         </div>
                         <button class="nav-btn nav-btn-prev" onclick="moveGallery(this, -1)"><i class="fa fa-chevron-left"></i></button>
                         <button class="nav-btn nav-btn-next" onclick="moveGallery(this, 1)"><i class="fa fa-chevron-right"></i></button>
@@ -762,7 +762,7 @@
                     <h2 class="text-3xl font-black text-white uppercase mb-2 tr" data-es="Nuestra Flota Operativa" data-en="Our Operational Fleet">Nuestra Flota Operativa</h2>
                     <p class="text-blue-400 font-bold uppercase tracking-widest text-xs mb-8 tr" data-es="Resumen General" data-en="General Overview">Resumen General</p>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center mb-10">
                         <div class="bg-[#1c1f2e] rounded-xl overflow-hidden shadow-lg border border-white/5 flex flex-col cursor-pointer hover:border-blue-500/50 transition" onclick="activateTab('tab-fija')">
                             <img src="f4_9425.jpg" class="w-full h-48 object-cover" onerror="this.src='https://www.aeroambulanciasilva.com/web/image/51234-b4cce626/3.TURBINA.JPG'">
                             <div class="p-6 flex-1 flex flex-col justify-between">
@@ -786,7 +786,7 @@
                         </div>
 
                         <div class="bg-[#1c1f2e] rounded-xl overflow-hidden shadow-lg border border-white/5 flex flex-col cursor-pointer hover:border-blue-500/50 transition" onclick="activateTab('tab-aeromedico')">
-                            <img src="f5-fullsizerender.jpg" class="w-full h-48 object-cover">
+                            <img src="f5-fullsizerender.jpg" class="w-full h-48 object-cover" onerror="this.src='https://www.helitec-main.com/images/galeria/Aeromedico_1.jpg'">
                             <div class="p-6 flex-1 flex flex-col justify-between">
                                 <div>
                                     <h4 class="text-xl font-bold uppercase text-white mb-2 tr" data-es="Aeromédico" data-en="Aeromedical">Aeromédico</h4>
@@ -819,7 +819,7 @@
     </footer>
 
     <script>
-        // GALERÍA AUTOMÁTICA Y MANUAL (Sin error de fondo gris por imágenes faltantes)
+        // GALERÍA AUTOMÁTICA Y MANUAL DINÁMICA (Drag habilitado, error display removido)
         function initGalleries() {
             let galleries = document.querySelectorAll('.gallery-container');
             galleries.forEach(gallery => {
