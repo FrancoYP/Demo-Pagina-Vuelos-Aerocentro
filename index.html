@@ -1,4 +1,4 @@
-</html><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -80,7 +80,7 @@
             border: 1px solid rgba(255,255,255,0.1);
             border-radius: 8px;
             padding: 10px 0;
-            width: 260px; /* Ensanchado un poco para el nuevo texto */
+            width: 260px;
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
@@ -112,7 +112,7 @@
             padding: 8px 20px;
             color: white;
             font-size: 14px;
-            text-align: left; /* Alineado a la izquierda por el nuevo formato */
+            text-align: left;
             transition: background 0.2s;
             text-decoration: none;
         }
@@ -148,6 +148,9 @@
         /* CONFIGURACIONES ESPECÍFICAS Y EXCLUSIVAS PARA CELULAR */
         @media (max-width: 1023px) {
             .svc-container { display: block; }
+            
+            /* REGLA AGREGADA PARA OCULTAR BOTÓN DE SERVICIOS DE ESCRITORIO EN MÓVIL */
+            .hide-on-mobile { display: none !important; }
             
             /* HEADER FIJO PERMANENTE EN CELULAR Y SIN SALTOS */
             #sticky-nav {
@@ -193,13 +196,15 @@
             .logo-text span:first-child { font-size: 1.05rem !important; }
             .logo-text span:last-child { font-size: 0.95rem !important; }
 
-            /* PANEL MENÚ DESPLEGABLE */
+            /* PANEL MENÚ DESPLEGABLE CON SCROLL AÑADIDO */
             .menu-row { 
                 position: fixed; top: 0; left: -100%; width: 260px; height: 100vh; 
                 background: #1c1f2e; display: flex !important; flex-direction: column !important; 
                 justify-content: flex-start !important; align-items: flex-start !important; 
                 padding: 80px 20px 20px 20px !important; gap: 10px !important; 
                 transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 5px 0 20px rgba(0,0,0,0.7); z-index: 999; margin: 0;
+                overflow-y: auto; /* SCROLL HABILITADO */
+                overflow-x: hidden;
             }
             .menu-row.menu-open { left: 0; }
             
@@ -213,6 +218,29 @@
             .btn-presupuesto { border-bottom: 1px solid #8B1E1E !important; color: #ff6b6b !important; font-weight: bold; }
 
             /* AJUSTE DROPDOWN EN CELULAR */
+            .servicios-mobile-wrapper {
+                display: flex;
+                width: 100%;
+                border-bottom: 1px solid rgba(255,255,255,0.05);
+            }
+            .servicios-mobile-wrapper .menu-item {
+                border-bottom: none !important;
+                flex-grow: 1;
+                margin: 0 !important;
+            }
+            .servicios-dropdown-btn {
+                font-size: 24px;
+                width: 65px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                background: rgba(255,255,255,0.03);
+                border: none;
+                border-left: 1px solid rgba(255,255,255,0.1);
+                cursor: pointer;
+            }
+
             .dropdown-menu {
                 position: relative;
                 top: 0;
@@ -229,9 +257,8 @@
                 visibility: visible;
                 border-radius: 0;
             }
-            .pos-servicios:hover .dropdown-menu,
-            .pos-servicios:focus-within .dropdown-menu {
-                display: block;
+            .dropdown-menu.show-dropdown {
+                display: block !important;
             }
             .dropdown-header {
                 display: block;
@@ -249,7 +276,7 @@
             }
             .dropdown-item {
                 text-align: left;
-                padding: 10px 10px 10px 35px; /* Indentado para distinguir que están dentro */
+                padding: 10px 10px 10px 35px; 
                 border-bottom: 1px solid rgba(255,255,255,0.05);
                 font-size: 14px;
             }
@@ -262,106 +289,49 @@
         }
 
         @media (max-width: 768px) {
-            /* REDUCCIÓN DE TAMAÑOS GENERALES */
             h2 { font-size: 1.7rem !important; }
             .py-16, .py-12 { padding-top: 2rem !important; padding-bottom: 2rem !important; }
             .gap-12 { gap: 1.5rem !important; }
             .mb-12 { margin-bottom: 1.5rem !important; }
             p.text-base { font-size: 0.9rem !important; }
             
-            /* Reducir paneles de servicios */
             .svc-panel { height: 260px; }
             .panel-content { padding-bottom: 25px; }
             .panel-desc { opacity: 1; transform: none; font-size: 0.8rem; }
 
-            /* ======================================================= */
-            /* CORRECCIÓN DEFINITIVA DE IMAGEN Y TEXTO EN CELULAR      */
-            /* ======================================================= */
             #hero-section { 
-                display: flex !important; 
-                flex-direction: column !important; 
-                
-                /* Se cambia de min-height a height fijo para que la animación fluya acelerada por hardware */
-                height: 100vh !important; 
-                background-color: #1c1f2e !important; 
-                padding-top: 60px !important; /* Respeta el espacio del header */
-                
-                /* Transición súper suave usando cubic-bezier en lugar de ease-out o linear */
-                transition: height 0.6s cubic-bezier(0.25, 1, 0.5, 1) !important; 
-                will-change: height;
-                overflow: hidden !important; /* Previene saltos visuales durante la transición */
+                display: flex !important; flex-direction: column !important; 
+                height: 100vh !important; background-color: #1c1f2e !important; padding-top: 60px !important; 
+                transition: height 0.6s cubic-bezier(0.25, 1, 0.5, 1) !important; will-change: height; overflow: hidden !important; 
             }
-            
-            /* ACHICAR EL ESPACIO AL HACER SCROLL SUAVEMENTE */
-            body.is-scrolled #hero-section {
-                height: 75vh !important;
-            }
+            body.is-scrolled #hero-section { height: 75vh !important; }
 
             #hero-image { 
-                position: relative !important;
-                top: auto !important; bottom: auto !important; left: auto !important; right: auto !important;
-                height: 40vh !important; 
-                width: 100% !important;
-                object-fit: cover !important; 
-                object-position: center 30% !important; 
-                transform: scale(1.1) !important; 
-                transform-origin: center center !important;
-                opacity: 0.8;
-                margin: 0 !important; 
-                margin-bottom: 35px !important; 
+                position: relative !important; top: auto !important; bottom: auto !important; left: auto !important; right: auto !important;
+                height: 40vh !important; width: 100% !important; object-fit: cover !important; object-position: center 30% !important; 
+                transform: scale(1.1) !important; transform-origin: center center !important; opacity: 0.8; margin: 0 !important; margin-bottom: 35px !important; 
             }
             
             #hero-text-container { 
-                position: relative !important;
-                top: auto !important; bottom: auto !important; left: auto !important; right: auto !important;
-                height: auto !important;
-                flex: 1; 
-                display: flex !important;
-                flex-direction: column !important;
-                justify-content: flex-start !important; 
-                align-items: center !important;
-                padding-top: 10px !important; 
-                
-                transition: padding-top 0.6s cubic-bezier(0.25, 1, 0.5, 1) !important;
-                will-change: padding-top;
+                position: relative !important; top: auto !important; bottom: auto !important; left: auto !important; right: auto !important;
+                height: auto !important; flex: 1; display: flex !important; flex-direction: column !important; justify-content: flex-start !important; 
+                align-items: center !important; padding-top: 10px !important; transition: padding-top 0.6s cubic-bezier(0.25, 1, 0.5, 1) !important; will-change: padding-top;
             }
-            
-            body.is-scrolled #hero-text-container {
-                padding-top: 0 !important;
-            }
+            body.is-scrolled #hero-text-container { padding-top: 0 !important; }
 
             #hero-title { 
-                margin-top: 0 !important;
-                font-size: 1.3rem !important; 
-                line-height: 1.4 !important;
-                letter-spacing: 0.1em !important; 
-                text-align: center !important; 
-                padding: 0 15px !important;
+                margin-top: 0 !important; font-size: 1.3rem !important; line-height: 1.4 !important;
+                letter-spacing: 0.1em !important; text-align: center !important; padding: 0 15px !important;
             }
             
-            /* SUBTÍTULOS REESTAURADOS Y POSICIONADOS DIRECTAMENTE DEBAJO DEL TÍTULO */
             .hero-subtitle-mobile-container { 
-                display: block !important;
-                position: relative !important;
-                top: auto !important; bottom: auto !important; left: auto !important; right: auto !important;
-                margin-top: 15px !important;
-                padding-bottom: 20px !important;
-                
-                transition: margin-top 0.6s cubic-bezier(0.25, 1, 0.5, 1), padding-bottom 0.6s cubic-bezier(0.25, 1, 0.5, 1) !important;
-                will-change: margin-top, padding-bottom;
+                display: block !important; position: relative !important; top: auto !important; bottom: auto !important; left: auto !important; right: auto !important;
+                margin-top: 15px !important; padding-bottom: 20px !important; transition: margin-top 0.6s cubic-bezier(0.25, 1, 0.5, 1), padding-bottom 0.6s cubic-bezier(0.25, 1, 0.5, 1) !important; will-change: margin-top, padding-bottom;
             }
-            
-            body.is-scrolled .hero-subtitle-mobile-container {
-                margin-top: 5px !important;
-                padding-bottom: 5px !important;
-            }
-
-            .hero-subtitle-mobile {
-                font-size: 0.85rem !important;
-            }
+            body.is-scrolled .hero-subtitle-mobile-container { margin-top: 5px !important; padding-bottom: 5px !important; }
+            .hero-subtitle-mobile { font-size: 0.85rem !important; }
         }
 
-        /* AJUSTE EXTRA PARA PANTALLAS AÚN MÁS PEQUEÑAS (Ej. iPhone SE) */
         @media (max-width: 400px) {
             #hero-title { font-size: 1.15rem !important; }
             .logo-box { height: 34px !important; width: 55px !important; }
@@ -375,7 +345,6 @@
         .hover-line { width: 0; height: 2px; background: #8B1E1E; margin-bottom: 15px; transition: width 0.4s; }
         .svc-panel:hover .hover-line { width: 40px; }
 
-        /* AGRANDAR BOTÓN EN HOVER */
         .hover-btn { margin-top: 20px; padding: 10px 24px; background-color: #8B1E1E !important; color: white; border: none; text-transform: uppercase; font-size: 11px; font-weight: bold; text-decoration: none; display: inline-block; transition: all 0.3s ease; }
         .svc-panel:hover .hover-btn { transform: scale(1.15); box-shadow: 0 4px 15px rgba(0,0,0,0.4); }
 
@@ -393,27 +362,110 @@
         .float-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.4); }
         .hide-fixed-btns { opacity: 0; visibility: hidden; pointer-events: none; transform: scale(0.8) translateY(20px); }
         
-        .lang-btn { position: fixed; bottom: 20px; left: 20px; z-index: 9999; display: flex; align-items: center; justify-content: center; gap: 8px; width: auto; min-width: 48px; height: 48px; padding: 0 16px; background-color: #383d51; border: none; border-radius: 50px; color: white; font-size: 14px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s; will-change: min-width, height, font-size, padding; }
-        .lang-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.4); }
+        .lang-btn, .theme-btn { position: fixed; left: 20px; z-index: 9999; display: flex; align-items: center; justify-content: center; gap: 8px; width: auto; min-width: 48px; height: 48px; padding: 0 16px; background-color: #383d51; border: none; border-radius: 50px; color: white; font-size: 14px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s, background-color 0.3s; will-change: min-width, height, font-size, padding; }
+        .lang-btn { bottom: 20px; }
+        .theme-btn { bottom: 80px; padding: 0 16px; width: auto; } 
+        
+        .lang-btn:hover, .theme-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.4); background-color: #012b59; }
 
         @media (max-width: 600px) {
-            /* ESTADO INICIAL (Al cargar la página): Grandes, pegados entre sí y bajitos para no tapar texto */
             .fixed-btn-container { right: 15px; bottom: 12px; gap: 6px; transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
             .float-btn { width: 160px !important; font-size: 14px !important; padding: 12px 0 !important; gap: 8px !important; }
             .lang-btn { left: 15px; bottom: 12px; min-width: 75px !important; height: 44px !important; font-size: 14px !important; padding: 0 14px !important; gap: 6px !important; transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
-            .lang-btn i { font-size: 18px !important; transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
+            .theme-btn { left: 15px; bottom: 65px; min-width: 75px !important; padding: 0 14px !important; height: 44px !important; transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
+            .lang-btn i, .theme-btn i { font-size: 18px !important; transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
 
-            /* ESTADO SCROLLEADO: Vuelven a achicarse como pediste de manera suave */
             body.is-scrolled .fixed-btn-container { bottom: 15px; gap: 8px; }
             body.is-scrolled .float-btn { width: 100px !important; font-size: 11px !important; padding: 8px 0 !important; gap: 6px !important; }
             body.is-scrolled .lang-btn { bottom: 15px; min-width: 38px !important; height: 38px !important; font-size: 10px !important; padding: 0 10px !important; gap: 4px !important; }
-            body.is-scrolled .lang-btn i { font-size: 14px !important; }
+            body.is-scrolled .theme-btn { bottom: 60px; min-width: auto !important; padding: 0 10px !important; height: 38px !important; }
+            body.is-scrolled .lang-btn i, body.is-scrolled .theme-btn i { font-size: 14px !important; }
         }
 
-        /* CLASE ESPECIAL: OCULTA BOTONES FLOTANTES AL ABRIR EL MENÚ MÓVIL */
+        /* CLASE ESPECIAL: OCULTA BOTONES FLOTANTES Y BLOQUEA SCROLL AL ABRIR EL MENÚ MÓVIL */
+        body.menu-is-open {
+            overflow: hidden !important; /* BLOQUEA SCROLL DE LA PÁGINA */
+        }
         body.menu-is-open #floating-buttons, 
-        body.menu-is-open .lang-btn {
+        body.menu-is-open .lang-btn,
+        body.menu-is-open .theme-btn {
             display: none !important;
+        }
+
+        /* ======================================================= */
+        /* CLASES MODO CLARO (Light Mode Toggle)                   */
+        /* ======================================================= */
+        
+        body.light-mode { background-color: #f3f4f6 !important; color: #111827 !important; }
+        
+        body.light-mode #hero-section { background-color: #1c1f2e !important; }
+        
+        body.light-mode .bg-brand-darker:not(#hero-section) { background-color: #e5e7eb !important; color: #111827 !important; }
+        body.light-mode .bg-brand-dark { background-color: #f9fafb !important; color: #111827 !important; }
+        
+        body.light-mode .text-white:not(#hero-section *):not(#sticky-nav:not(.nav-scrolled) *):not(.float-btn):not(.hover-btn):not(.btn-presupuesto):not(.lang-btn):not(.theme-btn) { 
+            color: #111827 !important; 
+        }
+        
+        body.light-mode .text-gray-200, 
+        body.light-mode .text-gray-300, 
+        body.light-mode .text-gray-400 { color: #374151 !important; font-weight: 600; }
+        
+        body.light-mode footer p, 
+        body.light-mode footer a { opacity: 1 !important; color: #111827 !important; font-weight: bold; }
+        
+        body.light-mode .hover\:text-white:hover,
+        body.light-mode .hover\:text-white:hover * {
+            color: #023A78 !important;
+        }
+        
+        body.light-mode .light-blue-btn { background-color: #93c5fd !important; color: #000000 !important; }
+        body.light-mode .light-blue-btn:hover { background-color: #60a5fa !important; }
+
+        body.light-mode .bg-\[\#252839\] { background-color: #ffffff !important; border-color: #d1d5db !important; color: #1f2937 !important; }
+        body.light-mode .bg-\[\#12141E\] { background-color: #d1d5db !important; }
+        body.light-mode .dropdown-menu { background-color: #ffffff !important; border: 1px solid #e5e7eb; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        body.light-mode .dropdown-item { color: #1f2937 !important; }
+        body.light-mode .dropdown-item:hover { background-color: #f3f4f6 !important; }
+        
+        @media (max-width: 1023px) {
+            body.light-mode .menu-row { background-color: #ffffff !important; }
+        }
+        
+        body.light-mode .servicios-mobile-wrapper { border-bottom: 1px solid rgba(0,0,0,0.1); }
+        body.light-mode .servicios-dropdown-btn { color: #1f2937; border-left: 1px solid rgba(0,0,0,0.1); }
+        body.light-mode .theme-btn, body.light-mode .lang-btn { background-color: #e5e7eb !important; color: #1f2937 !important; }
+        body.light-mode .theme-btn:hover, body.light-mode .lang-btn:hover { background-color: #d1d5db !important; }
+        
+        body.light-mode #sticky-nav.nav-scrolled { background-color: #ffffff !important; box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important; }
+        body.light-mode .menu-item { color: #1f2937 !important; }
+        body.light-mode .menu-item:hover { background-color: #e5e7eb !important; color: #023A78 !important; }
+        
+        body.light-mode .logo-text { color: #1f2937 !important; text-shadow: none !important; }
+        body.light-mode .logo-box { border-color: #1f2937 !important; }
+        body.light-mode .logo-box-text { color: #1f2937 !important; }
+        body.light-mode #mobile-menu-btn, body.light-mode #close-menu-btn { color: #1f2937 !important; }
+        
+        body.light-mode .btn-presupuesto:hover { background-color: #8B1E1E !important; color: #ffffff !important; border-color: #8B1E1E !important; }
+
+        body.light-mode #sticky-nav:not(.nav-scrolled) .text-white,
+        body.light-mode #sticky-nav:not(.nav-scrolled) .logo-text span,
+        body.light-mode #sticky-nav:not(.nav-scrolled) .logo-box-text,
+        body.light-mode #sticky-nav:not(.nav-scrolled) .menu-item { color: #ffffff !important; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+        
+        body.light-mode #sticky-nav:not(.nav-scrolled) .menu-item { text-shadow: none; }
+        body.light-mode #sticky-nav:not(.nav-scrolled) .logo-box { border-color: #ffffff !important; }
+        body.light-mode #sticky-nav:not(.nav-scrolled) .menu-item:hover { background-color: white !important; color: black !important; }
+        body.light-mode #sticky-nav:not(.nav-scrolled) #mobile-menu-btn { color: #ffffff !important; }
+
+        /* CORRECCIÓN: El menú móvil en modo claro debe verse siempre con texto oscuro incluso si no se ha scrolleado */
+        body.light-mode #sticky-nav:not(.nav-scrolled) #mobile-menu-panel.menu-open .menu-item,
+        body.light-mode #sticky-nav:not(.nav-scrolled) #mobile-menu-panel.menu-open .dropdown-item,
+        body.light-mode #sticky-nav:not(.nav-scrolled) #mobile-menu-panel.menu-open .servicios-dropdown-btn i,
+        body.light-mode #sticky-nav:not(.nav-scrolled) #mobile-menu-panel.menu-open .dropdown-header,
+        body.light-mode #sticky-nav:not(.nav-scrolled) #mobile-menu-panel.menu-open #close-menu-btn i {
+            color: #1f2937 !important;
+            text-shadow: none !important;
         }
 
     </style>
@@ -424,6 +476,11 @@
         <a href="tel:+582129590401" class="float-btn bg-brand-blue"><i class="fa fa-phone text-lg"></i> <span class="hidden md:inline tr" data-es="Contáctanos" data-en="Contact us">Contáctanos</span><span class="md:hidden tr" data-es="Llamar" data-en="Call">Llamar</span></a>
         <a href="https://wa.me/584140000000" class="float-btn bg-[#25D366]"><i class="fa fa-whatsapp text-lg"></i> <span class="hidden md:inline tr" data-es="Escríbenos" data-en="Message us">Escríbenos</span><span class="md:hidden tr" data-es="Chat" data-en="Chat">Chat</span></a>
     </div>
+
+    <button id="theme-toggle" class="theme-btn" title="Modo Oscuro/Claro">
+        <i class="fa fa-sun-o text-lg" id="theme-state-icon"></i>
+        <i class="fa fa-toggle-off text-xl" id="theme-toggle-icon"></i>
+    </button>
 
     <button class="lang-btn" onclick="toggleLanguage()" title="Cambiar Idioma">
         <i class="fa fa-globe text-lg"></i>
@@ -438,13 +495,15 @@
             </button>
 
             <div class="line-wrapper"><div class="deco-line"></div></div>
-            <div class="logo-wrapper">
+            
+            <a href="#" class="logo-wrapper" title="Ir al inicio">
                 <div class="logo-box"><span class="logo-box-text">LOGO<br>NUEVO</span></div>
                 <div class="logo-text">
                     <span class="font-bold text-xl uppercase tracking-wider text-white">Aerocentro</span>
                     <span class="font-light text-xl tracking-wider text-white">Vuelos</span>
                 </div>
-            </div>
+            </a>
+            
             <div class="md:hidden w-[50px]"></div>
             
             <div class="line-wrapper"><div class="deco-line"></div></div>
@@ -456,9 +515,17 @@
                 <div class="pos-legal"><a href="legal.html" class="menu-item tr" data-es="Legal" data-en="Legal">Legal</a></div>
                 <div class="pos-nosotros"><a href="nosotros.html" class="menu-item tr" data-es="Nosotros" data-en="About Us">Nosotros</a></div>
                 
-                <div class="pos-servicios relative">
-                    <a href="servicios.html" class="menu-item tr" data-es="Servicios <i class='fa fa-angle-down ml-1'></i>" data-en="Services <i class='fa fa-angle-down ml-1'></i>">Servicios <i class="fa fa-angle-down ml-1"></i></a>
-                    <div class="dropdown-menu">
+                <div class="pos-servicios relative w-full lg:w-auto">
+                    <div class="servicios-mobile-wrapper lg:hidden">
+                        <a href="servicios.html" class="menu-item tr" data-es="Servicios" data-en="Services">Servicios</a>
+                        <button class="servicios-dropdown-btn" id="dropdown-arrow-btn" aria-label="Expandir servicios">
+                            <i class="fa fa-angle-down"></i>
+                        </button>
+                    </div>
+                    
+                    <a href="servicios.html" class="menu-item tr hidden lg:inline-flex hide-on-mobile" data-es="Servicios <i class='fa fa-angle-down ml-1'></i>" data-en="Services <i class='fa fa-angle-down ml-1'></i>">Servicios <i class="fa fa-angle-down ml-1"></i></a>
+                    
+                    <div class="dropdown-menu" id="mobile-dropdown-menu">
                         <span class="dropdown-header tr" data-es="Según trabajo:" data-en="By work:">Según trabajo:</span>
                         <a href="#" class="dropdown-item tr" data-es="Vuelos Charter" data-en="Charter Flights">Vuelos Charter</a>
                         <a href="#" class="dropdown-item tr" data-es="Transporte de carga" data-en="Cargo Transport">Transporte de carga</a>
@@ -476,7 +543,11 @@
                     </div>
                 </div>
 
-                <div class="pos-presupuesto"><a href="contacto.html" class="menu-item btn-presupuesto tr" data-es="Solicitar Presupuesto" data-en="Request Quote">Solicitar Presupuesto</a></div>
+                <div class="pos-presupuesto">
+                    <a href="contacto.html" class="menu-item btn-presupuesto">
+                        <span class="tr" data-es="Solicitar Presupuesto" data-en="Request Quote">Solicitar Presupuesto</span>
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
@@ -563,7 +634,7 @@
                         <div><h4 class="text-xl font-bold mb-2 text-white uppercase tr" data-es="Operaciones certificadas" data-en="Certified operations">Operaciones certificadas</h4><p class="text-[11px] font-bold uppercase tracking-widest text-white tr" data-es="para pasajeros, carga<br>y traslados médicos" data-en="for passengers, cargo<br>and medical transfers">para pasajeros, carga<br>y traslados médicos</p></div>
                         
                         <div id="inline-action-buttons" class="col-span-1 md:col-span-2 lg:col-span-3 pt-6 flex flex-col md:flex-row gap-4 justify-center items-center">
-                            <a href="#" class="bg-brand-blue text-white font-bold py-4 px-4 rounded shadow-lg transition text-sm tracking-widest uppercase w-full md:w-72 flex justify-center items-center text-center tr" data-es="CONOCE NUESTRA FLOTA" data-en="MEET OUR FLEET">CONOCE NUESTRA FLOTA</a>
+                            <a href="#" class="bg-brand-blue text-white light-blue-btn font-bold py-4 px-4 rounded shadow-lg transition text-sm tracking-widest uppercase w-full md:w-72 flex justify-center items-center text-center tr" data-es="CONOCE NUESTRA FLOTA" data-en="MEET OUR FLEET">CONOCE NUESTRA FLOTA</a>
                             <a href="#" class="bg-[#25D366] text-white font-bold py-4 px-4 rounded shadow-lg transition text-sm tracking-widest uppercase w-full md:w-72 flex justify-center items-center gap-2 text-center"><i class="fa fa-whatsapp text-xl"></i> <span class="tr" data-es="Contactanos" data-en="Contact us">Contactanos</span></a>
                         </div>
                     </div>
@@ -580,7 +651,7 @@
                 <form class="space-y-4">
                     <input type="text" placeholder="Nombre Completo" class="tr w-full bg-[#252839] border border-[#3a3e56] p-3 rounded text-white placeholder-gray-500" data-es-placeholder="Nombre Completo" data-en-placeholder="Full Name">
                     <input type="email" placeholder="Email" class="w-full bg-[#252839] border border-[#3a3e56] p-3 rounded text-white placeholder-gray-500">
-                    <button class="w-full bg-brand-blue hover:bg-blue-700 text-white font-bold py-3 rounded tr" data-es="Enviar" data-en="Send">Enviar</button>
+                    <button class="w-full bg-brand-blue light-blue-btn text-white font-bold py-3 rounded transition-colors tr" data-es="Enviar" data-en="Send">Enviar</button>
                 </form>
             </div>
             <div>
@@ -609,12 +680,63 @@
 
     <footer class="bg-[#12141E] border-t border-white/10 py-8 text-white text-sm block-reveal">
         <div class="container mx-auto flex flex-col md:flex-row justify-center items-center gap-4">
-            <p class="opacity-50">© 2026 Aerocentro Vuelos.</p>
-            <div class="logo-box" style="height: 40px; width: 80px; border-width: 1px;"><span class="logo-box-text" style="font-size: 10px;">LOGO<br>NUEVO</span></div>
+            <p class="opacity-50 hover:text-white hover:opacity-100 transition"><a href="#">© 2026 Aerocentro Vuelos.</a></p>
+            <a href="#" class="logo-box" style="height: 40px; width: 80px; border-width: 1px;"><span class="logo-box-text" style="font-size: 10px;">LOGO<br>NUEVO</span></a>
         </div>
     </footer>
 
     <script>
+        // LÓGICA MODO CLARO / OSCURO (CON LOCALSTORAGE E ICONOS DINÁMICOS)
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeToggleIcon = document.getElementById('theme-toggle-icon');
+        const themeStateIcon = document.getElementById('theme-state-icon');
+        
+        // Recuperar preferencia de localStorage
+        let isLightMode = localStorage.getItem('aerocentro_theme') === 'light';
+        
+        function applyTheme() {
+            if (isLightMode) {
+                document.body.classList.add('light-mode');
+                themeToggleIcon.classList.remove('fa-toggle-off');
+                themeToggleIcon.classList.add('fa-toggle-on');
+                themeStateIcon.classList.remove('fa-sun-o');
+                themeStateIcon.classList.add('fa-moon-o');
+            } else {
+                document.body.classList.remove('light-mode');
+                themeToggleIcon.classList.remove('fa-toggle-on');
+                themeToggleIcon.classList.add('fa-toggle-off');
+                themeStateIcon.classList.remove('fa-moon-o');
+                themeStateIcon.classList.add('fa-sun-o');
+            }
+        }
+        applyTheme(); // Aplicar al cargar la página
+        
+        themeToggle.addEventListener('click', () => {
+            isLightMode = !isLightMode;
+            localStorage.setItem('aerocentro_theme', isLightMode ? 'light' : 'dark');
+            applyTheme();
+        });
+
+        // LÓGICA DESPLEGABLE MÓVIL AISLADA
+        const dropdownArrowBtn = document.getElementById('dropdown-arrow-btn');
+        const mobileDropdownMenu = document.getElementById('mobile-dropdown-menu');
+
+        if (dropdownArrowBtn && mobileDropdownMenu) {
+            dropdownArrowBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                mobileDropdownMenu.classList.toggle('show-dropdown');
+                const icon = dropdownArrowBtn.querySelector('i');
+                
+                if (mobileDropdownMenu.classList.contains('show-dropdown')) {
+                    icon.classList.remove('fa-angle-down');
+                    icon.classList.add('fa-angle-up');
+                } else {
+                    icon.classList.remove('fa-angle-up');
+                    icon.classList.add('fa-angle-down');
+                }
+            });
+        }
+
         // LÓGICA DEL MENÚ LATERAL MÓVIL Y OCULTAR BOTONES
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const closeMenuBtn = document.getElementById('close-menu-btn');
@@ -623,23 +745,20 @@
         if (mobileMenuBtn && closeMenuBtn && menuPanel) {
             mobileMenuBtn.addEventListener('click', () => {
                 menuPanel.classList.add('menu-open');
-                document.body.classList.add('menu-is-open'); // Clase que oculta los botones fijos
+                document.body.classList.add('menu-is-open'); 
             });
             closeMenuBtn.addEventListener('click', () => {
                 menuPanel.classList.remove('menu-open');
-                document.body.classList.remove('menu-is-open'); // Muestra los botones fijos de nuevo
+                document.body.classList.remove('menu-is-open'); 
             });
         }
 
-        // FUNCIÓN TRADUCTORA
-        let currentLang = 'es';
-        function toggleLanguage() {
-            currentLang = currentLang === 'es' ? 'en' : 'es';
-            
-            // Cambiar el texto del botón
+        // FUNCIÓN TRADUCTORA (CON LOCALSTORAGE)
+        let currentLang = localStorage.getItem('aerocentro_lang') || 'es';
+        
+        function applyLanguage() {
             document.getElementById('lang-text').innerText = currentLang === 'es' ? 'EN' : 'ESP';
 
-            // Traducir los elementos
             document.querySelectorAll('.tr').forEach(el => {
                 if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
                     if (el.hasAttribute('data-' + currentLang + '-placeholder')) {
@@ -652,16 +771,23 @@
                 }
             });
         }
+        applyLanguage(); // Aplicar al cargar la página
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'es' ? 'en' : 'es';
+            localStorage.setItem('aerocentro_lang', currentLang);
+            applyLanguage();
+        }
 
         document.addEventListener("DOMContentLoaded", () => {
             const nav = document.getElementById('sticky-nav');
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 50) {
                     nav.classList.add('nav-scrolled');
-                    document.body.classList.add('is-scrolled'); // Añade clase para achicar botones fijos en celular
+                    document.body.classList.add('is-scrolled'); 
                 } else {
                     nav.classList.remove('nav-scrolled');
-                    document.body.classList.remove('is-scrolled'); // Quita clase para agrandar botones en inicio
+                    document.body.classList.remove('is-scrolled'); 
                 }
             });
 
