@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto - Aerocentro</title>
+    <title class="tr" data-es="Contacto - Aerocentro" data-en="Contact - Aerocentro">Contacto - Aerocentro</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+    
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
     <script>
         tailwind.config = {
             theme: {
@@ -17,35 +23,111 @@
             }
         }
     </script>
-</head>
-<body class="bg-brand-darker font-sans text-white">
 
-    <nav class="p-6 border-b border-white/10 flex justify-between items-center bg-brand-darker">
-        <div class="flex items-center gap-2">
+    <style>
+        /* ========================================= */
+        /* BOTONES FLOTANTES DE MODO CLARO E IDIOMA  */
+        /* ========================================= */
+        .lang-btn, .theme-btn { 
+            position: fixed; left: 20px; z-index: 9999; display: flex; align-items: center; justify-content: center; gap: 8px; width: auto; min-width: 48px; height: 48px; padding: 0 16px; background-color: #383d51; border: none; border-radius: 50px; color: white; font-size: 14px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s, background-color 0.3s; will-change: min-width, height, font-size, padding; 
+        }
+        .lang-btn { bottom: 20px; }
+        .theme-btn { bottom: 80px; padding: 0 16px; width: auto; } 
+        
+        .lang-btn:hover, .theme-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.4); background-color: #012b59; }
+
+        @media (max-width: 600px) {
+            .lang-btn { left: 15px; bottom: 15px; min-width: 38px !important; height: 38px !important; font-size: 10px !important; padding: 0 10px !important; gap: 4px !important; }
+            .theme-btn { left: 15px; bottom: 60px; min-width: auto !important; padding: 0 10px !important; height: 38px !important; }
+            .lang-btn i, .theme-btn i { font-size: 14px !important; }
+        }
+
+        /* ======================================================= */
+        /* CLASES MODO CLARO (Light Mode Toggle)                   */
+        /* ======================================================= */
+        
+        body.light-mode { background-color: #f3f4f6 !important; color: #111827 !important; }
+        
+        body.light-mode .bg-brand-darker { background-color: #e5e7eb !important; color: #111827 !important; }
+        body.light-mode .bg-brand-dark { background-color: #ffffff !important; border-color: #d1d5db !important; }
+        
+        body.light-mode .text-white { color: #111827 !important; }
+        body.light-mode .text-gray-400, 
+        body.light-mode .text-gray-500 { color: #374151 !important; font-weight: 600; }
+        
+        body.light-mode .border-white\/10, 
+        body.light-mode .border-white\/5 { border-color: #d1d5db !important; }
+        body.light-mode nav .border-white { border-color: #111827 !important; }
+        
+        body.light-mode footer p, 
+        body.light-mode footer a { opacity: 1 !important; color: #111827 !important; font-weight: bold; }
+        body.light-mode .hover\:text-white:hover,
+        body.light-mode .hover\:text-white:hover * { color: #023A78 !important; }
+        
+        body.light-mode .bg-\[\#252839\] { background-color: #ffffff !important; border-color: #d1d5db !important; color: #1f2937 !important; }
+        body.light-mode .bg-\[\#12141E\] { background-color: #d1d5db !important; }
+        
+        body.light-mode .light-blue-btn,
+        body.light-mode button[type="submit"],
+        body.light-mode button:not(.theme-btn):not(.lang-btn):not(#mobile-menu-btn):not(#close-menu-btn):not(.servicios-dropdown-btn) { 
+            background-color: #93c5fd !important; color: #000000 !important; 
+        }
+        body.light-mode .light-blue-btn:hover,
+        body.light-mode button[type="submit"]:hover,
+        body.light-mode button:not(.theme-btn):not(.lang-btn):not(#mobile-menu-btn):not(#close-menu-btn):not(.servicios-dropdown-btn):hover { 
+            background-color: #60a5fa !important; 
+        }
+
+        body.light-mode .theme-btn, body.light-mode .lang-btn { background-color: #e5e7eb !important; color: #1f2937 !important; }
+        body.light-mode .theme-btn:hover, body.light-mode .lang-btn:hover { background-color: #d1d5db !important; }
+        
+        body.light-mode .logo-box { border-color: #1f2937 !important; }
+        body.light-mode .logo-box-text { color: #1f2937 !important; }
+        
+        /* Ajustes específicos para formulario en modo claro */
+        body.light-mode input, body.light-mode textarea { background-color: #f9fafb !important; color: #111827 !important; border-color: #d1d5db !important; }
+        body.light-mode input:focus, body.light-mode textarea:focus { border-color: #023A78 !important; }
+        body.light-mode label { color: #4b5563 !important; font-weight: 700 !important; }
+    </style>
+</head>
+<body class="bg-brand-darker font-sans text-white transition-colors duration-300">
+
+    <button id="theme-toggle" class="theme-btn" title="Modo Oscuro/Claro">
+        <i class="fa fa-sun-o text-lg" id="theme-state-icon"></i>
+        <i class="fa fa-toggle-off text-xl" id="theme-toggle-icon"></i>
+    </button>
+
+    <button class="lang-btn" onclick="toggleLanguage()" title="Cambiar Idioma">
+        <i class="fa fa-globe text-lg"></i>
+        <span id="lang-text">EN</span>
+    </button>
+
+    <nav class="p-6 border-b border-white/10 flex justify-between items-center bg-brand-darker transition-colors">
+        <a href="index.html" class="flex items-center gap-2 hover:opacity-80 transition">
             <div class="h-8 w-12 border border-white flex items-center justify-center">
                 <span class="text-[8px] font-bold">LOGO</span>
             </div>
             <span class="font-bold uppercase tracking-widest text-sm">Aerocentro</span>
-        </div>
-        <a href="index.html" class="text-xs uppercase tracking-widest opacity-70 hover:opacity-100 transition">← Volver al Inicio</a>
+        </a>
+        <a href="index.html" class="text-xs uppercase tracking-widest opacity-70 hover:opacity-100 transition tr" data-es="← Volver al Inicio" data-en="← Back to Home">← Volver al Inicio</a>
     </nav>
 
     <main class="container mx-auto px-6 py-16">
         <div class="text-center mb-16">
-            <h1 class="text-4xl md:text-6xl font-black uppercase tracking-tighter">Contacta con Nosotros</h1>
-            <p class="text-gray-400 mt-4 uppercase tracking-[0.3em] text-sm">Atención Global 24/7</p>
+            <h1 class="text-4xl md:text-6xl font-black uppercase tracking-tighter tr" data-es="Contacta con Nosotros" data-en="Contact Us">Contacta con Nosotros</h1>
+            <p class="text-gray-400 mt-4 uppercase tracking-[0.3em] text-sm tr" data-es="Atención Global 24/7" data-en="24/7 Global Support">Atención Global 24/7</p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
             
             <div class="space-y-12">
                 <div>
-                    <h2 class="text-2xl font-bold mb-6 border-b border-brand-red inline-block pb-2">CENTRAL DE OPERACIONES</h2>
+                    <h2 class="text-2xl font-bold mb-6 border-b border-brand-red inline-block pb-2 tr" data-es="CENTRAL DE OPERACIONES" data-en="OPERATIONS CENTER">CENTRAL DE OPERACIONES</h2>
                     <div class="space-y-6">
                         <div class="flex items-start gap-4">
                             <i class="fa fa-phone text-brand-blue text-xl mt-1"></i>
                             <div>
-                                <p class="font-bold uppercase text-xs text-gray-500">Teléfono</p>
+                                <p class="font-bold uppercase text-xs text-gray-500 tr" data-es="Teléfono" data-en="Phone">Teléfono</p>
                                 <p class="text-lg">+58 (212) 959.0401</p>
                             </div>
                         </div>
@@ -59,7 +141,7 @@
                         <div class="flex items-start gap-4">
                             <i class="fa fa-envelope text-brand-red text-xl mt-1"></i>
                             <div>
-                                <p class="font-bold uppercase text-xs text-gray-500">Correo Electrónico</p>
+                                <p class="font-bold uppercase text-xs text-gray-500 tr" data-es="Correo Electrónico" data-en="Email">Correo Electrónico</p>
                                 <p class="text-lg">operaciones@aerocentro.com</p>
                             </div>
                         </div>
@@ -67,8 +149,8 @@
                 </div>
 
                 <div>
-                    <h2 class="text-2xl font-bold mb-6 border-b border-brand-red inline-block pb-2">UBICACIÓN</h2>
-                    <p class="text-gray-400 leading-relaxed">
+                    <h2 class="text-2xl font-bold mb-6 border-b border-brand-red inline-block pb-2 tr" data-es="UBICACIÓN" data-en="LOCATION">UBICACIÓN</h2>
+                    <p class="text-gray-400 leading-relaxed tr" data-es="Centro Comercial Ciudad Tamanaco (CCCT),<br>Piso 2, Oficina Aerocentro. Chuao,<br>Caracas, Venezuela." data-en="Ciudad Tamanaco Shopping Center (CCCT),<br>Floor 2, Aerocentro Office. Chuao,<br>Caracas, Venezuela.">
                         Centro Comercial Ciudad Tamanaco (CCCT),<br>
                         Piso 2, Oficina Aerocentro. Chuao,<br>
                         Caracas, Venezuela.
@@ -76,28 +158,28 @@
                 </div>
             </div>
 
-            <div class="bg-brand-dark p-8 rounded-lg shadow-xl border border-white/5">
-                <h3 class="text-xl font-bold mb-8 uppercase tracking-widest">Enviar un mensaje</h3>
+            <div class="bg-brand-dark p-8 rounded-lg shadow-xl border border-white/5 transition-colors">
+                <h3 class="text-xl font-bold mb-8 uppercase tracking-widest tr" data-es="Enviar un mensaje" data-en="Send a message">Enviar un mensaje</h3>
                 <form class="space-y-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <label class="block text-[10px] font-bold uppercase text-gray-500 mb-2">Nombre</label>
+                            <label class="block text-[10px] font-bold uppercase text-gray-500 mb-2 tr" data-es="Nombre" data-en="First Name">Nombre</label>
                             <input type="text" class="w-full bg-brand-darker border border-white/10 p-3 rounded text-white focus:outline-none focus:border-brand-blue transition">
                         </div>
                         <div>
-                            <label class="block text-[10px] font-bold uppercase text-gray-500 mb-2">Apellido</label>
+                            <label class="block text-[10px] font-bold uppercase text-gray-500 mb-2 tr" data-es="Apellido" data-en="Last Name">Apellido</label>
                             <input type="text" class="w-full bg-brand-darker border border-white/10 p-3 rounded text-white focus:outline-none focus:border-brand-blue transition">
                         </div>
                     </div>
                     <div>
-                        <label class="block text-[10px] font-bold uppercase text-gray-500 mb-2">Correo Electrónico</label>
+                        <label class="block text-[10px] font-bold uppercase text-gray-500 mb-2 tr" data-es="Correo Electrónico" data-en="Email Address">Correo Electrónico</label>
                         <input type="email" class="w-full bg-brand-darker border border-white/10 p-3 rounded text-white focus:outline-none focus:border-brand-blue transition">
                     </div>
                     <div>
-                        <label class="block text-[10px] font-bold uppercase text-gray-500 mb-2">Mensaje o Requerimiento</label>
+                        <label class="block text-[10px] font-bold uppercase text-gray-500 mb-2 tr" data-es="Mensaje o Requerimiento" data-en="Message or Requirement">Mensaje o Requerimiento</label>
                         <textarea rows="4" class="w-full bg-brand-darker border border-white/10 p-3 rounded text-white focus:outline-none focus:border-brand-blue transition"></textarea>
                     </div>
-                    <button class="w-full bg-brand-blue hover:bg-blue-700 text-white font-bold py-4 rounded transition uppercase tracking-widest text-sm shadow-lg">
+                    <button type="submit" class="w-full bg-brand-blue hover:bg-blue-700 text-white font-bold py-4 rounded transition uppercase tracking-widest text-sm shadow-lg tr" data-es="Enviar Solicitud" data-en="Submit Request">
                         Enviar Solicitud
                     </button>
                 </form>
@@ -106,9 +188,104 @@
         </div>
     </main>
 
-    <footer class="py-10 text-center opacity-30 text-xs mt-12">
-        © 2026 Aerocentro Vuelos - Especialistas en Aviación.
+    <section class="py-16 bg-brand-darker text-white border-t border-white/5 transition-colors mt-12">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            <div>
+                <h2 class="text-2xl font-bold uppercase mb-2 tr" data-es="PARA MÁS INFORMACIÓN" data-en="FOR MORE INFORMATION">PARA MÁS INFORMACIÓN</h2>
+                <div class="w-full h-px bg-white/10 mb-8"></div>
+                <form class="space-y-4">
+                    <input type="text" placeholder="Nombre Completo" class="tr w-full bg-[#252839] border border-[#3a3e56] p-3 rounded text-white placeholder-gray-500" data-es-placeholder="Nombre Completo" data-en-placeholder="Full Name">
+                    <input type="email" placeholder="Email" class="w-full bg-[#252839] border border-[#3a3e56] p-3 rounded text-white placeholder-gray-500">
+                    <button type="button" class="w-full bg-brand-blue light-blue-btn text-white font-bold py-3 rounded transition-colors tr" data-es="Enviar" data-en="Send">Enviar</button>
+                </form>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold uppercase mb-2 tr" data-es="OFICINAS" data-en="OFFICES">OFICINAS</h2>
+                <div class="w-full h-px bg-white/10 mb-8"></div>
+                <div class="space-y-4 text-sm text-gray-400">
+                    <div>
+                        <h5 class="text-brand-red text-xs font-bold uppercase tracking-widest mb-1">Aerocentro Venezuela</h5>
+                        <p class="leading-relaxed tr" data-es="Centro Comercial Ciudad Tamanaco (CCCT)<br>Chuao, Caracas, Venezuela." data-en="Ciudad Tamanaco Shopping Center (CCCT)<br>Chuao, Caracas, Venezuela.">Centro Comercial Ciudad Tamanaco (CCCT)<br>Chuao, Caracas, Venezuela.</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold uppercase mb-2 tr" data-es="REDES SOCIALES" data-en="SOCIAL MEDIA">REDES SOCIALES</h2>
+                <div class="w-full h-px bg-white/10 mb-8"></div>
+                <ul class="space-y-4 text-gray-300">
+                    <li><a href="#" class="flex items-center gap-3 hover:text-white transition"><i class="fa fa-facebook w-6 text-center text-white"></i> Facebook</a></li>
+                    <li><a href="#" class="flex items-center gap-3 hover:text-white transition"><i class="fa fa-instagram w-6 text-center text-white"></i> Instagram</a></li>
+                    <li><a href="#" class="flex items-center gap-3 hover:text-white transition"><i class="fa fa-whatsapp w-6 text-center text-white"></i> WhatsApp</a></li>
+                    <li><a href="#" class="flex items-center gap-3 hover:text-white transition"><i class="fa fa-envelope w-6 text-center text-white"></i> Mail</a></li>
+                    <li><a href="#" class="flex items-center gap-3 hover:text-white transition"><i class="fa fa-phone w-6 text-center text-white"></i> <span class="tr" data-es="Teléfono" data-en="Phone">Teléfono</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#12141E] border-t border-white/10 py-8 text-white text-sm transition-colors">
+        <div class="container mx-auto flex flex-col md:flex-row justify-center items-center gap-4">
+            <p class="opacity-50 hover:text-white hover:opacity-100 transition"><a href="index.html">© 2026 Aerocentro Vuelos.</a></p>
+            <a href="index.html" class="logo-box h-[40px] w-[80px] border border-white flex items-center justify-center hover:opacity-80 transition" title="Ir al inicio">
+                <span class="logo-box-text text-[10px] font-bold text-center leading-tight">LOGO<br>NUEVO</span>
+            </a>
+        </div>
     </footer>
 
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeToggleIcon = document.getElementById('theme-toggle-icon');
+        const themeStateIcon = document.getElementById('theme-state-icon');
+        
+        let isLightMode = localStorage.getItem('aerocentro_theme') === 'light';
+        
+        function applyTheme() {
+            if (isLightMode) {
+                document.body.classList.add('light-mode');
+                themeToggleIcon.classList.remove('fa-toggle-off');
+                themeToggleIcon.classList.add('fa-toggle-on');
+                themeStateIcon.classList.remove('fa-sun-o');
+                themeStateIcon.classList.add('fa-moon-o');
+            } else {
+                document.body.classList.remove('light-mode');
+                themeToggleIcon.classList.remove('fa-toggle-on');
+                themeToggleIcon.classList.add('fa-toggle-off');
+                themeStateIcon.classList.remove('fa-moon-o');
+                themeStateIcon.classList.add('fa-sun-o');
+            }
+        }
+        applyTheme(); 
+        
+        themeToggle.addEventListener('click', () => {
+            isLightMode = !isLightMode;
+            localStorage.setItem('aerocentro_theme', isLightMode ? 'light' : 'dark');
+            applyTheme();
+        });
+
+        let currentLang = localStorage.getItem('aerocentro_lang') || 'es';
+        
+        function applyLanguage() {
+            document.getElementById('lang-text').innerText = currentLang === 'es' ? 'EN' : 'ESP';
+
+            document.querySelectorAll('.tr').forEach(el => {
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    if (el.hasAttribute('data-' + currentLang + '-placeholder')) {
+                        el.placeholder = el.getAttribute('data-' + currentLang + '-placeholder');
+                    }
+                } else {
+                    if (el.hasAttribute('data-' + currentLang)) {
+                        el.innerHTML = el.getAttribute('data-' + currentLang);
+                    }
+                }
+            });
+        }
+        applyLanguage();
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'es' ? 'en' : 'es';
+            localStorage.setItem('aerocentro_lang', currentLang);
+            applyLanguage();
+        }
+    </script>
 </body>
 </html>
